@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+/* .Navbar, .NavbarButton {
+  background-color: #760921 !important;
+}
+
+.NavbarButton .active {
+  background-color: #0000FF !important;
+} */
+
+.Header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Main {
+  padding-top: 80px;
+}
+
+.ui.grid > .row > .column {
+  padding-left: .2rem;
+  padding-right: .2rem;
+}
+
+.ui.grid > .row {
+  padding-bottom: .1rem;
+  padding-top: .1rem;
+}
+
+.App-link {
+  color: #61dafb;
+}
