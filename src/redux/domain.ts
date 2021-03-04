@@ -1,4 +1,16 @@
-export enum Boons {
+export enum BoonTypes {
+  Chaos = 'Chaos',
+  Duo = 'Duo',
+  Other = 'Other',
+  Solo = 'Solo',
+}
+
+export enum ChaosBoons {
+  Blessing = 'Blessing',
+  Curse = 'Curse',
+}
+
+export enum SoloBoons {
   Attack = 'Attack',
   Special = 'Special',
   Dash = 'Dash',
@@ -8,10 +20,16 @@ export enum Boons {
   Legendary = 'Legendary',
 }
 
-export enum ChaosBoons {
-  Blessing = 'Blessing',
-  Curse = 'Curse',
+export enum OtherBoons {
+  Attack = 'Attack',
+  Special = 'Special',
+  Dash = 'Dash',
+  Cast = 'Cast',
+  Call = 'Call',
+  Other = 'Other',
+  Legendary = 'Legendary',
 }
+
 
 export enum Gods {
   Aphrodite = 'Aphrodite',
@@ -51,14 +69,4 @@ export type Image = {
   title: string,
   height: string,
   width: string,
-}
-
-export type SoloBoons = {
-  [Boons.Attack]: string;
-  [Boons.Special]: string;
-  [Boons.Cast]: string[];
-  [Boons.Dash]: string;
-  [Boons.Call]: string;
-  [Boons.Other]: string[];
-  [Boons.Legendary]: string[];
 }

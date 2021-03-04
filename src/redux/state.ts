@@ -1,8 +1,8 @@
 import { AppState, Page } from './domain';
 
 const pageList: Page[] = [
-  {text: 'Boons', url: '/Boons'},
-  {text: 'Secondary', url: '/Other'},
+  {text: 'Main Boons', url: '/Boons/Main'},
+  {text: 'Other Boons', url: '/Boons/Other'},
   {text: 'About', url: '/About'}
 ];
 

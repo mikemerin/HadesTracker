@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useRouteMatch } from 'react-router-dom';
 import { Grid, SemanticWIDTHS, Segment } from 'semantic-ui-react';
 
+
 import { setCurrentPage } from 'redux/actions';
-import { AppState, Boons } from 'redux/domain';
+import { AppState, SoloBoons } from 'redux/domain';
 
 import { soloBoons } from 'data/boons';
 import { colors } from 'data/gods';
@@ -20,17 +22,20 @@ const mapDispatchToProps = {
 
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 
-const SoloBoons = ({
+const Boons = ({
   currentPage,
   onChangeCurrentPage,
   pageList
 }: Props): JSX.Element => {
+  const params = useRouteMatch().params;
+  console.log(params)
   console.log(images)
+
   const soloBoonCount = Object.keys(soloBoons).length;
   const soloBoonColumns = (soloBoonCount + 1) as SemanticWIDTHS;
 
   const generateSoloBoonRows = (): JSX.Element[] => {
-    return ['header', ...Object.keys(Boons)].map((boonType: string) => {
+    return ['header', ...Object.keys(SoloBoons)].map((boonType: string) => {
       const rowHeader = (
         <Grid.Column key={`${boonType}RowHeader`} width={1}>
           {boonType !== 'header' &&
@@ -54,33 +59,20 @@ const SoloBoons = ({
         } else {
           const color = colors[god];
           const boonName = soloBoons[god][boonType];
-          if (Array.isArray(boonName)) {
-            return (
-              <Grid.Column key={`${god}${boonType}`}>
-                <Segment.Group raised size='mini'>{
-                  boonName.map((individualBoon, i) => (
-                      <Segment key={`${god}${boonType}${i}`} style={{padding: 0, border: `1px solid ${color}`}}>
-                        <table><tbody><tr>
-                          <td>{<img {...images[individualBoon || 'Other_Empty']} alt={images[individualBoon || 'Other_Empty'].alt} />}</td>
-                          <td>{individualBoon || 'N/A'}</td>
-                        </tr></tbody></table>
-                      </Segment>
-                  ))
-                }</Segment.Group>
-              </Grid.Column>
-            );
-          } else {
-            return (
-              <Grid.Column key={`${god}${boonType}`}>
-                <Segment size='mini' raised style={{padding: '0', border: `1px solid ${color}`}}>
-                  <table><tbody><tr>
-                    <td>{<img {...images[boonName || 'Other_Empty']} alt={images[boonName || 'Other_Empty'].alt} />}</td>
-                    <td>{boonName || 'N/A'}</td>
-                  </tr></tbody></table>
-                </Segment>
-              </Grid.Column>
-            );
-          }
+          return (
+            <Grid.Column key={`${god}${boonType}`}>
+              <Segment.Group raised size='mini'>{
+                boonName.map((individualBoon, i) => (
+                    <Segment key={`${god}${boonType}${i}`} style={{padding: 0, border: `1px solid ${color}`}}>
+                      <table><tbody><tr>
+                        <td>{<img {...images[individualBoon || 'Other_Empty']} alt={images[individualBoon || 'Other_Empty'].alt} />}</td>
+                        <td>{individualBoon || 'N/A'}</td>
+                      </tr></tbody></table>
+                    </Segment>
+                ))
+              }</Segment.Group>
+            </Grid.Column>
+          );
         }
       });
 
@@ -105,4 +97,4 @@ const SoloBoons = ({
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SoloBoons);
+export default connect(mapStateToProps, mapDispatchToProps)(Boons);

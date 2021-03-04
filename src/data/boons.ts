@@ -1,16 +1,13 @@
-import { Boons, Gods, SoloBoons } from 'redux/domain';
+import { SoloBoons, Gods } from 'redux/domain';
 
-// TODO: attach SoloBoons, which will require images.ts to be changed
-// const soloBoons: {[key: string]: SoloBoons} = {
-const soloBoons: {[key: string]: {[key: string]: any}} = {
+const soloBoons: {[key: string]: {[key: string]: string[]}} = {
   [Gods.Aphrodite]: {
-    [Boons.Attack]: 'Heartbreak Strike',
-    [Boons.Special]: 'Heartbreak Flourish',
-    [Boons.Cast]: ['Crush Shot'],
-    [Boons.Dash]: 'Passion Dash',
-    [Boons.Call]: 'Aphrodite\'s Aid',
-
-    [Boons.Other]: [
+    [SoloBoons.Attack]: ['Heartbreak Strike'],
+    [SoloBoons.Special]: ['Heartbreak Flourish'],
+    [SoloBoons.Cast]: ['Crush Shot'],
+    [SoloBoons.Dash]: ['Passion Dash'],
+    [SoloBoons.Call]: ['Aphrodite\'s Aid'],
+    [SoloBoons.Other]: [
       'Dying Lament',
       'Wave of Despair',
       'Life Affirmation',
@@ -20,17 +17,15 @@ const soloBoons: {[key: string]: {[key: string]: any}} = {
       'Blown Kiss',
       'Sweet Surrender',
     ],
-
-    [Boons.Legendary]: ['Unhealthy Fixation']
+    [SoloBoons.Legendary]: ['Unhealthy Fixation']
   },
   [Gods.Ares]: {
-    [Boons.Attack]: 'Curse of Agony',
-    [Boons.Special]: 'Curse of Pain',
-    [Boons.Cast]: ['Slicing Shot'],
-    [Boons.Dash]: 'Blade Dash',
-    [Boons.Call]: 'Ares\' Aid',
-
-    [Boons.Other]: [
+    [SoloBoons.Attack]: ['Curse of Agony'],
+    [SoloBoons.Special]: ['Curse of Pain'],
+    [SoloBoons.Cast]: ['Slicing Shot'],
+    [SoloBoons.Dash]: ['Blade Dash'],
+    [SoloBoons.Call]: ['Ares\' Aid'],
+    [SoloBoons.Other]: [
       'Curse of Vengeance',
       'Urge to Kill',
       'Blood Frenzy',
@@ -40,17 +35,15 @@ const soloBoons: {[key: string]: {[key: string]: any}} = {
       'Dire Misfortune',
       'Impending Doom',
     ],
-
-    [Boons.Legendary]: ['Vicious Cycle']
+    [SoloBoons.Legendary]: ['Vicious Cycle']
   },
   [Gods.Artemis]: {
-    [Boons.Attack]: 'Deadly Strike',
-    [Boons.Special]: 'Deadly Flourish',
-    [Boons.Cast]: ['True Shot'],
-    [Boons.Dash]: 'Hunter Dash',
-    [Boons.Call]: 'Artemis\' Aid',
-
-    [Boons.Other]: [
+    [SoloBoons.Attack]: ['Deadly Strike'],
+    [SoloBoons.Special]: ['Deadly Flourish'],
+    [SoloBoons.Cast]: ['True Shot'],
+    [SoloBoons.Dash]: ['Hunter Dash'],
+    [SoloBoons.Call]: ['Artemis\' Aid'],
+    [SoloBoons.Other]: [
       'Pressure Points',
       'Exit Wounds',
       'Clean Kill',
@@ -59,17 +52,15 @@ const soloBoons: {[key: string]: {[key: string]: any}} = {
       'Hunter Instinct',
       'Hunter\'s Mark',
     ],
-
-    [Boons.Legendary]: ['Fully Loaded']
+    [SoloBoons.Legendary]: ['Fully Loaded']
   },
   [Gods.Athena]: {
-    [Boons.Attack]: 'Divine Strike',
-    [Boons.Special]: 'Divine Flourish',
-    [Boons.Cast]: ['Phalanx Shot'],
-    [Boons.Dash]: 'Divine Dash',
-    [Boons.Call]: 'Athena\'s Aid',
-
-    [Boons.Other]: [
+    [SoloBoons.Attack]: ['Divine Strike'],
+    [SoloBoons.Special]: ['Divine Flourish'],
+    [SoloBoons.Cast]: ['Phalanx Shot'],
+    [SoloBoons.Dash]: ['Divine Dash'],
+    [SoloBoons.Call]: ['Athena\'s Aid'],
+    [SoloBoons.Other]: [
       'Holy Shield',
       'Bronze Skin',
       'Deathless Stand',
@@ -79,17 +70,15 @@ const soloBoons: {[key: string]: {[key: string]: any}} = {
       'Blinding Flash',
       'Brilliant Riposte',
     ],
-
-    [Boons.Legendary]: ['Divine Protection']
+    [SoloBoons.Legendary]: ['Divine Protection']
   },
   [Gods.Demeter]: {
-    [Boons.Attack]: 'Frost Strike',
-    [Boons.Special]: 'Frost Flourish',
-    [Boons.Cast]: ['Crystal Beam'],
-    [Boons.Dash]: 'Mistral Dash',
-    [Boons.Call]: 'Demeter\'s Aid',
-
-    [Boons.Other]: [
+    [SoloBoons.Attack]: ['Frost Strike'],
+    [SoloBoons.Special]: ['Frost Flourish'],
+    [SoloBoons.Cast]: ['Crystal Beam'],
+    [SoloBoons.Dash]: ['Mistral Dash'],
+    [SoloBoons.Call]: ['Demeter\'s Aid'],
+    [SoloBoons.Other]: [
       'Snow Burst',
       'Frozen Touch',
       'Rare Crop',
@@ -99,17 +88,15 @@ const soloBoons: {[key: string]: {[key: string]: any}} = {
       'Arctic Blast',
       'Killing Freeze',
     ],
-
-    [Boons.Legendary]: ['Winter Harvest']
+    [SoloBoons.Legendary]: ['Winter Harvest']
   },
   [Gods.Dionysus]: {
-    [Boons.Attack]: 'Drunken Strike',
-    [Boons.Special]: 'Drunken Flourish',
-    [Boons.Cast]: ['Trippy Shot', 'Trippy Flare'],
-    [Boons.Dash]: 'Drunken Dash',
-    [Boons.Call]: 'Dionysus\' Aid',
-
-    [Boons.Other]: [
+    [SoloBoons.Attack]: ['Drunken Strike'],
+    [SoloBoons.Special]: ['Drunken Flourish'],
+    [SoloBoons.Cast]: ['Trippy Shot', 'Trippy Flare'],
+    [SoloBoons.Dash]: ['Drunken Dash'],
+    [SoloBoons.Call]: ['Dionysus\' Aid'],
+    [SoloBoons.Other]: [
       'Premium Vintage',
       'After Party',
       'Strong Drink',
@@ -119,17 +106,15 @@ const soloBoons: {[key: string]: {[key: string]: any}} = {
       'Numbing Sensation',
       'Peer Pressure',
     ],
-
-    [Boons.Legendary]: ['Black Out']
+    [SoloBoons.Legendary]: ['Black Out']
   },
   [Gods.Poseidon]: {
-    [Boons.Attack]: 'Tempest Strike',
-    [Boons.Special]: 'Tempest Flourish',
-    [Boons.Cast]: ['Flood Shot'],
-    [Boons.Dash]: 'Tidal Dash',
-    [Boons.Call]: 'Poseidon\'s Aid',
-
-    [Boons.Other]: [
+    [SoloBoons.Attack]: ['Tempest Strike'],
+    [SoloBoons.Special]: ['Tempest Flourish'],
+    [SoloBoons.Cast]: ['Flood Shot'],
+    [SoloBoons.Dash]: ['Tidal Dash'],
+    [SoloBoons.Call]: ['Poseidon\'s Aid'],
+    [SoloBoons.Other]: [
       'Boiling Point',
       'Hydraulic Might',
       'Sunken Treasure',
@@ -140,17 +125,15 @@ const soloBoons: {[key: string]: {[key: string]: any}} = {
       'Breaking Wave',
       'Razor Shoals',
     ],
-
-    [Boons.Legendary]: ['Second Wave', 'Huge Catch']
+    [SoloBoons.Legendary]: ['Second Wave', 'Huge Catch']
   },
   [Gods.Zeus]: {
-    [Boons.Attack]: 'Lightning Strike',
-    [Boons.Special]: 'Thunder Flourish',
-    [Boons.Cast]: ['Electric Shot'],
-    [Boons.Dash]: 'Thunder Dash',
-    [Boons.Call]: 'Zeus\' Aid',
-
-    [Boons.Other]: [
+    [SoloBoons.Attack]: ['Lightning Strike'],
+    [SoloBoons.Special]: ['Thunder Flourish'],
+    [SoloBoons.Cast]: ['Electric Shot'],
+    [SoloBoons.Dash]: ['Thunder Dash'],
+    [SoloBoons.Call]: ['Zeus\' Aid'],
+    [SoloBoons.Other]: [
       'Billowing Strength',
       'Lightning Reflexes',
       'Heaven\'s Vengeance',
@@ -160,14 +143,13 @@ const soloBoons: {[key: string]: {[key: string]: any}} = {
       'Storm Lightning',
       'Static Discharge',
     ],
-
-    [Boons.Legendary]: ['Splitting Bolt']
+    [SoloBoons.Legendary]: ['Splitting Bolt']
   }
 }
 
 const otherBoons = {
   [Gods.Hermes]: {
-    [Boons.Other]: [
+    [SoloBoons.Other]: [
       'Quick Reload',
       'Auto Reload',
       'Greatest Reflex',
@@ -183,11 +165,7 @@ const otherBoons = {
       'Hyper Sprint',
       'Rush Delivery',
     ],
-
-    [Boons.Legendary]: ['Greater Recall', 'Bad News']
-  },
-  [Gods.Hermes]: {
-
+    [SoloBoons.Legendary]: ['Greater Recall', 'Bad News']
   }
 }
 

@@ -1,18 +1,29 @@
 import { soloBoons } from 'data/boons';
-import { Boons, Gods, Image } from 'redux/domain';
+import { SoloBoons, Gods, Image } from 'redux/domain';
+
+const images: {[key: string]: Image} = {};
 
 const fileNameSanitizer = (filename: string): string => {
   return filename.replace(/ /g, '_');
 };
 
-const images: {[key: string]: Image} = {};
-
-['Other_Empty', ...Object.keys(Boons)].forEach((boon) => {
-  const src = `${process.env.PUBLIC_URL}/assets/boons/${boon}.png`;
+const imageLoader = (
+  path: string,
+  filename: string,
+  suffix: string,
+  size: string,
+) => {
+  const src = `${process.env.PUBLIC_URL}/assets/${path}/${fileNameSanitizer(filename)}.png`;
   let alt, title, height, width;
-  alt = title = `${boon} Icon`;
-  height = width = '30px';
-  images[boon] = { src, alt, title, height, width };
+  alt = title = `${filename} ${suffix}`;
+  height = width = size;
+  images[filename] = { src, alt, title, height, width };
+};
+
+const boonSize = '20px';
+
+Object.keys(SoloBoons).forEach((boon) => {
+  imageLoader('boons', boon, 'Icon', '30px');
 
   Object.keys(Gods).forEach((god) => {
     if (god === Gods.Chaos) {
@@ -21,36 +32,12 @@ const images: {[key: string]: Image} = {};
       // TODO add otherBoons here
     } else {
       const boonName = soloBoons[god][boon];
-      if (boonName) {
-        if (Array.isArray(boonName)) {
-          boonName.forEach((individualBoon) => {
-            const src = `${process.env.PUBLIC_URL}/assets/boons/${fileNameSanitizer(individualBoon)}.png`;
-            let alt, title, height, width;
-            alt = title = `${individualBoon} Icon`;
-            height = width = '30px';
-            images[individualBoon] = { src, alt, title, height, width };
-          });
-        } else {
-          const src = `${process.env.PUBLIC_URL}/assets/boons/${fileNameSanitizer(boonName)}.png`;
-          let alt, title, height, width;
-          alt = title = `${boonName} Icon`;
-          height = width = '30px';
-          images[boonName] = { src, alt, title, height, width };
-        }
-      }
+      boonName && boonName.forEach((individualBoon) => imageLoader('boons', individualBoon, 'Icon', boonSize));
     }
   });
 });
 
-// TODO: src, alt/title suffix, height/width # size
-
-Object.keys(Gods).forEach((god) => {
-  const src = `${process.env.PUBLIC_URL}/assets/gods/${god}_reward.png`;
-  let alt, title, height, width;
-  alt = title = `${god} Symbol`;
-  height = width = '50px';
-  images[god] = { src, alt, title, height, width };
-});
+Object.keys(Gods).forEach((god) => imageLoader('gods', god, 'Symbol', '50px'));
 
 export default images;
 export {
