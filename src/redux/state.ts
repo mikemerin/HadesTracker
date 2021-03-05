@@ -2,6 +2,7 @@ import { AppState, Page } from './domain';
 
 const pageList: Page[] = [
   {text: 'Main', url: '/Boons/Main'},
+  {text: 'Duo', url: '/Boons/Duo'},
   {text: 'Other', url: '/Boons/Other'},
   {text: 'Chaos', url: '/Boons/Chaos'},
   {text: 'Infernal Arms', url: '/Boons/Weapons'},

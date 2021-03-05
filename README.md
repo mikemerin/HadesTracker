@@ -29,3 +29,5 @@
 * Reset button
 * Advanced
   * % god choice, if given two rooms which is better?
+* Theming: add Dark Mode w/switcher
+* Title per page

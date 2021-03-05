@@ -1,5 +1,5 @@
-export enum BoonTypes {
-  Augments = 'Augments',
+export enum BoonGroup {
+  Aspects = 'Aspects',
   Chaos = 'Chaos',
   CustomerLoyalty = 'CustomerLoyalty',
   Duo = 'Duo',
@@ -8,28 +8,19 @@ export enum BoonTypes {
   Weapon = 'Weapon',
 }
 
-export enum ChaosBoons {
-  Blessing = 'Blessing',
-  Curse = 'Curse',
-}
-
-export enum OtherBoons {
-  Other = 'Other',
-  Legendary = 'Legendary',
-}
-
-export enum SoloBoons {
+export enum BoonRow {
   Attack = 'Attack',
-  Special = 'Special',
-  Dash = 'Dash',
-  Cast = 'Cast',
+  Aspect = 'Aspect',
+  Blessing = 'Blessing',
   Call = 'Call',
+  Cast = 'Cast',
+  Curse = 'Curse',
+  Daedalus = 'Daedalus Upgrades',
+  Dash = 'Dash',
+  Item = 'Item',
   Other = 'Other',
+  Special = 'Special',
   Legendary = 'Legendary',
-}
-
-export enum WeaponBoons {
-  DaedalusUpgrades = 'Daedalus Upgrades',
 }
 
 export enum Gods {
@@ -73,11 +64,11 @@ export type Image = {
 };
 
 export type BoonList = {
-  // boonKey, eg: Gods.___, Weapons.___, etc.
+  // boonKey, eg.: Gods.___, Weapons.___, etc.
   [key: string]: {
-    // boonType: BoonTypes
+    // boonType: eg.: BoonGroup.___
     [key: string]: {
-      // boonRow, eg.: SoloBoons.___
+      // boonRow, eg.: BoonRow.___
       [key: string]: string[]
     }
   }

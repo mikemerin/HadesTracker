@@ -1,5 +1,5 @@
-import { boonList } from 'data/boons';
-import { BoonTypes, Gods, Image, Weapons } from 'redux/domain';
+import { boonList } from 'data/BoonList';
+import { BoonGroup, Gods, Image, Weapons } from 'redux/domain';
 
 const images: {[key: string]: Image} = {};
 
@@ -24,8 +24,8 @@ const boonSize = '20px';
 const headerSize = '50px';
 
 const paths: {[key: string]: string} = {
-  [BoonTypes.Chaos]: 'chaos',
-  [BoonTypes.Weapon]: 'daedalus',
+  [BoonGroup.Chaos]: 'chaos',
+  [BoonGroup.Weapon]: 'daedalus',
 };
 
 Object.values(boonList).forEach((boonTypeObj) => {

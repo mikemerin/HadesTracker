@@ -11,7 +11,7 @@ const App = (): JSX.Element => (
     <Navbar />
     <div className='Main'>
       <Switch>
-      <Route path={['/Boons/Main', '/Boons/Other', '/Boons/Chaos', '/Boons/Weapons']}>
+      <Route path={['/Boons/Main', '/Boons/Duo', '/Boons/Other', '/Boons/Chaos', '/Boons/Weapons']}>
         <Boons />
       </Route>
       <Route path='/About'>

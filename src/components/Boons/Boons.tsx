@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, SemanticWIDTHS, Segment } from 'semantic-ui-react';
 
-import { AppState, BoonTypes, Weapons } from 'redux/domain';
-import { boonList } from 'data/boons';
+import { AppState, BoonGroup } from 'redux/domain';
+import { boonList, boonGroupRows } from 'data/BoonList';
 import { images } from 'visuals/images';
 import { colors } from 'visuals/colors';
 
@@ -19,16 +19,17 @@ const Boons = ({
   currentPage
 }: Props): JSX.Element => {
   const boonTypes: {[key: string]: string} = {
-    Other: BoonTypes.Other,
-    Chaos: BoonTypes.Chaos,
-    'Infernal Arms': BoonTypes.Weapon,
+    Other: BoonGroup.Other,
+    Chaos: BoonGroup.Chaos,
+    Duo: BoonGroup.Duo,
+    'Infernal Arms': BoonGroup.Weapon,
   }
 
-  const boonType = boonTypes[currentPage] || BoonTypes.Solo;
+  const boonType = boonTypes[currentPage] || BoonGroup.Solo;
 
   const generateBoonRows = (boonType: string): JSX.Element[] => {
-    const boonKeys = Object.keys(boonList).filter((boonKey) => boonList[boonKey][boonType]);
-    const boonRows = Object.keys(boonList[boonKeys[0]][boonType]);
+    const boonKeys = Object.keys(boonList).filter((boonKey: string) => boonList[boonKey][boonType]);
+    const boonRows: string[] = boonGroupRows[boonType];
     const boonCount = boonKeys.length;
     const boonColumns = (boonCount + 1) as SemanticWIDTHS;
 
@@ -56,7 +57,7 @@ const Boons = ({
           return (
             <Grid.Column key={`${god}${boonRow}`}>
               <Segment.Group raised size='mini'>{
-                boons.map((individualBoon, i) => (
+                boons && boons.map((individualBoon, i) => (
                   <Segment key={`${god}${boonRow}${i}`} style={{padding: 0, border: `1px solid ${color}`}}>
                     {<Boon name={individualBoon} />}
                   </Segment>
