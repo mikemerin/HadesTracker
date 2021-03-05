@@ -5,9 +5,9 @@ import { Grid, SemanticWIDTHS, Segment } from 'semantic-ui-react';
 
 
 import { setCurrentPage } from 'redux/actions';
-import { AppState, SoloBoons } from 'redux/domain';
+import { AppState, BoonTypes, SoloBoons } from 'redux/domain';
 
-import { soloBoons } from 'data/boons';
+import { boonList } from 'data/boons';
 import { colors } from 'data/gods';
 import images from 'assets/images';
 
@@ -27,28 +27,31 @@ const Boons = ({
   onChangeCurrentPage,
   pageList
 }: Props): JSX.Element => {
-  const params = useRouteMatch().params;
-  console.log(params)
-  console.log(images)
+  // const params = useRouteMatch().params;
+  // console.log(params)
+  // console.log(images)
 
-  const soloBoonCount = Object.keys(soloBoons).length;
-  const soloBoonColumns = (soloBoonCount + 1) as SemanticWIDTHS;
+  const generateBoonRows = (boonType: string): JSX.Element[] => {
+    const boonKeys = Object.keys(boonList).filter((boonKey) => boonList[boonKey][boonType]);
+    const boonRows = Object.keys(boonList[boonKeys[0]][boonType]);
+    const boonCount = boonKeys.length;
+    const boonColumns = (boonCount + 1) as SemanticWIDTHS;
 
-  const generateSoloBoonRows = (): JSX.Element[] => {
-    return ['header', ...Object.keys(SoloBoons)].map((boonType: string) => {
+    return ['header', ...boonRows].map((boonRow: string) => {
+      console.log(boonRow, images[boonRow])
       const rowHeader = (
-        <Grid.Column key={`${boonType}RowHeader`} width={1}>
-          {boonType !== 'header' &&
+        <Grid.Column key={`${boonRow}RowHeader`} width={1}>
+          {boonRow !== 'header' &&
             <table><tbody><tr>
-              <td><img {...images[boonType]} alt={images[boonType].alt} /></td>
-              <td>{boonType}</td>
+              <td><img {...images[boonRow]} alt={images[boonRow].alt} /></td>
+              <td>{boonRow}</td>
             </tr></tbody></table>
           }
         </Grid.Column>
       );
 
-      const columns = Object.keys(soloBoons).map((god: string) => {
-        if (boonType === 'header') {
+      const columns = boonKeys.map((god: string) => {
+        if (boonRow === 'header') {
           return (
             <Grid.Column key={`${god}Header`}>
               <b>{god}</b>
@@ -57,13 +60,13 @@ const Boons = ({
             </Grid.Column>
           );
         } else {
-          const color = colors[god];
-          const boonName = soloBoons[god][boonType];
+          const color = colors[god]; // TODO: expand this to have the faded colors / others using it
+          const boons = boonList[god][boonType][boonRow];
           return (
-            <Grid.Column key={`${god}${boonType}`}>
+            <Grid.Column key={`${god}${boonRow}`}>
               <Segment.Group raised size='mini'>{
-                boonName.map((individualBoon, i) => (
-                    <Segment key={`${god}${boonType}${i}`} style={{padding: 0, border: `1px solid ${color}`}}>
+                boons.map((individualBoon, i) => (
+                    <Segment key={`${god}${boonRow}${i}`} style={{padding: 0, border: `1px solid ${color}`}}>
                       <table><tbody><tr>
                         <td>{<img {...images[individualBoon || 'Other_Empty']} alt={images[individualBoon || 'Other_Empty'].alt} />}</td>
                         <td>{individualBoon || 'N/A'}</td>
@@ -77,7 +80,7 @@ const Boons = ({
       });
 
       return (
-        <Grid.Row key={boonType} columns={soloBoonColumns}>
+        <Grid.Row key={boonRow} columns={boonColumns}>
           {rowHeader}
           {columns}
         </Grid.Row>
@@ -92,7 +95,7 @@ const Boons = ({
       textAlign='center'
       padded='horizontally'
     >
-      {generateSoloBoonRows()}
+      {generateBoonRows(BoonTypes.Solo)}
     </Grid>
   );
 };

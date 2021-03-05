@@ -1,5 +1,5 @@
-import { soloBoons } from 'data/boons';
-import { SoloBoons, Gods, Image } from 'redux/domain';
+import { boonList } from 'data/boons';
+import { BoonTypes, Gods, Image, SoloBoons } from 'redux/domain';
 
 const images: {[key: string]: Image} = {};
 
@@ -22,18 +22,13 @@ const imageLoader = (
 
 const boonSize = '20px';
 
-Object.keys(SoloBoons).forEach((boon) => {
-  imageLoader('boons', boon, 'Icon', '30px');
-
-  Object.keys(Gods).forEach((god) => {
-    if (god === Gods.Chaos) {
-      // TODO add boons and banes here
-    } else if (god === Gods.Hermes) {
-      // TODO add otherBoons here
-    } else {
-      const boonName = soloBoons[god][boon];
-      boonName && boonName.forEach((individualBoon) => imageLoader('boons', individualBoon, 'Icon', boonSize));
-    }
+Object.values(boonList).forEach((boonTypeObj) => {
+  Object.entries(boonTypeObj).forEach(([boonType, boonRowObj]) => {
+    const path = (boonType === BoonTypes.Chaos ? 'chaos' : 'boons');
+    Object.keys(boonRowObj).forEach((boonRow) => {
+      const imageList = [...boonRowObj[boonRow], ...(images[boonRow] ? [] : [boonRow])];
+      imageList.forEach((boon) => imageLoader(path, boon, 'Icon', boonSize));
+    });
   });
 });
 
