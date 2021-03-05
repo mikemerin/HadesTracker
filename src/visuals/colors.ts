@@ -1,4 +1,4 @@
-import { Gods } from 'redux/domain';
+import { Gods, Weapons } from 'redux/domain';
 
 const colors: {[key: string]: string} = {
   [Gods.Aphrodite]: '#f32ff3',
@@ -11,6 +11,12 @@ const colors: {[key: string]: string} = {
   [Gods.Hermes]: '#ffbd8e',
   [Gods.Poseidon]: '#289ad2',
   [Gods.Zeus]: '#ffdc62',
+  [Weapons.Blade]: '#fd3404',
+  [Weapons.Bow]: '#c985e2',
+  [Weapons.Fists]: '#f62c9a',
+  [Weapons.Rail]: '#bbae99',
+  [Weapons.Shield]: '#d5c327',
+  [Weapons.Spear]: '#45a990',
 };
 
 export {

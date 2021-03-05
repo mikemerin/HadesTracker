@@ -1,5 +1,5 @@
 import { boonList } from 'data/boons';
-import { BoonTypes, Gods, Image } from 'redux/domain';
+import { BoonTypes, Gods, Image, Weapons } from 'redux/domain';
 
 const images: {[key: string]: Image} = {};
 
@@ -21,10 +21,16 @@ const imageLoader = (
 };
 
 const boonSize = '20px';
+const headerSize = '50px';
+
+const paths: {[key: string]: string} = {
+  [BoonTypes.Chaos]: 'chaos',
+  [BoonTypes.Weapon]: 'daedalus',
+};
 
 Object.values(boonList).forEach((boonTypeObj) => {
   Object.entries(boonTypeObj).forEach(([boonType, boonRowObj]) => {
-    const path = (boonType === BoonTypes.Chaos ? 'chaos' : 'boons');
+    let path = paths[boonType] || 'boons';
     Object.keys(boonRowObj).forEach((boonRow) => {
       const imageList = [...boonRowObj[boonRow], ...(images[boonRow] ? [] : [boonRow])];
       imageList.forEach((boon) => imageLoader(path, boon, 'Icon', boonSize));
@@ -32,9 +38,10 @@ Object.values(boonList).forEach((boonTypeObj) => {
   });
 });
 
-Object.keys(Gods).forEach((god) => imageLoader('gods', god, 'Symbol', '50px'));
+Object.values(Weapons).forEach((weapon) => imageLoader('weapons', weapon, 'Symbol', headerSize));
+Object.values(Gods).forEach((god) => imageLoader('gods', god, 'Symbol', headerSize));
 
-export default images;
 export {
   fileNameSanitizer,
+  images,
 }

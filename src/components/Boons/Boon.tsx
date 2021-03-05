@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import images from 'assets/images';
+import { images } from 'visuals/images';
 
 type Props = {
   name: string

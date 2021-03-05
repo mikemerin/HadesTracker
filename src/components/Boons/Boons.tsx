@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, SemanticWIDTHS, Segment } from 'semantic-ui-react';
 
-import { AppState, BoonTypes } from 'redux/domain';
+import { AppState, BoonTypes, Weapons } from 'redux/domain';
 import { boonList } from 'data/boons';
-import { colors } from 'data/gods';
-import images from 'assets/images';
+import { images } from 'visuals/images';
+import { colors } from 'visuals/colors';
 
 import Boon from './Boon';
 
@@ -18,7 +18,13 @@ type Props = ReturnType<typeof mapStateToProps>;
 const Boons = ({
   currentPage
 }: Props): JSX.Element => {
-  const boonType = currentPage === 'Other Collectables' ? BoonTypes.Other : BoonTypes.Solo;
+  const boonTypes: {[key: string]: string} = {
+    Other: BoonTypes.Other,
+    Chaos: BoonTypes.Chaos,
+    'Infernal Arms': BoonTypes.Weapon,
+  }
+
+  const boonType = boonTypes[currentPage] || BoonTypes.Solo;
 
   const generateBoonRows = (boonType: string): JSX.Element[] => {
     const boonKeys = Object.keys(boonList).filter((boonKey) => boonList[boonKey][boonType]);
@@ -35,6 +41,8 @@ const Boons = ({
 
       const columns = boonKeys.map((god: string) => {
         if (boonRow === 'header') {
+          // console.log(god)
+          // console.log(images)
           return (
             <Grid.Column key={`${god}Header`}>
               <b>{god}</b>

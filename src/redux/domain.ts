@@ -5,6 +5,7 @@ export enum BoonTypes {
   Duo = 'Duo',
   Other = 'Other',
   Solo = 'Solo',
+  Weapon = 'Weapon',
 }
 
 export enum ChaosBoons {
@@ -25,6 +26,10 @@ export enum SoloBoons {
   Call = 'Call',
   Other = 'Other',
   Legendary = 'Legendary',
+}
+
+export enum WeaponBoons {
+  DaedalusUpgrades = 'Daedalus Upgrades',
 }
 
 export enum Gods {
