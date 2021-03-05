@@ -1,5 +1,5 @@
 import { boonList } from 'data/boons';
-import { BoonTypes, Gods, Image, SoloBoons } from 'redux/domain';
+import { BoonTypes, Gods, Image } from 'redux/domain';
 
 const images: {[key: string]: Image} = {};
 

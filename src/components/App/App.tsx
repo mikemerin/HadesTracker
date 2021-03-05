@@ -11,7 +11,7 @@ const App = (): JSX.Element => (
     <Navbar />
     <div className='Main'>
       <Switch>
-      <Route path='/Boons/:boonPage'>
+      <Route path={['/Boons/Main', '/Boons/Other']}>
         <Boons />
       </Route>
       <Route path='/About'>

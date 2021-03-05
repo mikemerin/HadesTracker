@@ -52,7 +52,7 @@ export enum Weapons {
 export type Page = {
   text: string,
   url: string,
-}
+};
 
 export type AppState = {
   currentPage: string,
@@ -65,7 +65,7 @@ export type Image = {
   title: string,
   height: string,
   width: string,
-}
+};
 
 export type BoonList = {
   // boonKey, eg: Gods.___, Weapons.___, etc.
@@ -76,4 +76,4 @@ export type BoonList = {
       [key: string]: string[]
     }
   }
-}
+};
