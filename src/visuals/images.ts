@@ -1,5 +1,5 @@
-import { boonList } from 'data/BoonList';
-import { BoonGroup, Gods, Image, Weapons } from 'redux/domain';
+import { boonGroups } from 'data/BoonGroups';
+import { BoonTable, Gods, Image, Weapons } from 'redux/domain';
 
 const images: {[key: string]: Image} = {};
 
@@ -24,13 +24,13 @@ const boonSize = '20px';
 const headerSize = '50px';
 
 const paths: {[key: string]: string} = {
-  [BoonGroup.Chaos]: 'chaos',
-  [BoonGroup.Weapon]: 'daedalus',
+  [BoonTable.Chaos]: 'chaos',
+  [BoonTable.Weapon]: 'daedalus',
 };
 
-Object.values(boonList).forEach((boonTypeObj) => {
-  Object.entries(boonTypeObj).forEach(([boonType, boonRowObj]) => {
-    let path = paths[boonType] || 'boons';
+Object.values(boonGroups).forEach((boonGroupObj) => {
+  Object.entries(boonGroupObj).forEach(([boonGroup, boonRowObj]) => {
+    let path = paths[boonGroup] || 'boons';
     Object.keys(boonRowObj).forEach((boonRow) => {
       const imageList = [...boonRowObj[boonRow], ...(images[boonRow] ? [] : [boonRow])];
       imageList.forEach((boon) => imageLoader(path, boon, 'Icon', boonSize));

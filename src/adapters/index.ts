@@ -9,7 +9,7 @@ const error_msg = 'Sorry, there was a problem reaching the API.\nThis error occu
 let data: any[] = [];
 
 const mapStateToProps = (state: AppState) => ({
-  currentPage: state.currentPage
+  currentPage: state.pages.current
 });
 
 const mapDispatchToProps = {

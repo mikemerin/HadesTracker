@@ -1,4 +1,4 @@
-export enum BoonGroup {
+export enum BoonTable {
   Aspects = 'Aspects',
   Chaos = 'Chaos',
   CustomerLoyalty = 'CustomerLoyalty',
@@ -51,8 +51,12 @@ export type Page = {
 };
 
 export type AppState = {
-  currentPage: string,
-  pageList: Page[],
+  pages: {
+    current: string,
+    list: Page[],
+  },
+  groups: BoonGroups,
+  boons: {[key: string]: Boon},
 };
 
 export type Image = {
@@ -63,10 +67,16 @@ export type Image = {
   width: string,
 };
 
-export type BoonList = {
-  // boonKey, eg.: Gods.___, Weapons.___, etc.
+export type Boon = {
+  requirements: string[],
+  unlocked: boolean,
+  prophecyForetold: boolean,
+}
+
+export type BoonGroups = {
+  // boonGroup: eg.: Gods.___, Weapons.___, etc.
   [key: string]: {
-    // boonType: eg.: BoonGroup.___
+    // boonTable, eg.: BoonTable.___
     [key: string]: {
       // boonRow, eg.: BoonRow.___
       [key: string]: string[]

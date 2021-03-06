@@ -1,13 +1,13 @@
 import {
-  BoonGroup,
-  BoonList,
+  BoonGroups,
   BoonRow,
+  BoonTable,
   Weapons,
 } from 'redux/domain';
 
-const generateWeapons = (): BoonList => ({
+const generateWeapons = (): BoonGroups => ({
   [Weapons.Blade]: {
-    [BoonGroup.Weapon]: {
+    [BoonTable.Weapon]: {
       [BoonRow.Daedalus]: [
         'Breaching Slash',
         'Cruel Thrust',
@@ -25,7 +25,7 @@ const generateWeapons = (): BoonList => ({
     },
   },
   [Weapons.Spear]: {
-    [BoonGroup.Weapon]: {
+    [BoonTable.Weapon]: {
       [BoonRow.Daedalus]: [
         'Breaching Skewer',
         'Chain Skewer',
@@ -43,7 +43,7 @@ const generateWeapons = (): BoonList => ({
     },
   },
   [Weapons.Shield]: {
-    [BoonGroup.Weapon]: {
+    [BoonTable.Weapon]: {
       [BoonRow.Daedalus]: [
         'Breaching Rush',
         'Charged Flight',
@@ -61,7 +61,7 @@ const generateWeapons = (): BoonList => ({
     },
   },
   [Weapons.Bow]: {
-    [BoonGroup.Weapon]: {
+    [BoonTable.Weapon]: {
       [BoonRow.Daedalus]: [
         'Chain Shot',
         'Charged Volley',
@@ -79,7 +79,7 @@ const generateWeapons = (): BoonList => ({
     },
   },
   [Weapons.Fists]: {
-    [BoonGroup.Weapon]: {
+    [BoonTable.Weapon]: {
       [BoonRow.Daedalus]: [
         'Breaching Cross',
         'Colossus Knuckle',
@@ -97,7 +97,7 @@ const generateWeapons = (): BoonList => ({
     },
   },
   [Weapons.Rail]: {
-    [BoonGroup.Weapon]: {
+    [BoonTable.Weapon]: {
       [BoonRow.Daedalus]: [
         'Cluster Bomb',
         'Delta Chamber',

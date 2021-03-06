@@ -7,8 +7,8 @@ import { setCurrentPage } from 'redux/actions';
 import { AppState } from 'redux/domain';
 
 const mapStateToProps = (state: AppState) => ({
-  currentPage: state.currentPage,
-  pageList: state.pageList
+  currentPage: state.pages.current,
+  pageList: state.pages.list
 });
 
 const mapDispatchToProps = {

@@ -1,13 +1,13 @@
 import {
-  BoonGroup,
-  BoonList,
+  BoonGroups,
   BoonRow,
+  BoonTable,
   Gods,
 } from 'redux/domain';
 
-const generateBoonSolos = (): BoonList => ({
+const generateBoonSolos = (): BoonGroups => ({
   [Gods.Aphrodite]: {
-    [BoonGroup.Solo]: {
+    [BoonTable.Solo]: {
       [BoonRow.Attack]: ['Heartbreak Strike'],
       [BoonRow.Special]: ['Heartbreak Flourish'],
       [BoonRow.Cast]: ['Crush Shot'],
@@ -27,7 +27,7 @@ const generateBoonSolos = (): BoonList => ({
     },
   },
   [Gods.Ares]: {
-    [BoonGroup.Solo]: {
+    [BoonTable.Solo]: {
       [BoonRow.Attack]: ['Curse of Agony'],
       [BoonRow.Special]: ['Curse of Pain'],
       [BoonRow.Cast]: ['Slicing Shot'],
@@ -47,7 +47,7 @@ const generateBoonSolos = (): BoonList => ({
     },
   },
   [Gods.Artemis]: {
-    [BoonGroup.Solo]: {
+    [BoonTable.Solo]: {
       [BoonRow.Attack]: ['Deadly Strike'],
       [BoonRow.Special]: ['Deadly Flourish'],
       [BoonRow.Cast]: ['True Shot'],
@@ -66,7 +66,7 @@ const generateBoonSolos = (): BoonList => ({
     },
   },
   [Gods.Athena]: {
-    [BoonGroup.Solo]: {
+    [BoonTable.Solo]: {
       [BoonRow.Attack]: ['Divine Strike'],
       [BoonRow.Special]: ['Divine Flourish'],
       [BoonRow.Cast]: ['Phalanx Shot'],
@@ -86,7 +86,7 @@ const generateBoonSolos = (): BoonList => ({
     },
   },
   [Gods.Chaos]: {
-    [BoonGroup.Chaos]: {
+    [BoonTable.Chaos]: {
       [BoonRow.Blessing]: [
         'Affluence',
         'Ambush',
@@ -119,7 +119,7 @@ const generateBoonSolos = (): BoonList => ({
     },
   },
   [Gods.Demeter]: {
-    [BoonGroup.Solo]: {
+    [BoonTable.Solo]: {
       [BoonRow.Attack]: ['Frost Strike'],
       [BoonRow.Special]: ['Frost Flourish'],
       [BoonRow.Cast]: ['Crystal Beam'],
@@ -139,7 +139,7 @@ const generateBoonSolos = (): BoonList => ({
     },
   },
   [Gods.Dionysus]: {
-    [BoonGroup.Solo]: {
+    [BoonTable.Solo]: {
       [BoonRow.Attack]: ['Drunken Strike'],
       [BoonRow.Special]: ['Drunken Flourish'],
       [BoonRow.Cast]: ['Trippy Shot', 'Trippy Flare'],
@@ -159,7 +159,7 @@ const generateBoonSolos = (): BoonList => ({
     },
   },
   [Gods.Hermes]: {
-    [BoonGroup.Other]: {
+    [BoonTable.Other]: {
       [BoonRow.Other]: [
         'Quick Reload',
         'Auto Reload',
@@ -180,7 +180,7 @@ const generateBoonSolos = (): BoonList => ({
     }
   },
   [Gods.Poseidon]: {
-    [BoonGroup.Solo]: {
+    [BoonTable.Solo]: {
       [BoonRow.Attack]: ['Tempest Strike'],
       [BoonRow.Special]: ['Tempest Flourish'],
       [BoonRow.Cast]: ['Flood Shot'],
@@ -201,7 +201,7 @@ const generateBoonSolos = (): BoonList => ({
     },
   },
   [Gods.Zeus]: {
-    [BoonGroup.Solo]: {
+    [BoonTable.Solo]: {
       [BoonRow.Attack]: ['Lightning Strike'],
       [BoonRow.Special]: ['Thunder Flourish'],
       [BoonRow.Cast]: ['Electric Shot'],

@@ -2,15 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, SemanticWIDTHS, Segment } from 'semantic-ui-react';
 
-import { AppState, BoonGroup } from 'redux/domain';
-import { boonList, boonGroupRows } from 'data/BoonList';
+import { AppState, BoonTable } from 'redux/domain';
+import { boonGroups, boonGroupRows } from 'data/BoonGroups';
 import { images } from 'visuals/images';
 import { colors } from 'visuals/colors';
 
 import Boon from './Boon';
 
 const mapStateToProps = (state: AppState) => ({
-  currentPage: state.currentPage
+  currentPage: state.pages.current
 });
 
 type Props = ReturnType<typeof mapStateToProps>;
@@ -19,16 +19,16 @@ const Boons = ({
   currentPage
 }: Props): JSX.Element => {
   const boonTypes: {[key: string]: string} = {
-    Other: BoonGroup.Other,
-    Chaos: BoonGroup.Chaos,
-    Duo: BoonGroup.Duo,
-    'Infernal Arms': BoonGroup.Weapon,
+    Other: BoonTable.Other,
+    Chaos: BoonTable.Chaos,
+    Duo: BoonTable.Duo,
+    'Infernal Arms': BoonTable.Weapon,
   }
 
-  const boonType = boonTypes[currentPage] || BoonGroup.Solo;
+  const boonType = boonTypes[currentPage] || BoonTable.Solo;
 
   const generateBoonRows = (boonType: string): JSX.Element[] => {
-    const boonKeys = Object.keys(boonList).filter((boonKey: string) => boonList[boonKey][boonType]);
+    const boonKeys = Object.keys(boonGroups).filter((boonKey: string) => boonGroups[boonKey][boonType]);
     const boonRows: string[] = boonGroupRows[boonType];
     const boonCount = boonKeys.length;
     const boonColumns = (boonCount + 1) as SemanticWIDTHS;
@@ -53,7 +53,7 @@ const Boons = ({
           );
         } else {
           const color = colors[god];
-          const color2 = colors[boonType === BoonGroup.Duo ? boonRow : 'background'];
+          const color2 = colors[boonType === BoonTable.Duo ? boonRow : 'background'];
           const style = {
             padding: 0,
             borderRadius: '3px',
@@ -63,7 +63,7 @@ const Boons = ({
             backgroundRepeat: 'no-repeat',
           }
 
-          const boons = boonList[god][boonType][boonRow];
+          const boons = boonGroups[god][boonType][boonRow];
           return (
             <Grid.Column key={`${god}${boonRow}`}>
               <Segment.Group raised size='mini'>{

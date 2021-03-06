@@ -1,33 +1,33 @@
 import deepmerge from 'deepmerge';
 
 import {
-  BoonList,
-  BoonGroup,
+  BoonGroups,
   BoonRow,
+  BoonTable,
   Gods,
  } from 'redux/domain';
 import { generateBoonSolos } from './BoonSolos';
 import { generateBoonDuos } from './BoonDuos';
 import { generateWeapons } from './Weapons';
 
-const boonSolos: BoonList = generateBoonSolos();
-const boonDuos: BoonList = generateBoonDuos();
-const weapons: BoonList = generateWeapons();
+const boonSolos: BoonGroups = generateBoonSolos();
+const boonDuos: BoonGroups = generateBoonDuos();
+const weapons: BoonGroups = generateWeapons();
 
-const boonList: BoonList = deepmerge.all([boonSolos, boonDuos, weapons]) as BoonList;
+const boonGroups: BoonGroups = deepmerge.all([boonSolos, boonDuos, weapons]) as BoonGroups;
 
 const boonGroupRows: {[key: string]: string[]} = {
-  [BoonGroup.Aspects]: [
+  [BoonTable.Aspects]: [
     BoonRow.Aspect,
   ],
-  [BoonGroup.Chaos]: [
+  [BoonTable.Chaos]: [
     BoonRow.Blessing,
     BoonRow.Curse,
   ],
-  [BoonGroup.CustomerLoyalty]: [
+  [BoonTable.CustomerLoyalty]: [
     BoonRow.Item,
   ],
-  [BoonGroup.Duo]: [
+  [BoonTable.Duo]: [
     Gods.Aphrodite,
     Gods.Ares,
     Gods.Artemis,
@@ -36,11 +36,11 @@ const boonGroupRows: {[key: string]: string[]} = {
     Gods.Dionysus,
     Gods.Poseidon,
   ],
-  [BoonGroup.Other]: [
+  [BoonTable.Other]: [
     BoonRow.Other,
     BoonRow.Legendary,
   ],
-  [BoonGroup.Solo]: [
+  [BoonTable.Solo]: [
     BoonRow.Attack,
     BoonRow.Special,
     BoonRow.Cast,
@@ -49,12 +49,12 @@ const boonGroupRows: {[key: string]: string[]} = {
     BoonRow.Other,
     BoonRow.Legendary,
   ],
-  [BoonGroup.Weapon]: [
+  [BoonTable.Weapon]: [
     BoonRow.Daedalus,
   ],
 };
 
 export {
-  boonList,
+  boonGroups,
   boonGroupRows,
 }
