@@ -52,13 +52,23 @@ const Boons = ({
             </Grid.Column>
           );
         } else {
-          const color = colors[god]; // TODO: expand this to have the faded colors / others using it
+          const color = colors[god];
+          const color2 = colors[boonType === BoonGroup.Duo ? boonRow : 'background'];
+          const style = {
+            padding: 0,
+            borderRadius: '3px',
+            backgroundImage: `linear-gradient(to right, ${color}, ${colors.background}), linear-gradient(to bottom, ${color}, ${color2})`,
+            backgroundSize: '100% 2px, 2px 100%, 100% 4px, 1px 400%',
+            backgroundOrigin: 'content-box',
+            backgroundRepeat: 'no-repeat',
+          }
+
           const boons = boonList[god][boonType][boonRow];
           return (
             <Grid.Column key={`${god}${boonRow}`}>
               <Segment.Group raised size='mini'>{
                 boons && boons.map((individualBoon, i) => (
-                  <Segment key={`${god}${boonRow}${i}`} style={{padding: 0, border: `1px solid ${color}`}}>
+                  <Segment key={`${god}${boonRow}${i}`} style={{...style}}>
                     {<Boon name={individualBoon} />}
                   </Segment>
                 ))

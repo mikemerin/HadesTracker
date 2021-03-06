@@ -1,6 +1,7 @@
 import { Gods, Weapons } from 'redux/domain';
 
 const colors: {[key: string]: string} = {
+  background: '#eeefef',
   [Gods.Aphrodite]: '#f32ff3',
   [Gods.Ares]: '#ff0224',
   [Gods.Artemis]: '#7dc237',
