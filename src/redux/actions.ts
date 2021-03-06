@@ -1,10 +1,15 @@
 import { createAction } from 'typesafe-actions';
 
-import { Boon, BoonGroups } from 'redux/domain';
+import { Boon, GroupBoons } from 'redux/domain';
 
-const setBoonGroups = createAction(
-  '[Groups] Set Boon Groups',
-  (boonGroups: BoonGroups) => ({ boonGroups })
+const setGroupBoons = createAction(
+  '[Groups] Set Group Boons',
+  (groupBoons: GroupBoons) => ({ groupBoons })
+)();
+
+const setGroupRowOrder = createAction(
+  '[Groups] Set Group Row Order',
+  (groupRowOrder: any) => ({ groupRowOrder }) // todo: GroupRowOrder
 )();
 
 const setBoonUnlocked = createAction(
@@ -13,7 +18,7 @@ const setBoonUnlocked = createAction(
 )();
 
 const setBoonProphecyForetold = createAction(
-  '[Boons] Set Boon Prophecy Unlocked',
+  '[Boons] Set Boon Prophecy Foretold',
   (boon: string, prophecyForetold: boolean) => ({ boon, prophecyForetold })
 )();
 
@@ -28,9 +33,10 @@ const setCurrentPage = createAction(
 )();
 
 export {
-  setBoonGroups,
   setBoonUnlocked,
   setBoonProphecyForetold,
   setBoons,
   setCurrentPage,
+  setGroupBoons,
+  setGroupRowOrder,
 };

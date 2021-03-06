@@ -1,0 +1,47 @@
+import {
+  BoonRows,
+  BoonTables,
+  Gods,
+ } from 'redux/domain';
+
+const groupRowOrder: {[key: string]: string[]} = {
+  [BoonTables.Aspects]: [
+    BoonRows.Aspect,
+  ],
+  [BoonTables.Chaos]: [
+    BoonRows.Blessing,
+    BoonRows.Curse,
+  ],
+  [BoonTables.CustomerLoyalty]: [
+    BoonRows.Item,
+  ],
+  [BoonTables.Duo]: [
+    Gods.Aphrodite,
+    Gods.Ares,
+    Gods.Artemis,
+    Gods.Athena,
+    Gods.Demeter,
+    Gods.Dionysus,
+    Gods.Poseidon,
+  ],
+  [BoonTables.Other]: [
+    BoonRows.Other,
+    BoonRows.Legendary,
+  ],
+  [BoonTables.Solo]: [
+    BoonRows.Attack,
+    BoonRows.Special,
+    BoonRows.Cast,
+    BoonRows.Dash,
+    BoonRows.Call,
+    BoonRows.Other,
+    BoonRows.Legendary,
+  ],
+  [BoonTables.Weapon]: [
+    BoonRows.Daedalus,
+  ],
+};
+
+export {
+  groupRowOrder,
+};

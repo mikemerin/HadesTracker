@@ -1,5 +1,6 @@
 import { AppState, Page } from './domain';
-import { boonGroups } from 'data/BoonGroups';
+import { groupBoons } from 'data/GroupBoons';
+import { groupRowOrder } from 'data/GroupRowOrder';
 
 const pageList: Page[] = [
   {text: 'Main', url: '/Boons/Main'},
@@ -15,7 +16,10 @@ const initialState: AppState = {
     current: pageList.find(({url}) => url === window.location.pathname)?.text || 'Main Boons',
     list: pageList,
   },
-  groups: boonGroups,
+  groups: {
+    boons: groupBoons,
+    rowOrder: groupRowOrder,
+  },
   boons: {},
 };
 

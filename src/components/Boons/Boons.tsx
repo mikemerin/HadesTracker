@@ -2,34 +2,37 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, SemanticWIDTHS, Segment } from 'semantic-ui-react';
 
-import { AppState, BoonTable } from 'redux/domain';
-import { boonGroups, boonGroupRows } from 'data/BoonGroups';
+import { AppState, BoonTables } from 'redux/domain';
 import { images } from 'visuals/images';
 import { colors } from 'visuals/colors';
 
 import Boon from './Boon';
 
 const mapStateToProps = (state: AppState) => ({
-  currentPage: state.pages.current
+  currentPage: state.pages.current,
+  groupBoons: state.groups.boons,
+  groupRowOrder: state.groups.rowOrder,
 });
 
 type Props = ReturnType<typeof mapStateToProps>;
 
 const Boons = ({
-  currentPage
+  currentPage,
+  groupBoons,
+  groupRowOrder,
 }: Props): JSX.Element => {
   const boonTypes: {[key: string]: string} = {
-    Other: BoonTable.Other,
-    Chaos: BoonTable.Chaos,
-    Duo: BoonTable.Duo,
-    'Infernal Arms': BoonTable.Weapon,
+    Other: BoonTables.Other,
+    Chaos: BoonTables.Chaos,
+    Duo: BoonTables.Duo,
+    'Infernal Arms': BoonTables.Weapon,
   }
 
-  const boonType = boonTypes[currentPage] || BoonTable.Solo;
+  const boonType = boonTypes[currentPage] || BoonTables.Solo;
 
-  const generateBoonRows = (boonType: string): JSX.Element[] => {
-    const boonKeys = Object.keys(boonGroups).filter((boonKey: string) => boonGroups[boonKey][boonType]);
-    const boonRows: string[] = boonGroupRows[boonType];
+  const generateBoonRowss = (boonType: string): JSX.Element[] => {
+    const boonKeys = Object.keys(groupBoons).filter((boonKey: string) => groupBoons[boonKey][boonType]);
+    const boonRows: string[] = groupRowOrder[boonType];
     const boonCount = boonKeys.length;
     const boonColumns = (boonCount + 1) as SemanticWIDTHS;
 
@@ -53,7 +56,7 @@ const Boons = ({
           );
         } else {
           const color = colors[god];
-          const color2 = colors[boonType === BoonTable.Duo ? boonRow : 'background'];
+          const color2 = colors[boonType === BoonTables.Duo ? boonRow : 'background'];
           const style = {
             padding: 0,
             borderRadius: '3px',
@@ -63,7 +66,7 @@ const Boons = ({
             backgroundRepeat: 'no-repeat',
           }
 
-          const boons = boonGroups[god][boonType][boonRow];
+          const boons = groupBoons[god][boonType][boonRow];
           return (
             <Grid.Column key={`${god}${boonRow}`}>
               <Segment.Group raised size='mini'>{
@@ -94,7 +97,7 @@ const Boons = ({
       textAlign='center'
       padded='horizontally'
     >
-      {generateBoonRows(boonType)}
+      {generateBoonRowss(boonType)}
     </Grid>
   );
 };

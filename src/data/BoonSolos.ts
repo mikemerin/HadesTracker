@@ -1,19 +1,19 @@
 import {
-  BoonGroups,
-  BoonRow,
-  BoonTable,
+  GroupBoons,
+  BoonRows,
+  BoonTables,
   Gods,
 } from 'redux/domain';
 
-const generateBoonSolos = (): BoonGroups => ({
+const generateBoonSolos = (): GroupBoons => ({
   [Gods.Aphrodite]: {
-    [BoonTable.Solo]: {
-      [BoonRow.Attack]: ['Heartbreak Strike'],
-      [BoonRow.Special]: ['Heartbreak Flourish'],
-      [BoonRow.Cast]: ['Crush Shot'],
-      [BoonRow.Dash]: ['Passion Dash'],
-      [BoonRow.Call]: ['Aphrodite\'s Aid'],
-      [BoonRow.Other]: [
+    [BoonTables.Solo]: {
+      [BoonRows.Attack]: ['Heartbreak Strike'],
+      [BoonRows.Special]: ['Heartbreak Flourish'],
+      [BoonRows.Cast]: ['Crush Shot'],
+      [BoonRows.Dash]: ['Passion Dash'],
+      [BoonRows.Call]: ['Aphrodite\'s Aid'],
+      [BoonRows.Other]: [
         'Dying Lament',
         'Wave of Despair',
         'Life Affirmation',
@@ -23,17 +23,17 @@ const generateBoonSolos = (): BoonGroups => ({
         'Blown Kiss',
         'Sweet Surrender',
       ],
-      [BoonRow.Legendary]: ['Unhealthy Fixation']
+      [BoonRows.Legendary]: ['Unhealthy Fixation']
     },
   },
   [Gods.Ares]: {
-    [BoonTable.Solo]: {
-      [BoonRow.Attack]: ['Curse of Agony'],
-      [BoonRow.Special]: ['Curse of Pain'],
-      [BoonRow.Cast]: ['Slicing Shot'],
-      [BoonRow.Dash]: ['Blade Dash'],
-      [BoonRow.Call]: ['Ares\' Aid'],
-      [BoonRow.Other]: [
+    [BoonTables.Solo]: {
+      [BoonRows.Attack]: ['Curse of Agony'],
+      [BoonRows.Special]: ['Curse of Pain'],
+      [BoonRows.Cast]: ['Slicing Shot'],
+      [BoonRows.Dash]: ['Blade Dash'],
+      [BoonRows.Call]: ['Ares\' Aid'],
+      [BoonRows.Other]: [
         'Curse of Vengeance',
         'Urge to Kill',
         'Blood Frenzy',
@@ -43,17 +43,17 @@ const generateBoonSolos = (): BoonGroups => ({
         'Dire Misfortune',
         'Impending Doom',
       ],
-      [BoonRow.Legendary]: ['Vicious Cycle']
+      [BoonRows.Legendary]: ['Vicious Cycle']
     },
   },
   [Gods.Artemis]: {
-    [BoonTable.Solo]: {
-      [BoonRow.Attack]: ['Deadly Strike'],
-      [BoonRow.Special]: ['Deadly Flourish'],
-      [BoonRow.Cast]: ['True Shot'],
-      [BoonRow.Dash]: ['Hunter Dash'],
-      [BoonRow.Call]: ['Artemis\' Aid'],
-      [BoonRow.Other]: [
+    [BoonTables.Solo]: {
+      [BoonRows.Attack]: ['Deadly Strike'],
+      [BoonRows.Special]: ['Deadly Flourish'],
+      [BoonRows.Cast]: ['True Shot'],
+      [BoonRows.Dash]: ['Hunter Dash'],
+      [BoonRows.Call]: ['Artemis\' Aid'],
+      [BoonRows.Other]: [
         'Pressure Points',
         'Exit Wounds',
         'Clean Kill',
@@ -62,17 +62,17 @@ const generateBoonSolos = (): BoonGroups => ({
         'Hunter Instinct',
         'Hunter\'s Mark',
       ],
-      [BoonRow.Legendary]: ['Fully Loaded']
+      [BoonRows.Legendary]: ['Fully Loaded']
     },
   },
   [Gods.Athena]: {
-    [BoonTable.Solo]: {
-      [BoonRow.Attack]: ['Divine Strike'],
-      [BoonRow.Special]: ['Divine Flourish'],
-      [BoonRow.Cast]: ['Phalanx Shot'],
-      [BoonRow.Dash]: ['Divine Dash'],
-      [BoonRow.Call]: ['Athena\'s Aid'],
-      [BoonRow.Other]: [
+    [BoonTables.Solo]: {
+      [BoonRows.Attack]: ['Divine Strike'],
+      [BoonRows.Special]: ['Divine Flourish'],
+      [BoonRows.Cast]: ['Phalanx Shot'],
+      [BoonRows.Dash]: ['Divine Dash'],
+      [BoonRows.Call]: ['Athena\'s Aid'],
+      [BoonRows.Other]: [
         'Holy Shield',
         'Bronze Skin',
         'Deathless Stand',
@@ -82,12 +82,12 @@ const generateBoonSolos = (): BoonGroups => ({
         'Blinding Flash',
         'Brilliant Riposte',
       ],
-      [BoonRow.Legendary]: ['Divine Protection']
+      [BoonRows.Legendary]: ['Divine Protection']
     },
   },
   [Gods.Chaos]: {
-    [BoonTable.Chaos]: {
-      [BoonRow.Blessing]: [
+    [BoonTables.Chaos]: {
+      [BoonRows.Blessing]: [
         'Affluence',
         'Ambush',
         'Assault',
@@ -101,7 +101,7 @@ const generateBoonSolos = (): BoonGroups => ({
         'Soul',
         'Strike',
       ],
-      [BoonRow.Curse]: [
+      [BoonRows.Curse]: [
         'Abyssal',
         'Addled',
         'Atrophic',
@@ -119,13 +119,13 @@ const generateBoonSolos = (): BoonGroups => ({
     },
   },
   [Gods.Demeter]: {
-    [BoonTable.Solo]: {
-      [BoonRow.Attack]: ['Frost Strike'],
-      [BoonRow.Special]: ['Frost Flourish'],
-      [BoonRow.Cast]: ['Crystal Beam'],
-      [BoonRow.Dash]: ['Mistral Dash'],
-      [BoonRow.Call]: ['Demeter\'s Aid'],
-      [BoonRow.Other]: [
+    [BoonTables.Solo]: {
+      [BoonRows.Attack]: ['Frost Strike'],
+      [BoonRows.Special]: ['Frost Flourish'],
+      [BoonRows.Cast]: ['Crystal Beam'],
+      [BoonRows.Dash]: ['Mistral Dash'],
+      [BoonRows.Call]: ['Demeter\'s Aid'],
+      [BoonRows.Other]: [
         'Snow Burst',
         'Frozen Touch',
         'Rare Crop',
@@ -135,17 +135,17 @@ const generateBoonSolos = (): BoonGroups => ({
         'Arctic Blast',
         'Killing Freeze',
       ],
-      [BoonRow.Legendary]: ['Winter Harvest']
+      [BoonRows.Legendary]: ['Winter Harvest']
     },
   },
   [Gods.Dionysus]: {
-    [BoonTable.Solo]: {
-      [BoonRow.Attack]: ['Drunken Strike'],
-      [BoonRow.Special]: ['Drunken Flourish'],
-      [BoonRow.Cast]: ['Trippy Shot', 'Trippy Flare'],
-      [BoonRow.Dash]: ['Drunken Dash'],
-      [BoonRow.Call]: ['Dionysus\' Aid'],
-      [BoonRow.Other]: [
+    [BoonTables.Solo]: {
+      [BoonRows.Attack]: ['Drunken Strike'],
+      [BoonRows.Special]: ['Drunken Flourish'],
+      [BoonRows.Cast]: ['Trippy Shot', 'Trippy Flare'],
+      [BoonRows.Dash]: ['Drunken Dash'],
+      [BoonRows.Call]: ['Dionysus\' Aid'],
+      [BoonRows.Other]: [
         'Premium Vintage',
         'After Party',
         'Strong Drink',
@@ -155,12 +155,12 @@ const generateBoonSolos = (): BoonGroups => ({
         'Numbing Sensation',
         'Peer Pressure',
       ],
-      [BoonRow.Legendary]: ['Black Out']
+      [BoonRows.Legendary]: ['Black Out']
     },
   },
   [Gods.Hermes]: {
-    [BoonTable.Other]: {
-      [BoonRow.Other]: [
+    [BoonTables.Other]: {
+      [BoonRows.Other]: [
         'Quick Reload',
         'Auto Reload',
         'Greatest Reflex',
@@ -176,17 +176,17 @@ const generateBoonSolos = (): BoonGroups => ({
         'Hyper Sprint',
         'Rush Delivery',
       ],
-      [BoonRow.Legendary]: ['Greater Recall', 'Bad News']
+      [BoonRows.Legendary]: ['Greater Recall', 'Bad News']
     }
   },
   [Gods.Poseidon]: {
-    [BoonTable.Solo]: {
-      [BoonRow.Attack]: ['Tempest Strike'],
-      [BoonRow.Special]: ['Tempest Flourish'],
-      [BoonRow.Cast]: ['Flood Shot'],
-      [BoonRow.Dash]: ['Tidal Dash'],
-      [BoonRow.Call]: ['Poseidon\'s Aid'],
-      [BoonRow.Other]: [
+    [BoonTables.Solo]: {
+      [BoonRows.Attack]: ['Tempest Strike'],
+      [BoonRows.Special]: ['Tempest Flourish'],
+      [BoonRows.Cast]: ['Flood Shot'],
+      [BoonRows.Dash]: ['Tidal Dash'],
+      [BoonRows.Call]: ['Poseidon\'s Aid'],
+      [BoonRows.Other]: [
         'Boiling Point',
         'Hydraulic Might',
         'Sunken Treasure',
@@ -197,17 +197,17 @@ const generateBoonSolos = (): BoonGroups => ({
         'Breaking Wave',
         'Razor Shoals',
       ],
-      [BoonRow.Legendary]: ['Second Wave', 'Huge Catch']
+      [BoonRows.Legendary]: ['Second Wave', 'Huge Catch']
     },
   },
   [Gods.Zeus]: {
-    [BoonTable.Solo]: {
-      [BoonRow.Attack]: ['Lightning Strike'],
-      [BoonRow.Special]: ['Thunder Flourish'],
-      [BoonRow.Cast]: ['Electric Shot'],
-      [BoonRow.Dash]: ['Thunder Dash'],
-      [BoonRow.Call]: ['Zeus\' Aid'],
-      [BoonRow.Other]: [
+    [BoonTables.Solo]: {
+      [BoonRows.Attack]: ['Lightning Strike'],
+      [BoonRows.Special]: ['Thunder Flourish'],
+      [BoonRows.Cast]: ['Electric Shot'],
+      [BoonRows.Dash]: ['Thunder Dash'],
+      [BoonRows.Call]: ['Zeus\' Aid'],
+      [BoonRows.Other]: [
         'Billowing Strength',
         'Lightning Reflexes',
         'Heaven\'s Vengeance',
@@ -217,7 +217,7 @@ const generateBoonSolos = (): BoonGroups => ({
         'Storm Lightning',
         'Static Discharge',
       ],
-      [BoonRow.Legendary]: ['Splitting Bolt']
+      [BoonRows.Legendary]: ['Splitting Bolt']
     },
   }
 });

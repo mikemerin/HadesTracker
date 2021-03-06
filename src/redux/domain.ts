@@ -1,49 +1,57 @@
-export enum BoonTable {
-  Aspects = 'Aspects',
-  Chaos = 'Chaos',
-  CustomerLoyalty = 'CustomerLoyalty',
-  Duo = 'Duo',
-  Other = 'Other',
-  Solo = 'Solo',
-  Weapon = 'Weapon',
+export const BoonTables = {
+  Aspects: 'Aspects',
+  Chaos: 'Chaos',
+  CustomerLoyalty: 'CustomerLoyalty',
+  Duo: 'Duo',
+  Other: 'Other',
+  Solo: 'Solo',
+  Weapon: 'Weapon',
+} as const;
+
+export type BoonTable = typeof BoonTables[keyof typeof BoonTables];
+
+export const BoonRows = {
+  Attack: 'Attack',
+  Aspect: 'Aspect',
+  Blessing: 'Blessing',
+  Call: 'Call',
+  Cast: 'Cast',
+  Curse: 'Curse',
+  Daedalus: 'Daedalus Upgrades',
+  Dash: 'Dash',
+  Item: 'Item',
+  Other: 'Other',
+  Special: 'Special',
+  Legendary: 'Legendary',
+} as const;
+
+export type BoonRow = typeof BoonRows[keyof typeof BoonRows];
+
+export const Gods = {
+  Aphrodite: 'Aphrodite',
+  Ares: 'Ares',
+  Artemis: 'Artemis',
+  Athena: 'Athena',
+  Chaos: 'Chaos',
+  Demeter: 'Demeter',
+  Dionysus: 'Dionysus',
+  Hermes: 'Hermes',
+  Poseidon: 'Poseidon',
+  Zeus: 'Zeus',
 }
 
-export enum BoonRow {
-  Attack = 'Attack',
-  Aspect = 'Aspect',
-  Blessing = 'Blessing',
-  Call = 'Call',
-  Cast = 'Cast',
-  Curse = 'Curse',
-  Daedalus = 'Daedalus Upgrades',
-  Dash = 'Dash',
-  Item = 'Item',
-  Other = 'Other',
-  Special = 'Special',
-  Legendary = 'Legendary',
+export type God = typeof Gods[keyof typeof Gods];
+
+export const Weapons = {
+  Blade: 'Stygian Blade',
+  Bow: 'Heart-Seeker Bow',
+  Fists: 'Twin Fists',
+  Rail: 'Adamant Rail',
+  Shield: 'Shield of Chaos',
+  Spear: 'Eternal Spear',
 }
 
-export enum Gods {
-  Aphrodite = 'Aphrodite',
-  Ares = 'Ares',
-  Artemis = 'Artemis',
-  Athena = 'Athena',
-  Chaos = 'Chaos',
-  Demeter = 'Demeter',
-  Dionysus = 'Dionysus',
-  Hermes = 'Hermes',
-  Poseidon = 'Poseidon',
-  Zeus = 'Zeus',
-}
-
-export enum Weapons {
-  Blade = 'Stygian Blade',
-  Bow = 'Heart-Seeker Bow',
-  Fists = 'Twin Fists',
-  Rail = 'Adamant Rail',
-  Shield = 'Shield of Chaos',
-  Spear = 'Eternal Spear',
-}
+export type Weapon = typeof Weapons[keyof typeof Weapons];
 
 export type Page = {
   text: string,
@@ -55,7 +63,10 @@ export type AppState = {
     current: string,
     list: Page[],
   },
-  groups: BoonGroups,
+  groups: {
+    boons: GroupBoons,
+    rowOrder: any
+  },
   boons: {[key: string]: Boon},
 };
 
@@ -73,12 +84,12 @@ export type Boon = {
   prophecyForetold: boolean,
 }
 
-export type BoonGroups = {
+export type GroupBoons = {
   // boonGroup: eg.: Gods.___, Weapons.___, etc.
   [key: string]: {
-    // boonTable, eg.: BoonTable.___
+    // boonTable, eg.: BoonTables.___
     [key: string]: {
-      // boonRow, eg.: BoonRow.___
+      // boonRow, eg.: BoonRows.___
       [key: string]: string[]
     }
   }

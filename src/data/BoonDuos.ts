@@ -1,10 +1,10 @@
 import {
-  BoonGroups,
-  BoonTable,
+  GroupBoons,
+  BoonTables,
   Gods,
 } from 'redux/domain';
 
-const generateBoonDuos = (): BoonGroups => {
+const generateBoonDuos = (): GroupBoons => {
   const boonGods: {[key: string]: string[]} = {
     'Curse of Longing': [Gods.Ares, Gods.Aphrodite],
     'Heart Rend': [Gods.Artemis, Gods.Aphrodite],
@@ -42,16 +42,16 @@ const generateBoonDuos = (): BoonGroups => {
     'Sea Storm': [Gods.Zeus, Gods.Poseidon],
   };
 
-  return Object.entries(boonGods).reduce((acc, [boon, gods]): BoonGroups => {
+  return Object.entries(boonGods).reduce((acc, [boon, gods]): GroupBoons => {
     [true, false].forEach((reverse) => {
       let [god1, god2] = reverse ? gods.slice().reverse() : gods;
       if (!acc[god1]) {
-        acc[god1] = { [BoonTable.Duo]: {} };
+        acc[god1] = { [BoonTables.Duo]: {} };
       }
-      acc[god1][BoonTable.Duo][god2] = [boon];
+      acc[god1][BoonTables.Duo][god2] = [boon];
     });
     return acc;
-  }, {} as BoonGroups);
+  }, {} as GroupBoons);
 };
 
 export {
