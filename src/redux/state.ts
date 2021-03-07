@@ -1,6 +1,6 @@
 import { AppState } from './domain';
 import {
-  boons,
+  boonInfo,
   colors,
   groupBoons,
   groupRowOrder,
@@ -8,7 +8,7 @@ import {
 } from 'data';
 
 const initialState: AppState = {
-  boons,
+  boons: boonInfo,
   colors,
   groups: {
     boons: groupBoons,

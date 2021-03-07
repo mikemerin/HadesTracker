@@ -1,5 +1,5 @@
 import {
-  Boon,
+  BoonInfo,
   BoonTables,
   BoonRequirements,
   Gods,
@@ -13,8 +13,8 @@ type Props = {
   boonRequirements: BoonRequirements[]
 };
 
-const generateBoons = ({groupBoons, boonRequirements}: Props) => {
-  const boons: {[key: string]: Boon} = {};
+const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
+  const boons: {[key: string]: BoonInfo} = {};
 
   const fileNameSanitizer = (filename: string): string => {
     return filename.replace(/ /g, '_');
@@ -74,5 +74,5 @@ const generateBoons = ({groupBoons, boonRequirements}: Props) => {
 
 
 export {
-  generateBoons,
+  generateBoonInfo,
 };

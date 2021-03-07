@@ -1,6 +1,6 @@
 import { createAction } from 'typesafe-actions';
 
-import { Boon } from 'redux/domain';
+import { BoonInfo } from 'redux/domain';
 
 const setGroupRowOrder = createAction(
   '[Groups] Set Group Row Order',
@@ -19,7 +19,7 @@ const setBoonProphecyForetold = createAction(
 
 const setBoons = createAction(
   '[Boons] Set Boons',
-  (boons: {[key: string]: Boon}) => ({ boons })
+  (boons: {[key: string]: BoonInfo}) => ({ boons })
 )();
 
 const setCurrentPage = createAction(

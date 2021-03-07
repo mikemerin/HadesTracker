@@ -1,3 +1,7 @@
+import { Boons } from './domainBoons';
+
+export type Boon = typeof Boons[keyof typeof Boons];
+
 export const BoonTables = {
   Aspects: 'Aspects',
   Chaos: 'Chaos',
@@ -82,7 +86,7 @@ export type BoonRequirements = {
   requirements: Requirements[],
 };
 
-export type Boon = {
+export type BoonInfo = {
   image: Image,
   requirements?: Requirements[],
   active: boolean,
@@ -106,7 +110,7 @@ export type GroupRowOrder = {
 };
 
 export type AppState = {
-  boons: {[key: string]: Boon},
+  boons: {[key: string]: BoonInfo},
   colors: {[key: string]: string},
   groups: {
     boons: GroupBoons,
@@ -116,4 +120,8 @@ export type AppState = {
     current: string,
     list: Page[],
   },
+};
+
+export {
+  Boons,
 };
