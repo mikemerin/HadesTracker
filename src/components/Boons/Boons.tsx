@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Grid, SemanticWIDTHS, Segment } from 'semantic-ui-react';
 
 import { AppState, BoonTables } from 'redux/domain';
-import { images } from 'visuals/images';
-import { colors } from 'visuals/colors';
 
 import Boon from './Boon';
 
 const mapStateToProps = (state: AppState) => ({
+  boons: state.boons,
+  colors: state.colors,
   currentPage: state.pages.current,
   groupBoons: state.groups.boons,
   groupRowOrder: state.groups.rowOrder,
@@ -17,6 +17,8 @@ const mapStateToProps = (state: AppState) => ({
 type Props = ReturnType<typeof mapStateToProps>;
 
 const Boons = ({
+  boons,
+  colors,
   currentPage,
   groupBoons,
   groupRowOrder,
@@ -50,7 +52,7 @@ const Boons = ({
             <Grid.Column key={`${god}Header`}>
               <b>{god}</b>
               <br />
-              <img {...images[god]} alt={images[god].alt} />
+              <img {...boons[god].image} alt={boons[god].image.alt} />
             </Grid.Column>
           );
         } else {

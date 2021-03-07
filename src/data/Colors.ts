@@ -22,4 +22,4 @@ const colors: {[key: string]: string} = {
 
 export {
   colors,
-}
+};

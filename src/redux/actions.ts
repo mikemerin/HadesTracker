@@ -1,11 +1,6 @@
 import { createAction } from 'typesafe-actions';
 
-import { Boon, GroupBoons } from 'redux/domain';
-
-const setGroupBoons = createAction(
-  '[Groups] Set Group Boons',
-  (groupBoons: GroupBoons) => ({ groupBoons })
-)();
+import { Boon } from 'redux/domain';
 
 const setGroupRowOrder = createAction(
   '[Groups] Set Group Row Order',
@@ -37,6 +32,5 @@ export {
   setBoonProphecyForetold,
   setBoons,
   setCurrentPage,
-  setGroupBoons,
   setGroupRowOrder,
 };

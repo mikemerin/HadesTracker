@@ -65,15 +65,16 @@ export const Pages = {
 export type Page = typeof Pages[keyof typeof Pages];
 
 export type AppState = {
-  pages: {
-    current: string,
-    list: Page[],
-  },
+  boons: {[key: string]: Boon},
+  colors: {[key: string]: string},
   groups: {
     boons: GroupBoons,
     rowOrder: GroupRowOrder,
   },
-  boons: {[key: string]: Boon},
+  pages: {
+    current: string,
+    list: Page[],
+  },
 };
 
 export type Image = {
@@ -85,7 +86,8 @@ export type Image = {
 };
 
 export type Boon = {
-  requirements: string[],
+  image: Image,
+  requirements?: string[],
   unlocked: boolean,
   prophecyForetold: boolean,
 }

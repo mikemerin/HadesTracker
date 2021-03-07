@@ -1,16 +1,19 @@
 import { AppState } from './domain';
-import { groupBoons, groupRowOrder, pageList } from 'data';
+import { boons, colors, groupBoons, groupRowOrder, pageList } from 'data';
+
+
 
 const initialState: AppState = {
-  pages: {
-    current: pageList.find(({url}) => url === window.location.pathname)?.text || 'Main Boons',
-    list: pageList,
-  },
+  boons,
+  colors,
   groups: {
     boons: groupBoons,
     rowOrder: groupRowOrder,
   },
-  boons: {},
+  pages: {
+    current: pageList.find(({url}) => url === window.location.pathname)?.text || 'Main Boons',
+    list: pageList,
+  },
 };
 
 export default initialState;

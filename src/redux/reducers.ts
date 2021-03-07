@@ -5,22 +5,10 @@ import {
   setBoonProphecyForetold,
   setBoons,
   setCurrentPage,
-  setGroupBoons,
   setGroupRowOrder,
 } from './actions';
 import initialState from './state';
 import { AppState } from './domain';
-
-const handleSetGroupBoons = (
-  state: AppState,
-  { payload }: ReturnType<typeof setGroupBoons>,
-): AppState => ({
-  ...state,
-  groups: {
-    ...state.groups,
-    boons: payload.groupBoons,
-  }
-});
 
 const handleSetGroupRowOrder = (
   state: AppState,
@@ -90,7 +78,6 @@ const rootReducer = createReducer(initialState)
 .handleAction(setBoonUnlocked, handleSetBoonUnlocked)
 .handleAction(setBoonProphecyForetold, handleSetBoonProphecyForetold)
 .handleAction(setBoons, handleSetBoons)
-.handleAction(setGroupBoons, handleSetGroupBoons)
 .handleAction(setGroupRowOrder, handleSetGroupRowOrder)
 .handleAction(setCurrentPage, handleSetCurrentPage);
 

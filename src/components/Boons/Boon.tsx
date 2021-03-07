@@ -1,18 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { images } from 'visuals/images';
+import { AppState } from 'redux/domain';
 
-type Props = {
+const mapStateToProps = (state: AppState) => ({
+  boons: state.boons
+});
+
+type Props = ReturnType<typeof mapStateToProps> & {
   name: string
 };
 
 const Boon = ({
-  name
+  boons,
+  name,
 }: Props) => {
-  const generateBoonTable = () => (
+  const generateBoonTable = (): JSX.Element => (
     <table><tbody><tr>
-      <td><img {...images[name]} alt={images[name].alt} /></td>
+      <td><img {...boons[name].image} alt={boons[name].image.alt} /></td>
       <td>{name}</td>
     </tr></tbody></table>
   );
@@ -22,4 +27,4 @@ const Boon = ({
   );
 };
 
-export default connect(null, null)(Boon);
+export default connect(mapStateToProps)(Boon);
