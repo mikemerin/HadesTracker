@@ -1,1 +1,1 @@
-export { default } from './Boons';
+export { default } from './BoonTable';

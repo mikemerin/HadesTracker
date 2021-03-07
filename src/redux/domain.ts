@@ -72,8 +72,6 @@ export type Image = {
   src: string,
   alt: string,
   title: string,
-  height: string,
-  width: string,
 };
 
 export type Requirements = {

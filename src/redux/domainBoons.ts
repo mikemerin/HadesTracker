@@ -137,7 +137,7 @@ export const Boons = {
   Greater_Inferno: 'Greater Inferno',
   Greater_Recall: 'Greater Recall',
   Greatest_Reflex: 'Greatest Reflex',
-  Hades_Aid: 'Hades%27 Aid',
+  Hades_Aid: 'Hades\' Aid',
   Halting: 'Halting',
   Hazard_Bomb: 'Hazard Bomb',
   Heart_Rend: 'Heart Rend',

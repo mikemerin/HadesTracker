@@ -20,9 +20,6 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
     return filename.replace(/ /g, '_');
   };
 
-  const boonSize = '20px';
-  const headerSize = '50px';
-
   const paths: {[key: string]: string} = {
     [BoonTables.Chaos]: 'chaos',
     [BoonTables.Weapon]: 'daedalus',
@@ -32,13 +29,11 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
     path: string,
     boon: string,
     suffix: string,
-    size: string,
   ): void => {
     const src = `${process.env.PUBLIC_URL}/assets/${path}/${fileNameSanitizer(boon)}.png`;
-    let alt, title, height, width;
+    let alt, title;
     alt = title = `${boon} ${suffix}`;
-    height = width = size;
-    const image: Image = { src, alt, title, height, width };
+    const image: Image = { src, alt, title };
     boons[boon] = {
       image,
       active: false,
@@ -52,7 +47,7 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
       let path = paths[boonGroup] || 'boons';
       Object.keys(boonRowObj).forEach((boonRow) => {
         const rowBoons = [...boonRowObj[boonRow], ...(boons[boonRow] ? [] : [boonRow])];
-        rowBoons.forEach((boon) => boonLoader(path, boon, 'Icon', boonSize));
+        rowBoons.forEach((boon) => boonLoader(path, boon, 'Icon'));
       });
     });
   });
@@ -65,8 +60,8 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
     }
   });
 
-  Object.values(Weapons).forEach((weapon) => boonLoader('weapons', weapon, 'Symbol', headerSize));
-  Object.values(Gods).forEach((god) => boonLoader('gods', god, 'Symbol', headerSize));
+  Object.values(Weapons).forEach((weapon) => boonLoader('weapons', weapon, 'Symbol'));
+  Object.values(Gods).forEach((god) => boonLoader('gods', god, 'Symbol'));
 
   return boons;
 };

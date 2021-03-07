@@ -10,8 +10,6 @@
 
 ### TODOs:
 * Each boon:
-  * If not able to be used yet: greyed out
-  * If requirements have been met: normal color
   * If in use: brighter border color
     * Note: color blind mode needed (check mark / etc)
   * Hover: show other boon requirements (and if that boon has another, show it in dashed/weaker color)
@@ -30,4 +28,5 @@
 * Advanced
   * % god choice, if given two rooms which is better?
 * Theming: add Dark Mode w/switcher
+  * Styled-components
 * Title per page

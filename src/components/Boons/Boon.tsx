@@ -15,18 +15,19 @@ const Boon = ({
   boons,
   name,
 }: Props) => {
-  const generateBoonTable = (): JSX.Element => {
+  const generateBoon = (): JSX.Element => {
     const { image, unlocked } = boons[name];
+    const size = '20px';
     return (
       <table style={{opacity: `${unlocked ? 1 : .3}`}}><tbody><tr>
-        <td><img {...image} alt={image.alt} /></td>
+        <td><img {...image} alt={image.alt} width={size} height={size}/></td>
         <td>{name}</td>
       </tr></tbody></table>
     );
   };
 
   return (
-    generateBoonTable()
+    generateBoon()
   );
 };
 
