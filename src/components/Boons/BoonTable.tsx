@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, SemanticWIDTHS, Segment } from 'semantic-ui-react';
+import { Grid, SemanticWIDTHS } from 'semantic-ui-react';
 
 import {
   AppState,
   BoonTables,
 } from 'redux/domain';
 
-import Boon from './Boon';
-import { BoonStyles } from './Boons.styles';
+import BoonColumn from './BoonColumn';
 import BoonHeader from './BoonHeader';
 
 const mapStateToProps = (state: AppState) => ({
@@ -54,20 +53,13 @@ const BoonTable = ({
             />
           );
         } else {
-          const rowBoons = groupBoons[boonKey][boonType][boonRow];
           return (
-            <Grid.Column key={`${boonKey}${boonRow}`}>
-              <Segment.Group raised size='mini'>{
-                rowBoons && rowBoons.map((individualBoon, i) => {
-                  const style = BoonStyles({boonKey, boonType, boonRow, individualBoon});
-                  return (
-                    <Segment key={`${boonKey}${boonRow}${i}`} style={{...style}}>
-                      {<Boon name={individualBoon} />}
-                    </Segment>
-                  );
-                })
-              }</Segment.Group>
-            </Grid.Column>
+            <BoonColumn
+              key={`${boonKey}${boonRow}Column`}
+              boonKey={boonKey}
+              boonType={boonType}
+              boonRow={boonRow}
+            />
           );
         }
       });
