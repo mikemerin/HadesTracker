@@ -1,7 +1,7 @@
 import {
-  BoonInfo,
-  BoonTables,
   BoonRequirements,
+  BoonState,
+  BoonTables,
   Gods,
   GroupBoons,
   Image,
@@ -14,7 +14,7 @@ type Props = {
 };
 
 const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
-  const boons: {[key: string]: BoonInfo} = {};
+  const boons: BoonState = {};
 
   const fileNameSanitizer = (filename: string): string => {
     return filename.replace(/ /g, '_');

@@ -1,6 +1,6 @@
 import deepmerge from 'deepmerge';
 
-import { GroupBoons } from 'redux/domain';
+import { BoonState, GroupBoons } from 'redux/domain';
 
 import { boonDuos } from './BoonDuos';
 import { boonSolos } from './BoonSolos';
@@ -12,7 +12,11 @@ import { pageList } from './PageList';
 import { weapons } from './Weapons';
 
 const groupBoons: GroupBoons = deepmerge.all([boonSolos, boonDuos, weapons]) as GroupBoons;
-const boonInfo = generateBoonInfo({groupBoons, boonRequirements});
+const boonInfoUnsorted = generateBoonInfo({groupBoons, boonRequirements});
+const boonInfo = Object.keys(boonInfoUnsorted).sort().reduce((acc, boon) => {
+    acc[boon] = boonInfoUnsorted[boon];
+    return acc;
+}, {} as BoonState);
 
 export {
   boonDuos,

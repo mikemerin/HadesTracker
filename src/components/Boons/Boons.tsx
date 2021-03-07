@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, SemanticWIDTHS, Segment } from 'semantic-ui-react';
 
-import { AppState, BoonTables } from 'redux/domain';
+import {
+  AppState,
+  BoonTables,
+  Weapons,
+} from 'redux/domain';
 
 import Boon from './Boon';
 
@@ -15,6 +19,15 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 type Props = ReturnType<typeof mapStateToProps>;
+
+const weaponNames: {[key: string]: string} = {
+  [Weapons.Blade]: 'Stygius',
+  [Weapons.Bow]: 'Coronacht',
+  [Weapons.Fists]: 'Malphon',
+  [Weapons.Rail]: 'Exagryph',
+  [Weapons.Shield]: 'Aegis',
+  [Weapons.Spear]: 'Varatha',
+};
 
 const Boons = ({
   boons,
@@ -32,7 +45,7 @@ const Boons = ({
 
   const boonType = boonTypes[currentPage] || BoonTables.Solo;
 
-  const generateBoonRowss = (boonType: string): JSX.Element[] => {
+  const generateBoonRows = (boonType: string): JSX.Element[] => {
     const boonKeys = Object.keys(groupBoons).filter((boonKey: string) => groupBoons[boonKey][boonType]);
     const boonRows = groupRowOrder[boonType];
     const boonColumns = (boonKeys.length + 1) as SemanticWIDTHS;
@@ -44,37 +57,40 @@ const Boons = ({
         </Grid.Column>
       );
 
-      const columns = boonKeys.map((god: string) => {
-        const { image } = boons[god];
+      const columns = boonKeys.map((boonKey: string) => {
+        const { image } = boons[boonKey];
         if (boonRow === 'header') {
+          const text = boonKey + (boonType === BoonTables.Weapon ? ` (${weaponNames[boonKey]})` : '')
           return (
-            <Grid.Column key={`${god}Header`}>
-              <b>{god}</b>
+            <Grid.Column key={`${boonKey}Header`}>
+              <b>{text}</b>
               <br />
               <img {...image} alt={image.alt} />
             </Grid.Column>
           );
         } else {
-          const rowBoons = groupBoons[god][boonType][boonRow];
+          const rowBoons = groupBoons[boonKey][boonType][boonRow];
 
-          const color = colors[god];
+          const color = colors[boonKey];
           const color2 = colors[boonType === BoonTables.Duo ? boonRow : 'background'];
           const fade = '20';
-          const style = {
-            padding: 0,
-            borderRadius: '3px',
-            backgroundColor: '',
-            backgroundImage: `linear-gradient(to right, ${color}, ${colors.background}), linear-gradient(to bottom, ${color}, ${color2})`,
-            backgroundSize: '100% 2px, 2px 100%, 100% 4px, 1px 400%',
-            backgroundOrigin: 'content-box',
-            backgroundRepeat: 'no-repeat',
-          }
 
           return (
-            <Grid.Column key={`${god}${boonRow}`}>
+            <Grid.Column key={`${boonKey}${boonRow}`}>
               <Segment.Group raised size='mini'>{
                 rowBoons && rowBoons.map((individualBoon, i) => {
+                  const style = {
+                    padding: 0,
+                    borderRadius: '3px',
+                    backgroundColor: '',
+                    backgroundImage: `linear-gradient(to right, ${color}, ${colors.background}), linear-gradient(to bottom, ${color}, ${color2})`,
+                    backgroundSize: '100% 2px, 2px 100%, 100% 4px, 1px 400%',
+                    backgroundOrigin: 'content-box',
+                    backgroundRepeat: 'no-repeat',
+                  }
+
                   const { active, unlocked } = boons[individualBoon];
+
                   if (active) {
                     style.backgroundColor = color + fade;
                   } else if (!unlocked) {
@@ -82,9 +98,8 @@ const Boons = ({
                     style.backgroundImage = '';
                   }
 
-
                   return (
-                    <Segment key={`${god}${boonRow}${i}`} style={{...style}}>
+                    <Segment key={`${boonKey}${boonRow}${i}`} style={{...style}}>
                       {<Boon name={individualBoon} />}
                     </Segment>
                   );
@@ -111,7 +126,7 @@ const Boons = ({
       textAlign='center'
       padded='horizontally'
     >
-      {generateBoonRowss(boonType)}
+      {generateBoonRows(boonType)}
     </Grid>
   );
 };

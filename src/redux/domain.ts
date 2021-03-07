@@ -42,7 +42,7 @@ export const Gods = {
   Hermes: 'Hermes',
   Poseidon: 'Poseidon',
   Zeus: 'Zeus',
-}
+} as const;
 
 export type God = typeof Gods[keyof typeof Gods];
 
@@ -53,7 +53,7 @@ export const Weapons = {
   Rail: 'Adamant Rail',
   Shield: 'Shield of Chaos',
   Spear: 'Eternal Spear',
-}
+} as const;
 
 export type Weapon = typeof Weapons[keyof typeof Weapons];
 
@@ -64,7 +64,7 @@ export const Pages = {
   Chaos: {text: 'Chaos', url: '/Boons/Chaos'},
   Weapons: {text: 'Infernal Arms', url: '/Boons/Weapons'},
   About: {text: 'About', url: '/About'}
-}
+} as const;
 
 export type Page = typeof Pages[keyof typeof Pages];
 
@@ -109,8 +109,12 @@ export type GroupRowOrder = {
   [key: string]: (BoonRow | God)[]
 };
 
+export type BoonState = {
+  [key: string]: BoonInfo
+};
+
 export type AppState = {
-  boons: {[key: string]: BoonInfo},
+  boons: BoonState,
   colors: {[key: string]: string},
   groups: {
     boons: GroupBoons,
