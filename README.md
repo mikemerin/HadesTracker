@@ -10,12 +10,12 @@
 
 ### TODOs:
 * Each boon:
-  * Duos: left/right just like icon / gradient bg
   * If not able to be used yet: greyed out
   * If requirements have been met: normal color
   * If in use: brighter border color
     * Note: color blind mode needed (check mark / etc)
   * Hover: show other boon requirements (and if that boon has another, show it in dashed/weaker color)
+  * Sort alphabetically, or by appearance in prophecy book
   * # remaining per god, both single and duo
   * Extra requirements:
   * Aka Plume equipped, Stygian soul vs other, fishing rod unlocked

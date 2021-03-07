@@ -5,7 +5,7 @@ import {
   Gods,
 } from 'redux/domain';
 
-const generateBoonSolos = (): GroupBoons => ({
+const boonSolos: GroupBoons = {
   [Gods.Aphrodite]: {
     [BoonTables.Solo]: {
       [BoonRows.Attack]: ['Heartbreak Strike'],
@@ -220,8 +220,8 @@ const generateBoonSolos = (): GroupBoons => ({
       [BoonRows.Legendary]: ['Splitting Bolt']
     },
   }
-});
+};
 
 export {
-  generateBoonSolos,
+  boonSolos,
 };

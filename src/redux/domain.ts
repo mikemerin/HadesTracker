@@ -53,10 +53,16 @@ export const Weapons = {
 
 export type Weapon = typeof Weapons[keyof typeof Weapons];
 
-export type Page = {
-  text: string,
-  url: string,
-};
+export const Pages = {
+  Main: {text: 'Main', url: '/Boons/Main'},
+  Duo: {text: 'Duo', url: '/Boons/Duo'},
+  Other: {text: 'Other', url: '/Boons/Other'},
+  Chaos: {text: 'Chaos', url: '/Boons/Chaos'},
+  Weapons: {text: 'Infernal Arms', url: '/Boons/Weapons'},
+  About: {text: 'About', url: '/About'}
+}
+
+export type Page = typeof Pages[keyof typeof Pages];
 
 export type AppState = {
   pages: {
@@ -65,7 +71,7 @@ export type AppState = {
   },
   groups: {
     boons: GroupBoons,
-    rowOrder: any
+    rowOrder: GroupRowOrder,
   },
   boons: {[key: string]: Boon},
 };
@@ -94,3 +100,7 @@ export type GroupBoons = {
     }
   }
 };
+
+export type GroupRowOrder = {
+  [key: string]: (BoonRow | God)[]
+}

@@ -5,7 +5,7 @@ import {
   Weapons,
 } from 'redux/domain';
 
-const generateWeapons = (): GroupBoons => ({
+const weapons: GroupBoons = {
   [Weapons.Blade]: {
     [BoonTables.Weapon]: {
       [BoonRows.Daedalus]: [
@@ -114,8 +114,8 @@ const generateWeapons = (): GroupBoons => ({
       ],
     },
   },
-});
+};
 
 export {
-  generateWeapons,
+  weapons,
 };

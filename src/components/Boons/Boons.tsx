@@ -32,9 +32,8 @@ const Boons = ({
 
   const generateBoonRowss = (boonType: string): JSX.Element[] => {
     const boonKeys = Object.keys(groupBoons).filter((boonKey: string) => groupBoons[boonKey][boonType]);
-    const boonRows: string[] = groupRowOrder[boonType];
-    const boonCount = boonKeys.length;
-    const boonColumns = (boonCount + 1) as SemanticWIDTHS;
+    const boonRows = groupRowOrder[boonType];
+    const boonColumns = (boonKeys.length + 1) as SemanticWIDTHS;
 
     return ['header', ...boonRows].map((boonRow: string) => {
       const rowHeader = (

@@ -2,9 +2,10 @@ import {
   BoonRows,
   BoonTables,
   Gods,
+  GroupRowOrder
  } from 'redux/domain';
 
-const groupRowOrder: {[key: string]: string[]} = {
+const groupRowOrder: GroupRowOrder = {
   [BoonTables.Aspects]: [
     BoonRows.Aspect,
   ],

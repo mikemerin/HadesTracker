@@ -1,5 +1,10 @@
-import { groupBoons } from 'data/GroupBoons';
-import { BoonTables, Gods, Image, Weapons } from 'redux/domain';
+import {
+  BoonTables,
+  Gods,
+  Image,
+  Weapons
+} from 'redux/domain';
+import { groupBoons } from 'data';
 
 const images: {[key: string]: Image} = {};
 

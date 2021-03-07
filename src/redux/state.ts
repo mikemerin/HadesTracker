@@ -1,15 +1,5 @@
-import { AppState, Page } from './domain';
-import { groupBoons } from 'data/GroupBoons';
-import { groupRowOrder } from 'data/GroupRowOrder';
-
-const pageList: Page[] = [
-  {text: 'Main', url: '/Boons/Main'},
-  {text: 'Duo', url: '/Boons/Duo'},
-  {text: 'Other', url: '/Boons/Other'},
-  {text: 'Chaos', url: '/Boons/Chaos'},
-  {text: 'Infernal Arms', url: '/Boons/Weapons'},
-  {text: 'About', url: '/About'}
-];
+import { AppState } from './domain';
+import { groupBoons, groupRowOrder, pageList } from 'data';
 
 const initialState: AppState = {
   pages: {
