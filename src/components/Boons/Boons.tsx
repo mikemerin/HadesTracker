@@ -45,37 +45,50 @@ const Boons = ({
       );
 
       const columns = boonKeys.map((god: string) => {
+        const { image } = boons[god];
         if (boonRow === 'header') {
-          // console.log(god)
-          // console.log(images)
           return (
             <Grid.Column key={`${god}Header`}>
               <b>{god}</b>
               <br />
-              <img {...boons[god].image} alt={boons[god].image.alt} />
+              <img {...image} alt={image.alt} />
             </Grid.Column>
           );
         } else {
+          const rowBoons = groupBoons[god][boonType][boonRow];
+
           const color = colors[god];
           const color2 = colors[boonType === BoonTables.Duo ? boonRow : 'background'];
+          const fade = '20';
           const style = {
             padding: 0,
             borderRadius: '3px',
+            backgroundColor: '',
             backgroundImage: `linear-gradient(to right, ${color}, ${colors.background}), linear-gradient(to bottom, ${color}, ${color2})`,
             backgroundSize: '100% 2px, 2px 100%, 100% 4px, 1px 400%',
             backgroundOrigin: 'content-box',
             backgroundRepeat: 'no-repeat',
           }
 
-          const boons = groupBoons[god][boonType][boonRow];
           return (
             <Grid.Column key={`${god}${boonRow}`}>
               <Segment.Group raised size='mini'>{
-                boons && boons.map((individualBoon, i) => (
-                  <Segment key={`${god}${boonRow}${i}`} style={{...style}}>
-                    {<Boon name={individualBoon} />}
-                  </Segment>
-                ))
+                rowBoons && rowBoons.map((individualBoon, i) => {
+                  const { active, unlocked } = boons[individualBoon];
+                  if (active) {
+                    style.backgroundColor = color + fade;
+                  } else if (!unlocked) {
+                    style.backgroundColor = `#555555${fade}`;
+                    style.backgroundImage = '';
+                  }
+
+
+                  return (
+                    <Segment key={`${god}${boonRow}${i}`} style={{...style}}>
+                      {<Boon name={individualBoon} />}
+                    </Segment>
+                  );
+                })
               }</Segment.Group>
             </Grid.Column>
           );
