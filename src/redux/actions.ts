@@ -7,9 +7,9 @@ const setGroupRowOrder = createAction(
   (groupRowOrder: any) => ({ groupRowOrder }) // todo: GroupRowOrder
 )();
 
-const setBoonUnlocked = createAction(
-  '[Boons] Set Boon Unlocked',
-  (boon: string, unlocked: boolean) => ({ boon, unlocked })
+const setBoonActive = createAction(
+  '[Boons] Set Boon Active',
+  (boon: string, active: boolean) => ({ boon, active })
 )();
 
 const setBoonProphecyForetold = createAction(
@@ -28,7 +28,7 @@ const setCurrentPage = createAction(
 )();
 
 export {
-  setBoonUnlocked,
+  setBoonActive,
   setBoonProphecyForetold,
   setBoons,
   setCurrentPage,

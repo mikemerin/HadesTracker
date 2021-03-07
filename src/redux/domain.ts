@@ -64,19 +64,6 @@ export const Pages = {
 
 export type Page = typeof Pages[keyof typeof Pages];
 
-export type AppState = {
-  boons: {[key: string]: Boon},
-  colors: {[key: string]: string},
-  groups: {
-    boons: GroupBoons,
-    rowOrder: GroupRowOrder,
-  },
-  pages: {
-    current: string,
-    list: Page[],
-  },
-};
-
 export type Image = {
   src: string,
   alt: string,
@@ -85,9 +72,20 @@ export type Image = {
   width: string,
 };
 
+export type Requirements = {
+  number: number,
+  boons: string[],
+}
+
+export type BoonRequirements = {
+  boon: string,
+  requirements: Requirements[],
+};
+
 export type Boon = {
   image: Image,
-  requirements?: string[],
+  requirements?: Requirements[],
+  active: boolean,
   unlocked: boolean,
   prophecyForetold: boolean,
 }
@@ -105,4 +103,17 @@ export type GroupBoons = {
 
 export type GroupRowOrder = {
   [key: string]: (BoonRow | God)[]
-}
+};
+
+export type AppState = {
+  boons: {[key: string]: Boon},
+  colors: {[key: string]: string},
+  groups: {
+    boons: GroupBoons,
+    rowOrder: GroupRowOrder,
+  },
+  pages: {
+    current: string,
+    list: Page[],
+  },
+};

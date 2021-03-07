@@ -1,13 +1,19 @@
 import {
   Boon,
   BoonTables,
+  BoonRequirements,
   Gods,
   GroupBoons,
   Image,
   Weapons
 } from 'redux/domain';
 
-const generateBoons = (groupBoons: GroupBoons) => {
+type Props = {
+  groupBoons: GroupBoons,
+  boonRequirements: BoonRequirements[]
+};
+
+const generateBoons = ({groupBoons, boonRequirements}: Props) => {
   const boons: {[key: string]: Boon} = {};
 
   const fileNameSanitizer = (filename: string): string => {
@@ -35,7 +41,8 @@ const generateBoons = (groupBoons: GroupBoons) => {
     const image: Image = { src, alt, title, height, width };
     boons[boon] = {
       image,
-      unlocked: false,
+      active: false,
+      unlocked: true,
       prophecyForetold: false,
     };
   };
@@ -44,10 +51,18 @@ const generateBoons = (groupBoons: GroupBoons) => {
     Object.entries(boonGroupObj).forEach(([boonGroup, boonRowObj]) => {
       let path = paths[boonGroup] || 'boons';
       Object.keys(boonRowObj).forEach((boonRow) => {
-        const imageList = [...boonRowObj[boonRow], ...(boons[boonRow] ? [] : [boonRow])];
-        imageList.forEach((boon) => boonLoader(path, boon, 'Icon', boonSize));
+        const rowBoons = [...boonRowObj[boonRow], ...(boons[boonRow] ? [] : [boonRow])];
+        rowBoons.forEach((boon) => boonLoader(path, boon, 'Icon', boonSize));
       });
     });
+  });
+
+  boonRequirements.forEach(({boon, requirements}) => {
+    boons[boon] = {
+      ...boons[boon],
+      requirements,
+      unlocked: false,
+    }
   });
 
   Object.values(Weapons).forEach((weapon) => boonLoader('weapons', weapon, 'Symbol', headerSize));
