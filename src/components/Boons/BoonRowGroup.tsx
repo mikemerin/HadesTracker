@@ -6,7 +6,7 @@ import {
   AppState,
 } from 'redux/domain';
 
-import Boon from './Boon';
+import BoonCell from './BoonCell';
 import { BoonStyles } from './Boon.styles';
 
 const mapStateToProps = (state: AppState) => ({
@@ -33,7 +33,7 @@ const BoonRowGroup = ({
           const style = BoonStyles({boonKey, boonType, boonRow, individualBoon});
           return (
             <Segment key={`${boonKey}${boonRow}${i}`} style={{...style}}>
-              {<Boon name={individualBoon} />}
+              {<BoonCell name={individualBoon} />}
             </Segment>
           );
         })
