@@ -1,7 +1,6 @@
 import store from 'redux/store';
 import {
   AppState,
-  Boons,
   BoonTables,
 } from 'redux/domain';
 

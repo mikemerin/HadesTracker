@@ -2,9 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Segment } from 'semantic-ui-react';
 
-import {
-  AppState, Boons
-} from 'redux/domain';
+import { AppState } from 'redux/domain';
 
 import BoonCell from './BoonCell';
 import { BoonStyles } from './Boon.styles';

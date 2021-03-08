@@ -116,17 +116,18 @@ export type Image = {
 
 export type Requirements = {
   number: number,
-  boons: string[],
+  boons: Boon[],
 }
 
 export type BoonRequirements = {
-  boon: string,
+  boon: Boon,
   requirements: Requirements[],
 };
 
 export type BoonInfo = {
   image: Image,
   requirements?: Requirements[],
+  unlocks?: Boon[],
   active: boolean,
   unlocked: boolean,
   prophecyForetold: boolean,

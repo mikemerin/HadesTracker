@@ -1,10 +1,12 @@
 import {
+  Boon,
   BoonRequirements,
   BoonState,
   BoonTables,
   Gods,
   GroupBoons,
   Image,
+  Requirements,
   Weapons
 } from 'redux/domain';
 
@@ -59,6 +61,18 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
       requirements,
       unlocked: false,
     }
+
+    requirements.forEach((requirements: Requirements) => {
+      requirements.boons.forEach((requiredBoon: Boon) => {
+        boons[requiredBoon] = {
+          ...boons[requiredBoon],
+          unlocks: [
+            ...(boons[requiredBoon].unlocks || []),
+            boon,
+          ],
+        };
+      });
+    });
   });
 
   Object.values(Weapons).forEach((weapon) => boonLoader('weapons', weapon, 'Symbol'));
