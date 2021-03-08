@@ -5,13 +5,14 @@ import { BoonState, GroupBoons } from 'redux/domain';
 import { boonDuos } from './BoonDuos';
 import { boonSolos } from './BoonSolos';
 import { boonRequirements } from './BoonRequirements';
-import { generateBoonInfo } from './GenerateBoonInfo';
 import { colors } from './Colors';
+import { generateBoonInfo } from './GenerateBoonInfo';
 import { groupRowOrder } from './GroupRowOrder';
+import { items } from './Items';
 import { pageList } from './PageList';
 import { weapons } from './Weapons';
 
-const groupBoons: GroupBoons = deepmerge.all([boonSolos, boonDuos, weapons]) as GroupBoons;
+const groupBoons: GroupBoons = deepmerge.all([boonSolos, boonDuos, items, weapons]) as GroupBoons;
 const boonInfoUnsorted = generateBoonInfo({groupBoons, boonRequirements});
 const boonInfo = Object.keys(boonInfoUnsorted).sort().reduce((acc, boon) => {
     acc[boon] = boonInfoUnsorted[boon];

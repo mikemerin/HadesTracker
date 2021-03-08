@@ -23,6 +23,7 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
   const paths: {[key: string]: string} = {
     [BoonTables.Aspects]: 'aspects',
     [BoonTables.Chaos]: 'chaos',
+    [BoonTables.Items]: 'items',
     [BoonTables.Weapon]: 'daedalus',
   };
 
@@ -32,9 +33,8 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
     suffix: string,
   ): void => {
     const src = `${process.env.PUBLIC_URL}/assets/${path}/${fileNameSanitizer(boon)}.png`;
-    let alt, title;
-    alt = title = `${boon} ${suffix}`;
-    const image: Image = { src, alt, title };
+    const alt = `${boon} ${suffix}`;
+    const image: Image = { src, alt, title: '' };
     boons[boon] = {
       image,
       active: false,

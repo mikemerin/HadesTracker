@@ -7,6 +7,7 @@ export const BoonTables = {
   Chaos: 'Chaos',
   CustomerLoyalty: 'CustomerLoyalty',
   Duo: 'Duo',
+  Items: 'Items',
   Other: 'Other',
   Solo: 'Solo',
   Weapon: 'Weapon',
@@ -85,6 +86,18 @@ export const Aspects = {
 } as const;
 
 export type Aspect = typeof Aspects[keyof typeof Aspects];
+
+export const Items = {
+  Active: 'Active',
+  Inactive: 'Inactive',
+  Infernal_Soul: 'Infernal Soul',
+  Lambent_Plume: 'Lambent Plume', // TODO: make keepsakes
+  Prophecy_Foretold: 'Prophecy Foretold',
+  Prophecy_Not_Foretold: 'Prophecy Not Foretold',
+  Stygian_Soul: 'Stygian Soul',
+} as const;
+
+export type Item = typeof Items[keyof typeof Items];
 
 export const Pages = {
   Main: {text: 'Main Gods', url: '/Boons/Main'},
