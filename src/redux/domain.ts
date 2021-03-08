@@ -58,10 +58,8 @@ export const Weapons = {
 export type Weapon = typeof Weapons[keyof typeof Weapons];
 
 export const Pages = {
-  Main: {text: 'Main', url: '/Boons/Main'},
-  Duo: {text: 'Duo', url: '/Boons/Duo'},
-  Other: {text: 'Other', url: '/Boons/Other'},
-  Chaos: {text: 'Chaos', url: '/Boons/Chaos'},
+  Main: {text: 'Main Gods', url: '/Boons/Main'},
+  Other: {text: 'Other Gods', url: '/Boons/Other'},
   Weapons: {text: 'Infernal Arms', url: '/Boons/Weapons'},
   About: {text: 'About', url: '/About'}
 } as const;

@@ -7,7 +7,7 @@ import {
   Weapons,
 } from 'redux/domain';
 
-import { Grid } from 'semantic-ui-react';
+import { Grid, SemanticWIDTHS } from 'semantic-ui-react';
 
 const mapStateToProps = (state: AppState) => ({
   boons: state.boons
@@ -15,6 +15,7 @@ const mapStateToProps = (state: AppState) => ({
 
 type Props = ReturnType<typeof mapStateToProps> & {
   name: string,
+  boonColumns: SemanticWIDTHS,
   boonType: string,
   headerType: string,
 };
@@ -31,6 +32,7 @@ const weaponNames: {[key: string]: string} = {
 const BoonHeader = ({
   boons,
   name,
+  boonColumns,
   boonType,
   headerType,
 }: Props) => {
@@ -39,8 +41,9 @@ const BoonHeader = ({
 
     if (headerType === 'row') {
       const size = '20px';
+      const width = boonColumns > 5 ? 1 : 2;
       return (
-        <Grid.Column key={`${name}RowHeader`} width={1}>
+        <Grid.Column key={`${name}RowHeader`} width={width}>
           {name !== 'header' && (
             <table><tbody><tr>
               <td><img {...image} alt={image.alt} width={size} height={size}/></td>

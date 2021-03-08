@@ -19,7 +19,7 @@ type Props = ReturnType<typeof mapStateToProps> & {
   boonRow: string,
 };
 
-const BoonColumn = ({
+const BoonRowGroup = ({
   groupBoons,
   boonKey,
   boonType,
@@ -42,4 +42,4 @@ const BoonColumn = ({
   );
 };
 
-export default connect(mapStateToProps)(BoonColumn);
+export default connect(mapStateToProps)(BoonRowGroup);
