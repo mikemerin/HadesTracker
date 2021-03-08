@@ -1,4 +1,5 @@
 import {
+  Aspects,
   BoonRows,
   Boons,
   BoonTables,
@@ -24,6 +25,14 @@ const weapons: GroupBoons = {
         Boons.World_Splitter,
       ],
     },
+    [BoonTables.Aspects]: {
+      [BoonRows.Aspect]: [
+        Aspects.Blade_Zagreus,
+        Aspects.Blade_Nemesis,
+        Aspects.Blade_Poseidon,
+        Aspects.Blade_Arthur,
+      ],
+    },
   },
   [Weapons.Spear]: {
     [BoonTables.Weapon]: {
@@ -40,6 +49,14 @@ const weapons: GroupBoons = {
         Boons.Serrated_Point,
         Boons.Triple_Jab,
         Boons.Vicious_Skewer,
+      ],
+    },
+    [BoonTables.Aspects]: {
+      [BoonRows.Aspect]: [
+        Aspects.Spear_Zagreus,
+        Aspects.Spear_Achilles,
+        Aspects.Spear_Hades,
+        Aspects.Spear_Guan_Yu,
       ],
     },
   },
@@ -60,6 +77,14 @@ const weapons: GroupBoons = {
         Boons.Sudden_Rush,
       ],
     },
+    [BoonTables.Aspects]: {
+      [BoonRows.Aspect]: [
+        Aspects.Shield_Zagreus,
+        Aspects.Shield_Chaos,
+        Aspects.Shield_Zeus,
+        Aspects.Shield_Beowulf,
+      ],
+    },
   },
   [Weapons.Bow]: {
     [BoonTables.Weapon]: {
@@ -76,6 +101,14 @@ const weapons: GroupBoons = {
         Boons.Sniper_Shot,
         Boons.Triple_Shot,
         Boons.Twin_Shot,
+      ],
+    },
+    [BoonTables.Aspects]: {
+      [BoonRows.Aspect]: [
+        Aspects.Bow_Zagreus,
+        Aspects.Bow_Chiron,
+        Aspects.Bow_Hera,
+        Aspects.Bow_Rama,
       ],
     },
   },
@@ -96,6 +129,14 @@ const weapons: GroupBoons = {
         Boons.Rush_Kick,
       ],
     },
+    [BoonTables.Aspects]: {
+      [BoonRows.Aspect]: [
+        Aspects.Fists_Zagreus,
+        Aspects.Fists_Talos,
+        Aspects.Fists_Demeter,
+        Aspects.Fists_Gilgamesh,
+      ],
+    },
   },
   [Weapons.Rail]: {
     [BoonTables.Weapon]: {
@@ -112,6 +153,14 @@ const weapons: GroupBoons = {
         Boons.Spread_Fire,
         Boons.Targeting_System,
         Boons.Triple_Bomb,
+      ],
+    },
+    [BoonTables.Aspects]: {
+      [BoonRows.Aspect]: [
+        Aspects.Rail_Zagreus,
+        Aspects.Rail_Eris,
+        Aspects.Rail_Hestia,
+        Aspects.Rail_Lucifer,
       ],
     },
   },

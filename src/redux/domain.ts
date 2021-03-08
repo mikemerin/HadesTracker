@@ -16,7 +16,7 @@ export type BoonTable = typeof BoonTables[keyof typeof BoonTables];
 
 export const BoonRows = {
   Attack: 'Attack',
-  Aspect: 'Aspect',
+  Aspect: 'Aspect Unlocks',
   Blessing: 'Blessing',
   Call: 'Call',
   Cast: 'Cast',
@@ -56,6 +56,35 @@ export const Weapons = {
 } as const;
 
 export type Weapon = typeof Weapons[keyof typeof Weapons];
+
+export const Aspects = {
+  Blade_Arthur: 'Aspect of Arthur',
+  Blade_Nemesis: 'Aspect of Nemesis',
+  Blade_Poseidon: 'Aspect of Poseidon',
+  Blade_Zagreus: 'Aspect of Zagreus (Blade)',
+  Bow_Chiron: 'Aspect of Chiron',
+  Bow_Hera: 'Aspect of Hera',
+  Bow_Rama: 'Aspect of Rama',
+  Bow_Zagreus: 'Aspect of Zagreus (Bow)',
+  Fists_Demeter: 'Aspect of Demeter',
+  Fists_Gilgamesh: 'Aspect of Gilgamesh',
+  Fists_Talos: 'Aspect of Talos',
+  Fists_Zagreus: 'Aspect of Zagreus (Fists)',
+  Rail_Eris: 'Aspect of Eris',
+  Rail_Hestia: 'Aspect of Hestia',
+  Rail_Lucifer: 'Aspect of Lucifer',
+  Rail_Zagreus: 'Aspect of Zagreus (Rail)',
+  Shield_Beowulf: 'Aspect of Beowulf',
+  Shield_Chaos: 'Aspect of Chaos',
+  Shield_Zagreus: 'Aspect of Zagreus (Shield)',
+  Shield_Zeus: 'Aspect of Zeus',
+  Spear_Achilles: 'Aspect of Achilles',
+  Spear_Guan_Yu: 'Aspect of Guan Yu',
+  Spear_Hades: 'Aspect of Hades',
+  Spear_Zagreus: 'Aspect of Zagreus (Spear)',
+} as const;
+
+export type Aspect = typeof Aspects[keyof typeof Aspects];
 
 export const Pages = {
   Main: {text: 'Main Gods', url: '/Boons/Main'},

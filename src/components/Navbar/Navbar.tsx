@@ -28,7 +28,7 @@ const Navbar = ({
     pageList.map(({ text, url }) => (
       <Link key={`page${text}`} to={url}>
         <Button
-          className="NavbarButton"
+          className='NavbarButton'
           key={`navButton${text}`}
           id={text}
           active={ currentPage === text }
@@ -43,7 +43,7 @@ const Navbar = ({
   );
 
   return (
-    <Menu className="Navbar" color='black' borderless inverted fixed='top'>
+    <Menu className='Navbar' color='black' borderless inverted fixed='top'>
       <Menu.Item name='links'>
         { generateButtons() }
       </Menu.Item>

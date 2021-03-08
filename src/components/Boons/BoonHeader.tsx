@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Grid, SemanticWIDTHS } from 'semantic-ui-react';
 
 import {
   AppState,
   BoonTables,
   Weapons,
 } from 'redux/domain';
-
-import { Grid, SemanticWIDTHS } from 'semantic-ui-react';
 
 const mapStateToProps = (state: AppState) => ({
   boons: state.boons

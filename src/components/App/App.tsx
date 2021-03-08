@@ -7,7 +7,7 @@ import Boons from 'components/Boons';
 import Navbar from 'components/Navbar';
 
 const App = (): JSX.Element => (
-  <div className="App">
+  <div className='App'>
     <Navbar />
     <div className='Main'>
       <Switch>
@@ -18,7 +18,7 @@ const App = (): JSX.Element => (
         TBD
       </Route>
       <Route path='/'>
-        <Redirect to="/Boons/Main" />
+        <Redirect to='/Boons/Main' />
       </Route>
       </Switch>
     </div>

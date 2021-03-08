@@ -34,7 +34,10 @@ const Boon = ({
     );
   } else if (currentPage === Pages.Weapons.text) {
     return (
-      <BoonTable boonType={BoonTables.Weapon} />
+      <>
+        <BoonTable boonType={BoonTables.Weapon} />
+        <BoonTable boonType={BoonTables.Aspects} hideHeader />
+      </>
     );
   } else {
     return (

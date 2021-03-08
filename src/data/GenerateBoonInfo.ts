@@ -21,6 +21,7 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
   };
 
   const paths: {[key: string]: string} = {
+    [BoonTables.Aspects]: 'aspects',
     [BoonTables.Chaos]: 'chaos',
     [BoonTables.Weapon]: 'daedalus',
   };

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { AppState } from 'redux/domain';
 
 const mapStateToProps = (state: AppState) => ({
-  boons: state.boons
+  boons: state.boons,
 });
 
 type Props = ReturnType<typeof mapStateToProps> & {
@@ -16,12 +16,17 @@ const Boon = ({
   name,
 }: Props) => {
   const generateBoon = (): JSX.Element => {
-    const { image, unlocked } = boons[name];
+    const { image, prophecyForetold, unlocked } = boons[name];
     const size = '20px';
+    const style = {
+      opacity: `${unlocked ? 1 : .3}`,
+      width: '100%',
+    };
     return (
-      <table style={{opacity: `${unlocked ? 1 : .3}`}}><tbody><tr>
-        <td><img {...image} alt={image.alt} width={size} height={size}/></td>
-        <td>{name}</td>
+      <table style={{...style}}><tbody><tr>
+        <td width='10%'><img {...image} alt={image.alt} width={size} height={size}/></td>
+        <td width='60%'>{name}</td>
+        <td width='30%'>{prophecyForetold ? 'Y' : 'N'}</td>
       </tr></tbody></table>
     );
   };
