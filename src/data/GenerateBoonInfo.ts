@@ -34,7 +34,7 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
   ): void => {
     const src = `${process.env.PUBLIC_URL}/assets/${path}/${fileNameSanitizer(boon)}.png`;
     const alt = `${boon} ${suffix}`;
-    const image: Image = { src, alt, title: '' };
+    const image: Image = { src, alt };
     boons[boon] = {
       image,
       active: false,

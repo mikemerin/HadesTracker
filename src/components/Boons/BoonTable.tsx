@@ -76,7 +76,6 @@ const BoonTable = ({
   return (
     <Grid
       key={boonType}
-      verticalAlign='middle'
       textAlign='center'
       padded='horizontally'
     >

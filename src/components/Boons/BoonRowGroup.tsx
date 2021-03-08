@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { Grid, Segment } from 'semantic-ui-react';
 
 import {
-  AppState,
+  AppState, Boons
 } from 'redux/domain';
 
 import BoonCell from './BoonCell';
 import { BoonStyles } from './Boon.styles';
 
 const mapStateToProps = (state: AppState) => ({
+  boons: state.boons,
   groupBoons: state.groups.boons,
 });
 
@@ -20,6 +21,7 @@ type Props = ReturnType<typeof mapStateToProps> & {
 };
 
 const BoonRowGroup = ({
+  boons,
   groupBoons,
   boonKey,
   boonType,

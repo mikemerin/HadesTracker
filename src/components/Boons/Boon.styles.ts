@@ -1,37 +1,42 @@
 import store from 'redux/store';
 import {
   AppState,
+  Boons,
   BoonTables,
 } from 'redux/domain';
 
 type Props = {
   boonKey: string,
-  boonType: string,
   boonRow: string,
+  boonType: string,
   individualBoon: string,
 };
 
-const { boons, colors } = store.getState() as AppState;
-const fade = '20';
+const { colors } = store.getState() as AppState;
+const fade = '30';
 
 const BoonStyles = ({
   boonKey,
-  boonType,
   boonRow,
+  boonType,
   individualBoon,
 }: Props): any => {
+  const { boons } = store.getState() as AppState;
   const color = colors[boonKey];
   const color2 = colors[boonType === BoonTables.Duo ? boonRow : 'background'];
 
   const { active, unlocked } = boons[individualBoon];
 
   let backgroundColor = '';
-  let backgroundImage = `linear-gradient(to right, ${color}, ${colors.background}), linear-gradient(to bottom, ${color}, ${color2})`;
+  let backgroundImage = `
+    linear-gradient(to right, ${color}, ${colors.background}),
+    linear-gradient(to bottom, ${color}, ${color2})
+  `;
 
   if (active) {
-    backgroundColor = color + fade;
-  } else if (!unlocked) {
-    backgroundColor = `#555555${fade}`;
+      backgroundColor = color + fade;
+    } else if (!unlocked) {
+    backgroundColor = `#000000${fade}`;
     backgroundImage = '';
   }
 

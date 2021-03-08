@@ -16,7 +16,7 @@ const mapStateToProps = (state: AppState) => ({
 
 type Props = ReturnType<typeof mapStateToProps>;
 
-const Boon = ({
+const Boons = ({
   currentPage,
 }: Props): JSX.Element => {
   if (currentPage === Pages.Other.text) {
@@ -50,4 +50,4 @@ const Boon = ({
 
 };
 
-export default connect(mapStateToProps)(Boon);
+export default connect(mapStateToProps)(Boons);

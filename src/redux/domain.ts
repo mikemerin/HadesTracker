@@ -111,7 +111,7 @@ export type Page = typeof Pages[keyof typeof Pages];
 export type Image = {
   src: string,
   alt: string,
-  title: string,
+  title?: string,
 };
 
 export type Requirements = {

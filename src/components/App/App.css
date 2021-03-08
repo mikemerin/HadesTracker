@@ -35,6 +35,24 @@
   padding-top: .1rem;
 }
 
+.rowIcon {
+  height: 20px;
+  width: 20px;
+}
+
+.boonCellTable {
+  width: 100%;
+}
+
+.boonCellTable > tbody > tr > td {
+  padding-bottom: 0;
+}
+
+.greyscale {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
 .App-link {
   color: #61dafb;
 }

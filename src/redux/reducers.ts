@@ -25,7 +25,7 @@ const handleSetBoonActive = (
   state: AppState,
   { payload }: ReturnType<typeof setBoonActive>,
 ): AppState => {
-  // TODO: logic here to set unlocks
+  // TODO: logic here to set unlocks ? Or maybe just refresh all other cells...
   const { boon, active } = payload;
   return {
     ...state,
@@ -34,6 +34,7 @@ const handleSetBoonActive = (
       [boon]: {
         ...state.boons[boon],
         active,
+        ...active && { prophecyForetold: true },
       }
     }
   }
