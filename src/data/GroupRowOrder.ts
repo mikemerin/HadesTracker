@@ -24,6 +24,7 @@ const groupRowOrder: GroupRowOrder = {
     Gods.Demeter,
     Gods.Dionysus,
     Gods.Poseidon,
+    Gods.Zeus,
   ],
   [BoonTables.Other]: [
     BoonRows.Other,

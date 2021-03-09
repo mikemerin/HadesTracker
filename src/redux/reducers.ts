@@ -7,8 +7,9 @@ import {
   setCurrentPage,
   setGroupRowOrder,
 } from './actions';
+import { AppState, Boon } from './domain';
 import initialState from './state';
-import { AppState } from './domain';
+import { setUnlocks } from 'utils';
 
 const handleSetGroupRowOrder = (
   state: AppState,
@@ -25,9 +26,9 @@ const handleSetBoonActive = (
   state: AppState,
   { payload }: ReturnType<typeof setBoonActive>,
 ): AppState => {
-  // TODO: logic here to set unlocks ? Or maybe just refresh all other cells...
   const { boon, active } = payload;
-  return {
+
+  let newState = {
     ...state,
     boons: {
       ...state.boons,
@@ -38,6 +39,12 @@ const handleSetBoonActive = (
       }
     }
   }
+
+  const { unlocks } = state.boons[boon];
+  if (unlocks) {
+    newState = setUnlocks(newState, unlocks);
+  }
+  return newState;
 };
 
 const handleSetBoonProphecyForetold = (
