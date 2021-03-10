@@ -10,6 +10,7 @@ const items: GroupBoons = {
     [BoonTables.Items]: {
       [BoonRows.Item]: [
         Items.Active,
+        Items.Chthonic_Key,
         Items.Inactive,
         Items.Infernal_Soul,
         Items.Lambent_Plume, // TODO: make keepsakes

@@ -9,6 +9,10 @@ const isUnlocked = (
   )
 ));
 
+const nameSanitizer = (filename: string): string => {
+  return filename.replace(/ /g, '_');
+};
+
 const setUnlocks = (
   state: AppState,
   boons: Boon[],
@@ -22,5 +26,6 @@ const setUnlocks = (
 
 export {
   isUnlocked,
+  nameSanitizer,
   setUnlocks,
 }

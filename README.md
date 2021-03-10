@@ -17,10 +17,6 @@
   * # remaining per god, both single and duo
   * Extra requirements:
   * Aka Plume equipped, Stygian soul vs other, fishing rod unlocked
-* Icons
-  * Prophecy pending/done: faded/color scroll
-  * Requirements
-  * Unlocks
 * Builder
   * Three choices, show what each can unlock
   * Clear button

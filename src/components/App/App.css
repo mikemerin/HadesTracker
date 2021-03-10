@@ -53,6 +53,19 @@
   filter: grayscale(100%);
 }
 
+.outlineText {
+  color: black;
+  text-shadow: -1px -1px 10px #FFF, 1px -1px 10px #FFF, -1px 1px 10px #FFF, 1px 1px 10px #FFF;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.unclickable {
+  cursor: not-allowed;
+}
+
 .App-link {
   color: #61dafb;
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Grid, Segment } from 'semantic-ui-react';
 
 import { AppState } from 'redux/domain';
+import { nameSanitizer } from 'utils';
 
 import BoonCell from './BoonCell';
 import { BoonStyles } from './Boon.styles';
@@ -26,13 +27,15 @@ const BoonRowGroup = ({
   boonRow,
 }: Props): JSX.Element => {
   const rowBoons = groupBoons[boonKey][boonType][boonRow];
+  const rowGroupId = `${boonKey} ${boonRow} RowGroup`;
   return (
-    <Grid.Column key={`${boonKey}${boonRow}`}>
+    <Grid.Column key={rowGroupId} id={rowGroupId}>
       <Segment.Group raised size='mini'>{
         rowBoons && rowBoons.map((individualBoon, i) => {
           const style = BoonStyles({boonKey, boonType, boonRow, individualBoon});
+          const segmentId = nameSanitizer(`${individualBoon} BoonCell`);
           return (
-            <Segment key={`${boonKey}${boonRow}${i}`} style={{...style}}>
+            <Segment key={segmentId} id={segmentId} style={{...style}}>
               {<BoonCell name={individualBoon} />}
             </Segment>
           );

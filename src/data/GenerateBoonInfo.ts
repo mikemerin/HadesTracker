@@ -9,6 +9,7 @@ import {
   Requirements,
   Weapons
 } from 'redux/domain';
+import { nameSanitizer } from 'utils';
 
 type Props = {
   groupBoons: GroupBoons,
@@ -17,10 +18,6 @@ type Props = {
 
 const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
   const boons: BoonState = {};
-
-  const fileNameSanitizer = (filename: string): string => {
-    return filename.replace(/ /g, '_');
-  };
 
   const paths: {[key: string]: string} = {
     [BoonTables.Aspects]: 'aspects',
@@ -34,7 +31,7 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
     boon: string,
     suffix: string,
   ): void => {
-    const src = `${process.env.PUBLIC_URL}/assets/${path}/${fileNameSanitizer(boon)}.png`;
+    const src = `${process.env.PUBLIC_URL}/assets/${path}/${nameSanitizer(boon)}.png`;
     const alt = `${boon} ${suffix}`;
     const image: Image = { src, alt };
     boons[boon] = {
