@@ -1,11 +1,9 @@
 import { createAction } from 'typesafe-actions';
 
-import { BoonState } from 'redux/domain';
-
-const setGroupRowOrder = createAction(
-  '[Groups] Set Group Row Order',
-  (groupRowOrder: any) => ({ groupRowOrder }) // todo: GroupRowOrder
-)();
+import {
+  BoonState,
+  GroupRowOrder,
+} from 'redux/domain';
 
 const setBoonActive = createAction(
   '[Boons] Set Boon Active',
@@ -27,10 +25,21 @@ const setCurrentPage = createAction(
   (currentPage: string) => ({ currentPage })
 )();
 
+const setDisplayInfo = createAction(
+  '[Display] Set Display Info',
+  (unlocksBoons: string[]) => ({ unlocksBoons })
+)();
+
+const setGroupRowOrder = createAction(
+  '[Groups] Set Group Row Order',
+  (groupRowOrder: GroupRowOrder) => ({ groupRowOrder }) // todo: GroupRowOrder
+)();
+
 export {
   setBoonActive,
   setBoonProphecyForetold,
   setBoons,
   setCurrentPage,
+  setDisplayInfo,
   setGroupRowOrder,
 };

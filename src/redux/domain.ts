@@ -90,6 +90,7 @@ export type Aspect = typeof Aspects[keyof typeof Aspects];
 export const Items = {
   Active: 'Active',
   Chthonic_Key: 'Chthonic Key',
+  Codex_Locked: 'Codex Locked',
   Inactive: 'Inactive',
   Infernal_Soul: 'Infernal Soul',
   Lambent_Plume: 'Lambent Plume', // TODO: make keepsakes
@@ -157,6 +158,9 @@ export type BoonState = {
 export type AppState = {
   boons: BoonState,
   colors: {[key: string]: string},
+  display: {
+    unlocksBoons: string[], // TODO: make Set<Boon>
+  },
   groups: {
     boons: GroupBoons,
     rowOrder: GroupRowOrder,

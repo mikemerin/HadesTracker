@@ -10,6 +10,9 @@ import {
 const initialState: AppState = {
   boons: boonInfo,
   colors,
+  display: {
+    unlocksBoons: [], // TODO: make set
+  },
   groups: {
     boons: groupBoons,
     rowOrder: groupRowOrder,

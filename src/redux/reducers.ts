@@ -5,22 +5,12 @@ import {
   setBoonProphecyForetold,
   setBoons,
   setCurrentPage,
+  setDisplayInfo,
   setGroupRowOrder,
 } from './actions';
-import { AppState, Boon } from './domain';
+import { AppState } from './domain';
 import initialState from './state';
 import { setUnlocks } from 'utils';
-
-const handleSetGroupRowOrder = (
-  state: AppState,
-  { payload }: ReturnType<typeof setGroupRowOrder>,
-): AppState => ({
-  ...state,
-  groups: {
-    ...state.groups,
-    rowOrder: payload.groupRowOrder,
-  }
-});
 
 const handleSetBoonActive = (
   state: AppState,
@@ -83,11 +73,34 @@ const handleSetCurrentPage = (
   }
 });
 
+const handleSetDisplayInfo = (
+  state: AppState,
+  { payload }: ReturnType<typeof setDisplayInfo>,
+): AppState => ({
+  ...state,
+  display: {
+    ...state.display,
+    unlocksBoons: payload.unlocksBoons,
+  }
+});
+
+const handleSetGroupRowOrder = (
+  state: AppState,
+  { payload }: ReturnType<typeof setGroupRowOrder>,
+): AppState => ({
+  ...state,
+  groups: {
+    ...state.groups,
+    rowOrder: payload.groupRowOrder,
+  }
+});
+
 const rootReducer = createReducer(initialState)
 .handleAction(setBoonActive, handleSetBoonActive)
 .handleAction(setBoonProphecyForetold, handleSetBoonProphecyForetold)
 .handleAction(setBoons, handleSetBoons)
-.handleAction(setGroupRowOrder, handleSetGroupRowOrder)
-.handleAction(setCurrentPage, handleSetCurrentPage);
+.handleAction(setCurrentPage, handleSetCurrentPage)
+.handleAction(setDisplayInfo, handleSetDisplayInfo)
+.handleAction(setGroupRowOrder, handleSetGroupRowOrder);
 
 export default rootReducer;
