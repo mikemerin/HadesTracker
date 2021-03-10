@@ -89,11 +89,13 @@ export type Aspect = typeof Aspects[keyof typeof Aspects];
 
 export const Items = {
   Active: 'Active',
+  Chthonic_Key: 'Chthonic Key',
   Inactive: 'Inactive',
   Infernal_Soul: 'Infernal Soul',
   Lambent_Plume: 'Lambent Plume', // TODO: make keepsakes
   Prophecy_Foretold: 'Prophecy Foretold',
   Prophecy_Not_Foretold: 'Prophecy Not Foretold',
+  Skeleton_Key: 'Skeleton Key',
   Stygian_Soul: 'Stygian Soul',
 } as const;
 

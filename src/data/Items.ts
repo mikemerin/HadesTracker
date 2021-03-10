@@ -16,6 +16,7 @@ const items: GroupBoons = {
         Items.Lambent_Plume, // TODO: make keepsakes
         Items.Prophecy_Foretold,
         Items.Prophecy_Not_Foretold,
+        Items.Skeleton_Key,
         Items.Stygian_Soul,
       ],
     },
