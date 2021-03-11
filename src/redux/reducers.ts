@@ -79,8 +79,8 @@ const handleSetDisplayInfo = (
 ): AppState => ({
   ...state,
   display: {
-    ...state.display,
-    unlocksBoons: payload.unlocksBoons,
+    requiresBoons: payload.requiresBoons || [],
+    unlocksBoons: payload.unlocksBoons || [],
   }
 });
 

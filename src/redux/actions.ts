@@ -3,6 +3,7 @@ import { createAction } from 'typesafe-actions';
 import {
   BoonState,
   GroupRowOrder,
+  Requirements,
 } from 'redux/domain';
 
 const setBoonActive = createAction(
@@ -27,7 +28,7 @@ const setCurrentPage = createAction(
 
 const setDisplayInfo = createAction(
   '[Display] Set Display Info',
-  (unlocksBoons: string[]) => ({ unlocksBoons })
+  (requiresBoons: Requirements[], unlocksBoons: string[]) => ({ requiresBoons, unlocksBoons })
 )();
 
 const setGroupRowOrder = createAction(

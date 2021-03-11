@@ -155,12 +155,15 @@ export type BoonState = {
   [key: string]: BoonInfo
 };
 
+export type Display = {
+  requiresBoons: Requirements[],
+  unlocksBoons: string[], // TODO: make Set<Boon>
+}
+
 export type AppState = {
   boons: BoonState,
   colors: {[key: string]: string},
-  display: {
-    unlocksBoons: string[], // TODO: make Set<Boon>
-  },
+  display: Display,
   groups: {
     boons: GroupBoons,
     rowOrder: GroupRowOrder,

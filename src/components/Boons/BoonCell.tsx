@@ -8,8 +8,15 @@ import {
 } from 'redux/actions';
 import {
   AppState,
+  Boon,
   Items,
+  Requirements,
 } from 'redux/domain';
+
+type DisplayInfo = {
+  requirements?: Requirements[],
+  unlocks?: string[],
+}
 
 const mapStateToProps = (state: AppState) => ({
   boons: state.boons,
@@ -18,7 +25,7 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = {
   onSetBoonActive: (boon: any, active: any) => setBoonActive(boon, active),
-  onSetDisplayInfo: (unlocksBoons: string[]) => setDisplayInfo(unlocksBoons),
+  onSetDisplayInfo: ({requirements = [], unlocks = []}: DisplayInfo) => setDisplayInfo(requirements, unlocks),
   onSetBoonProphecyForetold: (boon: any, prophecyForetold: any) => setBoonProphecyForetold(boon, prophecyForetold),
 };
 
@@ -38,15 +45,15 @@ const BoonCell = ({
   const handleProphecyChange = (event: any) => onSetBoonProphecyForetold(name, !boons[name].prophecyForetold);
 
   const generateBoonCell = (): JSX.Element => {
-    const { active, image, prophecyForetold, unlocked, unlocks } = boons[name];
-    const { unlocksBoons } = display;
+    const { active, image, prophecyForetold, requirements, unlocked, unlocks } = boons[name];
+    const { requiresBoons, unlocksBoons } = display;
 
     const displayRelatedBoons = (show: boolean) => {
-      if (unlocks) {
+      if (unlocks || requirements) {
         if (show) {
-          onSetDisplayInfo(unlocks);
+          onSetDisplayInfo({requirements, unlocks});
         } else {
-          onSetDisplayInfo([]);
+          onSetDisplayInfo({});
         }
       }
     };
@@ -55,15 +62,14 @@ const BoonCell = ({
     prophecyImage.title = `Click to ${prophecyForetold ? 'remove' : 'foretell'} prophecy ${name}`;
 
     let activeClass, activeImage, activeStyle;
-
-    // if (requiresBoons.includes(name)) { // TODO: next commit: requirements (more complex)
-    //   activeImage = boons[Items.Codex_Locked].image;
-    if (unlocksBoons.includes(name)) { // TODO: after this becomes a Set, unlocksBoons.has(name)
+    if (requiresBoons.map(({boons}) => boons).flat().includes(name as Boon)) { // TODO: next commit: requirements (more complex)
+      activeImage = boons[Items.Codex_Locked].image;
+    } else if (unlocksBoons.includes(name)) { // TODO: after this becomes a Set, unlocksBoons.has(name)
       activeImage = boons[Items.Chthonic_Key].image;
     } else {
       activeImage = boons[active ? Items.Active : Items.Inactive].image;
       activeClass = `${unlocked ? '' : 'un'}clickable`;
-      activeImage.title = unlocked ? `Click to ${active ? 'de' : ''}activate ${name}` : `Unlock ${name} before activating`;
+      activeImage.title = unlocked ? `Click to ${active ? 'de' : ''}activate ${name}` : `Unlock ${name} before you can activate`;
       activeStyle = { opacity: `${unlocked ? 1 : .3}` };
     }
 

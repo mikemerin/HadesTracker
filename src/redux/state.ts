@@ -11,6 +11,7 @@ const initialState: AppState = {
   boons: boonInfo,
   colors,
   display: {
+    requiresBoons: [], // TODO: make set, and delimit more complex
     unlocksBoons: [], // TODO: make set
   },
   groups: {
