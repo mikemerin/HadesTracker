@@ -1,4 +1,4 @@
-import { AppState } from './domain';
+import { AppState, BoonState } from './domain';
 import {
   boonInfo,
   colors,
@@ -7,8 +7,26 @@ import {
   pageList,
 } from 'data';
 
+const localStorageName = 'boons';
+
+const loadState = (): BoonState | undefined => {
+  try {
+    const localState = localStorage.getItem(localStorageName);
+    return localState ? JSON.parse(localState) : undefined;
+  } catch (err) {
+    return undefined;
+  }
+};
+
+const saveState = (state: BoonState) => {
+  try {
+    const localState = JSON.stringify(state);
+    localStorage.setItem(localStorageName, localState);
+  } catch (err) {}
+}
+
 const initialState: AppState = {
-  boons: boonInfo,
+  boons: loadState() || boonInfo,
   colors,
   display: {
     requiresBoons: [], // TODO: make set, and delimit more complex
@@ -27,4 +45,5 @@ const initialState: AppState = {
 export default initialState;
 export {
   pageList,
+  saveState,
 };
