@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu, Button } from 'semantic-ui-react';
+import { Button, Menu, Segment } from 'semantic-ui-react';
 
 import { setCurrentPage } from 'redux/actions';
 import { AppState } from 'redux/domain';
+
+import ActionButtons from './ActionButtons';
+import LinkButtons from './LinkButtons';
 
 const mapStateToProps = (state: AppState) => ({
   currentPage: state.pages.current,
@@ -24,7 +27,7 @@ const Navbar = ({
 }: Props): JSX.Element => {
   const handlePageChange = (event: any, result: any) => onChangeCurrentPage(result.id);
 
-  const generateButtons = () => (
+  const generatePageButtons = () => (
     pageList.map(({ text, url }) => (
       <Link key={`page${text}`} to={url}>
         <Button
@@ -33,7 +36,6 @@ const Navbar = ({
           id={text}
           active={ currentPage === text }
           color='black'
-          style={{color: '#e8c423'}}
           onClick={handlePageChange}
         >
           { text }
@@ -43,11 +45,15 @@ const Navbar = ({
   );
 
   return (
-    <Menu className='Navbar' color='black' borderless inverted fixed='top'>
-      <Menu.Item name='links'>
-        { generateButtons() }
-      </Menu.Item>
-    </Menu>
+    <Segment inverted>
+      <Menu className='Navbar' color='black' fluid widths={3} inverted pointing fixed='top'>
+        <Menu.Item name='pages'>
+          { generatePageButtons() }
+        </Menu.Item>
+        <ActionButtons />
+        <LinkButtons />
+      </Menu>
+    </Segment>
   )
 }
 

@@ -2,13 +2,9 @@
   text-align: center;
 }
 
-/* .Navbar, .NavbarButton {
-  background-color: #760921 !important;
+.modalText {
+  text-align: center !important;
 }
-
-.NavbarButton .active {
-  background-color: #0000FF !important;
-} */
 
 .Header {
   background-color: #282c34;
@@ -68,4 +64,9 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.NavbarButton {
+  color: #e8c423 !important;
+  font-weight: bold;
 }
