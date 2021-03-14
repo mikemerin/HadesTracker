@@ -62,6 +62,10 @@
   cursor: not-allowed;
 }
 
+.modalButtons {
+  display: flex;
+}
+
 .App-link {
   color: #61dafb;
 }
