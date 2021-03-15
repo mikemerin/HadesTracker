@@ -1,6 +1,5 @@
 import fileDownload from 'js-file-download';
 
-
 import { AppState, BoonState } from './domain';
 import {
   boonInfo,
@@ -15,7 +14,7 @@ const localStorageName = 'boons';
 const getLocalState = (): string | null => localStorage.getItem(localStorageName);
 const setLocalState = (localState: string): void => localStorage.setItem(localStorageName, localState);
 
-const copyLocalStorage = () => {
+const exportLocalStorage = () => {
   const localState = getLocalState();
   if (localState) {
     const dateString = (new Date()).toISOString().replace(/[:.]/g, '');
@@ -57,7 +56,7 @@ const initialState: AppState = {
 
 export default initialState;
 export {
-  copyLocalStorage,
+  exportLocalStorage,
   pageList,
   saveState,
 };

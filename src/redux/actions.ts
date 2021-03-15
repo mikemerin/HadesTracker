@@ -6,6 +6,10 @@ import {
   Requirements,
 } from 'redux/domain';
 
+const resetBoons = createAction(
+  '[Boons] Reset Boons',
+)();
+
 const setBoonActive = createAction(
   '[Boons] Set Boon Active',
   (boon: string, active: boolean) => ({ boon, active })
@@ -37,6 +41,7 @@ const setGroupRowOrder = createAction(
 )();
 
 export {
+  resetBoons,
   setBoonActive,
   setBoonProphecyForetold,
   setBoons,

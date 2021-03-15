@@ -1,6 +1,7 @@
 import { createReducer } from 'typesafe-actions';
 
 import {
+  resetBoons,
   setBoonActive,
   setBoonProphecyForetold,
   setBoons,
@@ -10,7 +11,16 @@ import {
 } from './actions';
 import { AppState } from './domain';
 import initialState from './state';
+import { boonInfo } from 'data';
 import { setUnlocks } from 'utils';
+
+const handleResetBoons = (
+  state: AppState,
+  { payload }: ReturnType<typeof setBoons>,
+): AppState => ({
+  ...state,
+  boons: boonInfo,
+});
 
 const handleSetBoonActive = (
   state: AppState,
@@ -96,6 +106,7 @@ const handleSetGroupRowOrder = (
 });
 
 const rootReducer = createReducer(initialState)
+.handleAction(resetBoons, handleResetBoons)
 .handleAction(setBoonActive, handleSetBoonActive)
 .handleAction(setBoonProphecyForetold, handleSetBoonProphecyForetold)
 .handleAction(setBoons, handleSetBoons)
