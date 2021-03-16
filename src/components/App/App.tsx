@@ -14,9 +14,6 @@ const App = (): JSX.Element => (
       <Route path={['/Boons/Main', '/Boons/Duo', '/Boons/Other', '/Boons/Chaos', '/Boons/Weapons']}>
         <Boons />
       </Route>
-      <Route path='/About'>
-        TBD
-      </Route>
       <Route path='/'>
         <Redirect to='/Boons/Main' />
       </Route>

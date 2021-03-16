@@ -9,10 +9,13 @@ import {
   pageList,
 } from 'data';
 
-const localStorageName = 'boons';
+const localStorageBoons = 'boons';
 
-const getLocalState = (): string | null => localStorage.getItem(localStorageName);
-const setLocalState = (localState: string): void => localStorage.setItem(localStorageName, localState);
+const getLocalState = (): string | null => localStorage.getItem(localStorageBoons);
+const setLocalState = (
+  localState: string,
+  localStorageName: string = localStorageBoons
+): void => localStorage.setItem(localStorageName, localState);
 
 const exportLocalStorage = () => {
   const localState = getLocalState();
@@ -57,6 +60,8 @@ const initialState: AppState = {
 export default initialState;
 export {
   exportLocalStorage,
+  getLocalState,
   pageList,
   saveState,
+  setLocalState,
 };

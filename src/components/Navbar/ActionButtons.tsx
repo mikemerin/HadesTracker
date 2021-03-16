@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Dropdown, Menu } from 'semantic-ui-react';
+import { Button, Menu } from 'semantic-ui-react';
 
 import { resetBoons, setBoons } from 'redux/actions';
 import { AppState, BoonState } from 'redux/domain';
@@ -25,14 +25,15 @@ const ActionButtons = ({
   onSetBoons,
 }: Props): JSX.Element => (
   <Menu.Item name='actions'>
-    <Dropdown className='NavbarButton' text='Data'>
-      <Dropdown.Menu>
-        <Dropdown.Item onClick={() => exportLocalStorage()}>Export</Dropdown.Item>
-        <Dropdown.Item>Import</Dropdown.Item>
-        <Dropdown.Item><ActionModal type='Reset'/></Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-
+    <Button className='NavbarButton' color='black'
+      onClick={() => exportLocalStorage()}>Export Data
+    </Button>
+    <Button className='NavbarButton' color='black'>
+      <ActionModal type='Import'/>
+    </Button>
+    <Button className='NavbarButton' color='black'>
+      <ActionModal type='Reset ALL'/>
+    </Button>
   </Menu.Item>
 );
 

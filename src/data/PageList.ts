@@ -4,7 +4,6 @@ const pageList: Page[] = [
   Pages.Main,
   Pages.Other,
   Pages.Weapons,
-  Pages.About,
 ];
 
 export {

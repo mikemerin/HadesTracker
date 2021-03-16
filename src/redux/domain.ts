@@ -106,7 +106,6 @@ export const Pages = {
   Main: {text: 'Main Gods', url: '/Boons/Main'},
   Other: {text: 'Other Gods', url: '/Boons/Other'},
   Weapons: {text: 'Infernal Arms', url: '/Boons/Weapons'},
-  About: {text: 'About', url: '/About'}
 } as const;
 
 export type Page = typeof Pages[keyof typeof Pages];

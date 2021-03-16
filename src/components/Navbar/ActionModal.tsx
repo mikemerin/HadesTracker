@@ -6,6 +6,8 @@ import { resetBoons, setBoons } from 'redux/actions';
 import { AppState, BoonState } from 'redux/domain';
 import { exportLocalStorage } from 'redux/state';
 
+import { boonFileChecker } from 'utils';
+
 const mapStateToProps = (state: AppState) => ({
   boons: state.boons,
 });
@@ -27,8 +29,25 @@ const ActionModal = ({
 }: Props): JSX.Element => {
   const [open, setOpen] = useState(false)
   const icon: {[key: string]: string} = {
-    Export: 'upload',
-    Reset: 'trash',
+    Import: 'upload',
+    'Reset ALL': 'trash',
+  };
+
+  const importIfValid = () => {
+    const boons = localStorage.getItem('temp');
+    if (boons) {
+      onSetBoons(JSON.parse(boons));
+    }
+  };
+
+  const importInfo = () => {
+    localStorage.removeItem('temp');
+    return (
+      <span>
+        <br /><br />
+        <input type='file' id='file-input' onChange={(e) => boonFileChecker(e)} />
+      </span>
+    );
   };
 
   return (
@@ -38,11 +57,12 @@ const ActionModal = ({
       onOpen={() => setOpen(true)}
       open={open}
       size='mini'
-      trigger={<span>{type}</span>}
+      trigger={<span>{type} Data</span>}
     >
       <Header icon>
         <Icon name={icon[type] as SemanticICONS} />
         {type} Data
+        {type === 'Import' && importInfo()}
       </Header>
       <Modal.Content className='modalText'>Are you sure? You cannot undo this action.</Modal.Content>
       <Modal.Actions className='modalButtons'>
@@ -52,7 +72,11 @@ const ActionModal = ({
         <Button color='red' inverted onClick={() => setOpen(false)}>
           <Icon name='remove' /> No
         </Button>
-        <Button color='green' inverted onClick={() => setOpen(false)}>
+        <Button color='green' inverted onClick={() => {
+          type === 'Import' && importIfValid();
+          type === 'Reset ALL' && onResetBoons();
+          setOpen(false);
+        }}>
           <Icon name='checkmark' /> Yes
         </Button>
       </Modal.Actions>

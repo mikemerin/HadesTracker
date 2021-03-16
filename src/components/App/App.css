@@ -18,7 +18,7 @@
 }
 
 .Main {
-  padding-top: 80px;
+  padding-top: 20px;
 }
 
 .ui.grid > .row > .column {
@@ -29,6 +29,10 @@
 .ui.grid > .row {
   padding-bottom: .1rem;
   padding-top: .1rem;
+}
+
+.ui.item.menu .item {
+  padding: 0 !important;
 }
 
 .rowIcon {
