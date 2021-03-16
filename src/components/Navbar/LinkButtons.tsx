@@ -40,12 +40,12 @@ const LinkButtons = (): JSX.Element => {
         trigger={<Icon name='info' className='NavbarButton clickable'/>}
       >
 
-        <Modal.Header>Hades Tracker</Modal.Header>
-        <Modal.Content image>
+        <Modal.Header>Hades Tracker - Version 1.0.0</Modal.Header>
+        <Modal.Content>
           <Modal.Description>
-            <p>This website was created by ShadowsDieAway</p><br/>
-            <p>It was built with React/Redux/TypeScript and Semantic-UI-React</p><br/>
-            <p>Please use the other icons for game and profile links</p>
+            <p>This website was created by Mike Merin (ShadowsDieAway)</p><br/>
+            <p>Built with React/Redux/TypeScript and Semantic-UI-React</p><br/>
+            <p>Please use the other icons for game and profile links,<br/>including the Github link to see upcoming features!</p>
           </Modal.Description>
         </Modal.Content>
       </Modal>

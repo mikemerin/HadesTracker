@@ -10,17 +10,13 @@ import {
   setGroupRowOrder,
 } from './actions';
 import { AppState } from './domain';
-import initialState from './state';
-import { boonInfo } from 'data';
+import initialState, { defaultState } from './state';
 import { setUnlocks } from 'utils';
 
 const handleResetBoons = (
   state: AppState,
   { payload }: ReturnType<typeof setBoons>,
-): AppState => ({
-  ...state,
-  boons: boonInfo,
-});
+): AppState => defaultState;
 
 const handleSetBoonActive = (
   state: AppState,
@@ -61,7 +57,7 @@ const handleSetBoonProphecyForetold = (
         prophecyForetold,
       }
     }
-  }
+  };
 };
 
 const handleSetBoons = (

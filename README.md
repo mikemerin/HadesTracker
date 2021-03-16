@@ -22,6 +22,9 @@ You can also import/export the data in this app, or reset all data if you are st
     * Stygian soul vs other
     * Fishing rod unlocked
     * Etc.
+  * Apply in-game restrictions/swapping. Examples:
+    * restrictions: if you have Stygius active, all other Arms become locked
+    * swapping: only one special at a time, choosing another deactivates the current special    
 * Data
   * Reset run button (only resets active, keeps prophecy foretold)
 * Advanced info

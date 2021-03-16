@@ -40,8 +40,8 @@ const saveState = (state: BoonState) => {
   } catch (err) {}
 }
 
-const initialState: AppState = {
-  boons: loadState() || boonInfo,
+const defaultState: AppState = {
+  boons: boonInfo,
   colors,
   display: {
     requiresBoons: [], // TODO: make set, and delimit more complex
@@ -57,8 +57,14 @@ const initialState: AppState = {
   },
 };
 
+const initialState: AppState = {
+  ...defaultState,
+  boons: loadState() || defaultState.boons,
+};
+
 export default initialState;
 export {
+  defaultState,
   exportLocalStorage,
   getLocalState,
   pageList,
