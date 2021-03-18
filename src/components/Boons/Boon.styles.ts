@@ -4,6 +4,17 @@ import {
   BoonTables,
 } from 'redux/domain';
 
+export type BoonStyle = {
+  padding:  number,
+  borderRadius: string,
+  backgroundColor: string | undefined,
+  backgroundImage: string | undefined,
+  backgroundSize: string | undefined,
+  backgroundOrigin: string,
+  backgroundPosition: string,
+  backgroundRepeat: string,
+};
+
 type Props = {
   boonKey: string,
   boonRow: string,
@@ -19,7 +30,7 @@ const BoonStyles = ({
   boonRow,
   boonType,
   individualBoon,
-}: Props): any => {
+}: Props): BoonStyle => {
   const { boons } = store.getState() as AppState;
   const isDuo = (boonType === BoonTables.Duo);
   const color = colors[boonKey];

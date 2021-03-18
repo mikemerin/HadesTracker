@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { AppState, Boon, Requirements } from 'redux/domain';
+import { AppState, Boon, BoonState, Requirements } from 'redux/domain';
 import { setLocalState } from 'redux/state';
 
 const tempLocalStorageName = 'temp';
@@ -21,6 +21,23 @@ const boonFileChecker = (changeEvent: ChangeEvent<HTMLInputElement>) => {
   reader.readAsText(file);
 };
 
+const getUnlockedAndActiveBoons = (
+  state: AppState,
+  boons: Boon[],
+  allInactive?: boolean,
+): BoonState => {
+  const stateBoons: BoonState = state.boons;
+  boons.forEach((boon: Boon) => {
+    if (allInactive) {
+      stateBoons[boon].active = false;
+    }
+
+    const { requirements } = stateBoons[boon];
+    stateBoons[boon].unlocked = !requirements || (!allInactive && isUnlocked(state, requirements));
+  });
+  return stateBoons;
+};
+
 const isUnlocked = (
   state: AppState,
   requirements: Requirements[],
@@ -34,20 +51,9 @@ const nameSanitizer = (filename: string): string => {
   return filename.replace(/ /g, '_');
 };
 
-const setUnlocks = (
-  state: AppState,
-  boons: Boon[],
-): AppState => {
-  boons.forEach((boon: Boon) => {
-    const { requirements } = state.boons[boon];
-    state.boons[boon].unlocked = !requirements || isUnlocked(state, requirements);
-  });
-  return state;
-};
-
 export {
   boonFileChecker,
+  getUnlockedAndActiveBoons,
   isUnlocked,
   nameSanitizer,
-  setUnlocks,
 }

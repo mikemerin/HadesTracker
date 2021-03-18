@@ -3,7 +3,13 @@ import { connect } from 'react-redux';
 import { Button, Header, Icon, Modal, SemanticICONS } from 'semantic-ui-react';
 
 import { resetBoons, setBoons } from 'redux/actions';
-import { AppState, BoonState } from 'redux/domain';
+import {
+  AppState,
+  BoonResetType,
+  BoonResetTypes,
+  BoonState,
+  DataActions,
+} from 'redux/domain';
 import { exportLocalStorage } from 'redux/state';
 
 import { boonFileChecker } from 'utils';
@@ -13,7 +19,7 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = {
-  onResetBoons: () => resetBoons(),
+  onResetBoons: (boonResetType: BoonResetType) => resetBoons(boonResetType),
   onSetBoons: (boons: BoonState) => setBoons(boons),
 };
 
@@ -28,9 +34,19 @@ const ActionModal = ({
   type,
 }: Props): JSX.Element => {
   const [open, setOpen] = useState(false)
-  const icon: {[key: string]: string} = {
-    Import: 'upload',
-    'Reset ALL': 'trash',
+  const data: {[key: string]: {[key: string]: string}} = {
+    [DataActions.Import]: {
+      icon: 'upload',
+      text: 'Load an exported file from your computer',
+    },
+    [DataActions.ResetRun]: {
+      icon: 'user times',
+      text: 'Just like your new runs, you\'ll keep your "Prophecy Foretold" info but remove all "Active" boons',
+    },
+    [DataActions.ResetAll]: {
+      icon: 'trash',
+      text: 'This will reset EVERYTHING letting you start from scratch',
+    },
   };
 
   const importIfValid = () => {
@@ -57,13 +73,15 @@ const ActionModal = ({
       onOpen={() => setOpen(true)}
       open={open}
       size='mini'
-      trigger={<span>{type} Data</span>}
+      trigger={<span>{type}</span>}
     >
       <Header icon>
-        <Icon name={icon[type] as SemanticICONS} />
-        {type} Data
-        {type === 'Import' && importInfo()}
+        <Icon name={data[type].icon as SemanticICONS} />
+        {type}
+        {type === DataActions.Import && importInfo()}
       </Header>
+
+      <Modal.Content className='modalText'>{data[type].text}</Modal.Content>
       <Modal.Content className='modalText'>Are you sure? You cannot undo this action.</Modal.Content>
       <Modal.Actions className='modalButtons'>
         <Button color='blue' inverted onClick={() => exportLocalStorage()}>
@@ -73,8 +91,9 @@ const ActionModal = ({
           <Icon name='remove' /> No
         </Button>
         <Button color='green' inverted onClick={() => {
-          type === 'Import' && importIfValid();
-          type === 'Reset ALL' && onResetBoons();
+          type === DataActions.Import && importIfValid();
+          type === DataActions.ResetRun && onResetBoons(BoonResetTypes.Active);
+          type === DataActions.ResetAll && onResetBoons(BoonResetTypes.All);
           setOpen(false);
         }}>
           <Icon name='checkmark' /> Yes

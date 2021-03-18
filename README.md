@@ -15,6 +15,7 @@ You can also import/export the data in this app, or reset all data if you are st
     * When given the three choices during a run, can enter to show what each choice unlocks
 * Each boon:
   * Hover: denote difference between primary/secondary requirements, and combinations
+    * also, slight delay on showing for performance, also cross-fade animation
   * Ability to sort alphabetically vs. appearance
   * Number used/remaining per god
   * Extra requirements
@@ -25,6 +26,16 @@ You can also import/export the data in this app, or reset all data if you are st
   * Apply in-game restrictions/swapping. Examples:
     * restrictions: if you have Stygius active, all other Arms become locked
     * swapping: only one special at a time, choosing another deactivates the current special    
+  * New sections
+    * Weapons: broken free
+    * Pact of Punishment
+      * Harsh Conditions
+      * Slashed Benefits
+    * Customer Loyalty
+    * Dark Reflections: broken free
+    * Keepsakes
+    * Relationships
+      * Number of hearts, 
 * Data
   * Reset run button (only resets active, keeps prophecy foretold)
 * Advanced info

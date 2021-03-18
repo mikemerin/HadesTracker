@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Segment } from 'semantic-ui-react';
 
 import {
   setBoonActive,
@@ -13,14 +14,23 @@ import {
   Requirements,
 } from 'redux/domain';
 
+import { BoonStyle } from './Boon.styles';
+
 type DisplayInfo = {
   requirements?: Requirements[],
   unlocks?: string[],
 }
 
-const mapStateToProps = (state: AppState) => ({
+type OwnProps = {
+  name: Boon,
+  style: BoonStyle,
+}
+
+const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
+  boon: state.boons[ownProps.name],
   boons: state.boons,
   display: state.display,
+  name: ownProps.name,
 });
 
 const mapDispatchToProps = {
@@ -30,50 +40,52 @@ const mapDispatchToProps = {
 };
 
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & {
-  name: string
+  style: any,
 };
 
 const BoonCell = ({
+  boon,
   boons,
   display,
   onSetBoonActive,
   onSetBoonProphecyForetold,
   onSetDisplayInfo,
   name,
+  style,
 }: Props) => {
-  const handleActive = (event: any) => onSetBoonActive(name, !boons[name].active);
-  const handleProphecyChange = (event: any) => onSetBoonProphecyForetold(name, !boons[name].prophecyForetold);
+  const handleActive = (event: any) => onSetBoonActive(name, !boon.active);
+  const handleProphecyChange = (event: any) => onSetBoonProphecyForetold(name, !boon.prophecyForetold);
 
-  const generateBoonCell = (): JSX.Element => {
-    const { active, image, prophecyForetold, requirements, unlocked, unlocks } = boons[name];
-    const { requiresBoons, unlocksBoons } = display;
+  const { active, image, prophecyForetold, requirements, unlocked, unlocks } = boon;
+  const { requiresBoons, unlocksBoons } = display;
 
-    const displayRelatedBoons = (show: boolean) => {
-      if (unlocks || requirements) {
-        if (show) {
-          onSetDisplayInfo({requirements, unlocks});
-        } else {
-          onSetDisplayInfo({});
-        }
+  const displayRelatedBoons = (show: boolean) => {
+    if (unlocks || requirements) {
+      if (show) {
+        onSetDisplayInfo({requirements, unlocks});
+      } else {
+        onSetDisplayInfo({});
       }
-    };
-
-    const prophecyImage = boons[prophecyForetold ? Items.Prophecy_Foretold : Items.Prophecy_Not_Foretold].image;
-    prophecyImage.title = `Click to ${prophecyForetold ? 'remove' : 'foretell'} prophecy ${name}`;
-
-    let activeClass, activeImage, activeStyle;
-    if (requiresBoons.map(({boons}) => boons).flat().includes(name as Boon)) { // TODO: next commit: requirements (more complex)
-      activeImage = boons[Items.Codex_Locked].image;
-    } else if (unlocksBoons.includes(name)) { // TODO: after this becomes a Set, unlocksBoons.has(name)
-      activeImage = boons[Items.Chthonic_Key].image;
-    } else {
-      activeImage = boons[active ? Items.Active : Items.Inactive].image;
-      activeClass = `${unlocked ? '' : 'un'}clickable`;
-      activeImage.title = unlocked ? `Click to ${active ? 'de' : ''}activate ${name}` : `Unlock ${name} before you can activate`;
-      activeStyle = { opacity: `${unlocked ? 1 : .3}` };
     }
+  };
 
-    return (
+  const prophecyImage = boons[prophecyForetold ? Items.Prophecy_Foretold : Items.Prophecy_Not_Foretold].image;
+  prophecyImage.title = `Click to ${prophecyForetold ? 'remove' : 'foretell'} prophecy ${name}`;
+
+  let activeClass, activeImage, activeStyle;
+  if (requiresBoons.map(({boons}) => boons).flat().includes(name as Boon)) { // TODO: next commit: requirements (more complex)
+    activeImage = boons[Items.Codex_Locked].image;
+  } else if (unlocksBoons.includes(name)) { // TODO: after this becomes a Set, unlocksBoons.has(name)
+    activeImage = boons[Items.Chthonic_Key].image;
+  } else {
+    activeImage = boons[active ? Items.Active : Items.Inactive].image;
+    activeClass = `${unlocked ? '' : 'un'}clickable`;
+    activeImage.title = unlocked ? `Click to ${active ? 'de' : ''}activate ${name}` : `Unlock ${name} before you can activate`;
+    activeStyle = { opacity: `${unlocked ? 1 : .3}` };
+  }
+
+  return (
+    <Segment style={{...style}}>
       <table className='boonCellTable'>
         <tbody>
           <tr>
@@ -94,11 +106,7 @@ const BoonCell = ({
           </tr>
         </tbody>
       </table>
-    );
-  };
-
-  return (
-    generateBoonCell()
+    </Segment>
   );
 };
 

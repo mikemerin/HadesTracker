@@ -9,14 +9,32 @@ import {
   setDisplayInfo,
   setGroupRowOrder,
 } from './actions';
-import { AppState } from './domain';
+import { AppState, Boon, BoonResetTypes } from './domain';
 import initialState, { defaultState } from './state';
-import { setUnlocks } from 'utils';
+import { getUnlockedAndActiveBoons } from 'utils';
 
 const handleResetBoons = (
   state: AppState,
-  { payload }: ReturnType<typeof setBoons>,
-): AppState => defaultState;
+  { payload }: ReturnType<typeof resetBoons>,
+): AppState => {
+  const { boonResetType } = payload;
+  switch(boonResetType) {
+    case BoonResetTypes.All:
+      return defaultState();
+    case BoonResetTypes.Active:
+      const allBoons = Object.keys(state.boons) as Boon[];
+      return {
+        ...state,
+        boons: getUnlockedAndActiveBoons(state, allBoons, true),
+        pages: {
+          ...state.pages,
+          current: state.pages.current,
+        }
+      };
+    default:
+      return state;
+  };
+};
 
 const handleSetBoonActive = (
   state: AppState,
@@ -38,7 +56,10 @@ const handleSetBoonActive = (
 
   const { unlocks } = state.boons[boon];
   if (unlocks) {
-    newState = setUnlocks(newState, unlocks);
+    return {
+      ...newState,
+      boons: getUnlockedAndActiveBoons(newState, unlocks),
+    }
   }
   return newState;
 };

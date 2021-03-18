@@ -8,8 +8,6 @@ import BoonHeader from './BoonHeader';
 import BoonRowGroup from './BoonRowGroup';
 
 const mapStateToProps = (state: AppState) => ({
-  boons: state.boons,
-  currentPage: state.pages.current,
   groupBoons: state.groups.boons,
   groupRowOrder: state.groups.rowOrder,
 });
@@ -20,8 +18,6 @@ type Props = ReturnType<typeof mapStateToProps> & {
 };
 
 const BoonTable = ({
-  boons,
-  currentPage,
   groupBoons,
   groupRowOrder,
   boonType,

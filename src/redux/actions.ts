@@ -1,6 +1,7 @@
 import { createAction } from 'typesafe-actions';
 
 import {
+  BoonResetType,
   BoonState,
   GroupRowOrder,
   Requirements,
@@ -8,6 +9,7 @@ import {
 
 const resetBoons = createAction(
   '[Boons] Reset Boons',
+  (boonResetType: BoonResetType) => ({ boonResetType })
 )();
 
 const setBoonActive = createAction(

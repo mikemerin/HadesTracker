@@ -110,6 +110,15 @@ export const Pages = {
 
 export type Page = typeof Pages[keyof typeof Pages];
 
+export const DataActions = {
+  Export: 'Export Data',
+  Import: 'Import Data',
+  ResetAll: 'Reset ALL Data',
+  ResetRun: 'Reset Run Data',
+} as const;
+
+export type DataAction = typeof DataActions[keyof typeof DataActions];
+
 export type Image = {
   src: string,
   alt: string,
@@ -134,6 +143,14 @@ export type BoonInfo = {
   unlocked: boolean,
   prophecyForetold: boolean,
 }
+
+export const BoonResetTypes = {
+  Active: 'active',
+  All: 'all',
+  Boons: 'boons',
+} as const;
+
+export type BoonResetType = typeof BoonResetTypes[keyof typeof BoonResetTypes];
 
 export type GroupBoons = {
   // boonGroup: eg.: Gods.___, Weapons.___, etc.

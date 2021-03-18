@@ -40,7 +40,7 @@ const saveState = (state: BoonState) => {
   } catch (err) {}
 }
 
-const defaultState: AppState = {
+const defaultState = (): AppState => ({
   boons: boonInfo,
   colors,
   display: {
@@ -55,11 +55,11 @@ const defaultState: AppState = {
     current: pageList.find(({url}) => url === window.location.pathname)?.text || 'Main Boons',
     list: pageList,
   },
-};
+});
 
 const initialState: AppState = {
-  ...defaultState,
-  boons: loadState() || defaultState.boons,
+  ...defaultState(),
+  ...(loadState() && {boons: loadState()}),
 };
 
 export default initialState;
