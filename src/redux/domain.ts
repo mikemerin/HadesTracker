@@ -114,7 +114,7 @@ export const DataActions = {
   Export: 'Export Data',
   Import: 'Import Data',
   ResetAll: 'Reset ALL Data',
-  ResetRun: 'Reset Run Data',
+  ResetRun: 'Reset Run',
 } as const;
 
 export type DataAction = typeof DataActions[keyof typeof DataActions];
