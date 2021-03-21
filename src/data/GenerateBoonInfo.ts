@@ -1,6 +1,6 @@
 import {
   Boon,
-  BoonRequirements,
+  BoonRow,
   BoonState,
   BoonTables,
   Gods,
@@ -9,15 +9,14 @@ import {
   Requirements,
   Weapons
 } from 'redux/domain';
+import { boonRequirements } from './BoonRequirements';
+import { boonRestrictionGroups } from './BoonRestrictionGroups';
 import { nameSanitizer } from 'utils';
 
-type Props = {
-  groupBoons: GroupBoons,
-  boonRequirements: BoonRequirements[]
-};
-
-const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
-  const boons: BoonState = {};
+const generateBoonInfo = (groupBoons: GroupBoons) => {
+  const boonState: BoonState = {};
+  const restrictedBoonList: {[key: string]: Boon[]} = {};
+  boonRestrictionGroups.forEach((boonRestrictionGroup) => restrictedBoonList[boonRestrictionGroup] = []);
 
   const paths: {[key: string]: string} = {
     [BoonTables.Aspects]: 'aspects',
@@ -34,10 +33,11 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
     const src = `${process.env.PUBLIC_URL}/assets/${path}/${nameSanitizer(boon)}.png`;
     const alt = `${boon} ${suffix}`;
     const image: Image = { src, alt };
-    boons[boon] = {
+    boonState[boon] = {
       image,
       active: false,
       unlocked: true,
+      restricted: false,
       prophecyForetold: false,
     };
   };
@@ -46,25 +46,30 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
     Object.entries(boonGroupObj).forEach(([boonGroup, boonRowObj]) => {
       let path = paths[boonGroup] || 'boons';
       Object.keys(boonRowObj).forEach((boonRow) => {
-        const rowBoons = [...boonRowObj[boonRow], ...(boons[boonRow] ? [] : [boonRow])];
-        rowBoons.forEach((boon) => boonLoader(path, boon, 'Icon'));
+        const rowBoons: Boon[] = [...boonRowObj[boonRow], ...(boonState[boonRow] ? [] : [boonRow])] as Boon[];
+        rowBoons.forEach((boon) => {
+          boonLoader(path, boon, 'Icon');
+          if (boonRestrictionGroups.has(boonRow as BoonRow) && boon !== boonRow) {
+            restrictedBoonList[boonRow].push(boon);
+          }
+        });
       });
     });
   });
 
   boonRequirements.forEach(({boon, requirements}) => {
-    boons[boon] = {
-      ...boons[boon],
+    boonState[boon] = {
+      ...boonState[boon],
       requirements,
       unlocked: false,
     }
 
-    requirements.forEach((requirements: Requirements) => {
+  requirements.forEach((requirements: Requirements) => {
       requirements.boons.forEach((requiredBoon: Boon) => {
-        boons[requiredBoon] = {
-          ...boons[requiredBoon],
+        boonState[requiredBoon] = {
+          ...boonState[requiredBoon],
           unlocks: [
-            ...(boons[requiredBoon].unlocks || []),
+            ...(boonState[requiredBoon].unlocks || []),
             boon,
           ],
         };
@@ -75,7 +80,13 @@ const generateBoonInfo = ({groupBoons, boonRequirements}: Props) => {
   Object.values(Weapons).forEach((weapon) => boonLoader('weapons', weapon, 'Symbol'));
   Object.values(Gods).forEach((god) => boonLoader('gods', god, 'Symbol'));
 
-  return boons;
+  Object.values(restrictedBoonList).forEach((boons) => {
+    boons.forEach((boon, index) => {
+      boonState[boon].restrictions = [...boons.slice(0, index), ...boons.slice(index + 1)];
+    });
+  });
+
+  return boonState;
 };
 
 

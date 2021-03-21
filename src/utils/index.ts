@@ -1,11 +1,11 @@
 import { ChangeEvent } from 'react';
-import { AppState, Boon, BoonState, Requirements } from 'redux/domain';
+import { AppState, Boon, BoonInfo, BoonState, Requirements } from 'redux/domain';
 import { setLocalState } from 'redux/state';
 
 const tempLocalStorageName = 'temp';
 
 const boonFileChecker = (changeEvent: ChangeEvent<HTMLInputElement>) => {
-  //@ts-ignore
+  //@ts-ignore // TODO: fix this ts issue
   var file = changeEvent?.target?.files[0];
   if (!file) {
     return;
@@ -21,23 +21,53 @@ const boonFileChecker = (changeEvent: ChangeEvent<HTMLInputElement>) => {
   reader.readAsText(file);
 };
 
-const getUnlockedAndActiveBoons = (
+const getBoonStatuses = (
   state: AppState,
   boons: Boon[],
   allInactive?: boolean,
 ): BoonState => {
-  const stateBoons: BoonState = state.boons;
+  let stateBoons: BoonState = state.boons;
+
   boons.forEach((boon: Boon) => {
     if (allInactive) {
       stateBoons[boon].active = false;
     }
 
-    const { requirements } = stateBoons[boon];
+    const { requirements, restrictions } = stateBoons[boon];
+
+    const restricted = !restrictions || allInactive ? false : isRestricted(state, restrictions);
+    if (restricted && stateBoons[boon].active) {
+      stateBoons[boon].active = false;
+      stateBoons = getBoonStatuses(state, getRelatedBoons(stateBoons[boon]));
+    }
+    stateBoons[boon].restricted = restricted;
     stateBoons[boon].unlocked = !requirements || (!allInactive && isUnlocked(state, requirements));
   });
   return stateBoons;
 };
 
+const getRelatedBoons = (boon: BoonInfo): Boon[] => {
+  const { restrictions, unlocks } = boon;
+
+  let boonList: Boon[] = [];
+  if (restrictions) {
+    boonList = restrictions;
+  }
+  if (unlocks) {
+    boonList = [...boonList, ...unlocks];
+  }
+
+  return boonList;
+};
+
+const isRestricted = (
+  state: AppState,
+  restrictions: string[],
+): boolean => (
+  !!restrictions.filter((boon) => state.boons[boon].active).length
+);
+
+// TODO: refine to include if >1 boons are required
 const isUnlocked = (
   state: AppState,
   requirements: Requirements[],
@@ -53,7 +83,8 @@ const nameSanitizer = (filename: string): string => {
 
 export {
   boonFileChecker,
-  getUnlockedAndActiveBoons,
+  getBoonStatuses,
+  getRelatedBoons,
   isUnlocked,
   nameSanitizer,
 }

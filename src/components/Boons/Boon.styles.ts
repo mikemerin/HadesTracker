@@ -23,7 +23,7 @@ type Props = {
 };
 
 const { colors } = store.getState() as AppState;
-const fade = '30';
+const fade = 60;
 
 const BoonStyles = ({
   boonKey,
@@ -36,7 +36,7 @@ const BoonStyles = ({
   const color = colors[boonKey];
   const color2 = colors[isDuo ? boonRow : 'background'];
 
-  const { active, unlocked } = boons[individualBoon];
+  const { active, restricted, unlocked } = boons[individualBoon];
 
   let backgroundColor;
   let backgroundImage;
@@ -44,6 +44,8 @@ const BoonStyles = ({
 
   if (!unlocked) {
     backgroundColor = `#000000${fade}`;
+  } else if (restricted) {
+    backgroundImage = `repeating-linear-gradient( to top left, #00000060 15%, #00000030 30%, #00000060 45% )`;
   } else {
     if (active) {
       backgroundImage = `linear-gradient(35deg, ${color}, ${color2})`;

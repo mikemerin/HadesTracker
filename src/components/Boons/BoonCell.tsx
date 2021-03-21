@@ -18,6 +18,7 @@ import { BoonStyle } from './Boon.styles';
 
 type DisplayInfo = {
   requirements?: Requirements[],
+  restrictions?: Boon[],
   unlocks?: string[],
 }
 
@@ -35,7 +36,7 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
 
 const mapDispatchToProps = {
   onSetBoonActive: (boon: any, active: any) => setBoonActive(boon, active),
-  onSetDisplayInfo: ({requirements = [], unlocks = []}: DisplayInfo) => setDisplayInfo(requirements, unlocks),
+  onSetDisplayInfo: ({requirements = [], restrictions = [], unlocks = []}: DisplayInfo) => setDisplayInfo(requirements, restrictions, unlocks),
   onSetBoonProphecyForetold: (boon: any, prophecyForetold: any) => setBoonProphecyForetold(boon, prophecyForetold),
 };
 
@@ -56,13 +57,13 @@ const BoonCell = ({
   const handleActive = (event: any) => onSetBoonActive(name, !boon.active);
   const handleProphecyChange = (event: any) => onSetBoonProphecyForetold(name, !boon.prophecyForetold);
 
-  const { active, image, prophecyForetold, requirements, unlocked, unlocks } = boon;
-  const { requiresBoons, unlocksBoons } = display;
+  const { active, image, prophecyForetold, requirements, restricted, restrictions, unlocked, unlocks } = boon;
+  const { requiresBoons, restrictsBoons, unlocksBoons } = display;
 
   const displayRelatedBoons = (show: boolean) => {
-    if (unlocks || requirements) {
+    if (requirements || restrictions || unlocks) {
       if (show) {
-        onSetDisplayInfo({requirements, unlocks});
+        onSetDisplayInfo({requirements, restrictions, unlocks});
       } else {
         onSetDisplayInfo({});
       }
@@ -70,19 +71,23 @@ const BoonCell = ({
   };
 
   const prophecyImage = boons[prophecyForetold ? Items.Prophecy_Foretold : Items.Prophecy_Not_Foretold].image;
-  prophecyImage.title = `Click to ${prophecyForetold ? 'remove' : 'foretell'} prophecy ${name}`;
+  prophecyImage.title = `${prophecyForetold ? 'Remove' : 'Foretell'} prophecy ${name}`;
 
   let activeClass, activeImage, activeStyle;
   if (requiresBoons.map(({boons}) => boons).flat().includes(name as Boon)) { // TODO: next commit: requirements (more complex)
     activeImage = boons[Items.Codex_Locked].image;
+  } else if (restrictsBoons.includes(name)) { // TODO: after this becomes a Set, restrictsBoons.has(name)
+    activeImage = boons[Items.Restricted].image;
   } else if (unlocksBoons.includes(name)) { // TODO: after this becomes a Set, unlocksBoons.has(name)
     activeImage = boons[Items.Chthonic_Key].image;
   } else {
-    activeImage = boons[active ? Items.Active : Items.Inactive].image;
-    activeClass = `${unlocked ? '' : 'un'}clickable`;
-    activeImage.title = unlocked ? `Click to ${active ? 'de' : ''}activate ${name}` : `Unlock ${name} before you can activate`;
-    activeStyle = { opacity: `${unlocked ? 1 : .3}` };
+    activeImage = boons[active ? Items.Active : restricted ? Items.Restricted : Items.Inactive].image;
+    activeImage.title = unlocked
+      ? `${restricted ? 'Swap to' : active ? 'Deactivate' : 'Activate'} ${name}`
+      : `Unlock ${name} before you can activate it`;
   }
+  activeStyle = { opacity: `${unlocked && !restricted ? 1 : .3}` };
+  activeClass = `${unlocked ? '' : 'un'}clickable`;
 
   return (
     <Segment style={{...style}}>

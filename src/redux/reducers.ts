@@ -11,7 +11,7 @@ import {
 } from './actions';
 import { AppState, Boon, BoonResetTypes } from './domain';
 import initialState, { defaultState } from './state';
-import { getUnlockedAndActiveBoons } from 'utils';
+import { getBoonStatuses, getRelatedBoons } from 'utils';
 
 const handleResetBoons = (
   state: AppState,
@@ -25,7 +25,7 @@ const handleResetBoons = (
       const allBoons = Object.keys(state.boons) as Boon[];
       return {
         ...state,
-        boons: getUnlockedAndActiveBoons(state, allBoons, true),
+        boons: getBoonStatuses(state, allBoons, true),
         pages: {
           ...state.pages,
           current: state.pages.current,
@@ -50,15 +50,17 @@ const handleSetBoonActive = (
         ...state.boons[boon],
         active,
         ...active && { prophecyForetold: true },
+        restricted: false,
       }
     }
   }
 
-  const { unlocks } = state.boons[boon];
-  if (unlocks) {
+  const relatedBoons = getRelatedBoons(state.boons[boon]);
+
+  if (relatedBoons.length) {
     return {
       ...newState,
-      boons: getUnlockedAndActiveBoons(newState, unlocks),
+      boons: getBoonStatuses(newState, relatedBoons),
     }
   }
   return newState;
@@ -107,6 +109,7 @@ const handleSetDisplayInfo = (
   ...state,
   display: {
     requiresBoons: payload.requiresBoons || [],
+    restrictsBoons: payload.restrictsBoons || [],
     unlocksBoons: payload.unlocksBoons || [],
   }
 });

@@ -1,6 +1,7 @@
 import { createAction } from 'typesafe-actions';
 
 import {
+  Boon,
   BoonResetType,
   BoonState,
   GroupRowOrder,
@@ -34,7 +35,11 @@ const setCurrentPage = createAction(
 
 const setDisplayInfo = createAction(
   '[Display] Set Display Info',
-  (requiresBoons: Requirements[], unlocksBoons: string[]) => ({ requiresBoons, unlocksBoons })
+  (
+    requiresBoons: Requirements[],
+    restrictsBoons: Boon[],
+    unlocksBoons: string[]
+  ) => ({ requiresBoons, restrictsBoons, unlocksBoons })
 )();
 
 const setGroupRowOrder = createAction(

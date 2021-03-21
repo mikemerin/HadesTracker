@@ -96,6 +96,7 @@ export const Items = {
   Lambent_Plume: 'Lambent Plume', // TODO: make keepsakes
   Prophecy_Foretold: 'Prophecy Foretold',
   Prophecy_Not_Foretold: 'Prophecy Not Foretold',
+  Restricted: 'Restricted',
   Skeleton_Key: 'Skeleton Key',
   Stygian_Soul: 'Stygian Soul',
 } as const;
@@ -139,8 +140,10 @@ export type BoonInfo = {
   image: Image,
   requirements?: Requirements[],
   unlocks?: Boon[],
+  restrictions?: Boon[],
   active: boolean,
   unlocked: boolean,
+  restricted: boolean,
   prophecyForetold: boolean,
 }
 
@@ -173,6 +176,7 @@ export type BoonState = {
 
 export type Display = {
   requiresBoons: Requirements[],
+  restrictsBoons: Boon[], // TODO: make Set<Boon>
   unlocksBoons: string[], // TODO: make Set<Boon>
 }
 
@@ -188,6 +192,7 @@ export type AppState = {
     current: string,
     list: Page[],
   },
+  version: number,
 };
 
 export {

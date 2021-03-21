@@ -9,7 +9,7 @@ import BoonCell from './BoonCell';
 import { BoonStyles } from './Boon.styles';
 
 const mapStateToProps = (state: AppState) => ({
-  state: state, // BAD! but needed for now
+  state: state, // TODO: BAD! but needed for now
   groupBoons: state.groups.boons,
 });
 
