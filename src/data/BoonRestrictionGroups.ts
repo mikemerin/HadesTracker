@@ -9,6 +9,7 @@ const boonRestrictionGroups = new Set<BoonRow>([
   BoonRows.Cast,
   BoonRows.Dash,
   BoonRows.Call,
+  BoonRows.Aspect,
 ]);
 
 export {
