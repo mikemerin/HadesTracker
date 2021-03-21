@@ -43,7 +43,11 @@ const BoonStyles = ({
   let backgroundSize;
 
   if (!unlocked) {
-    backgroundColor = `#000000${fade}`;
+    if (active) {
+      backgroundImage = `repeating-linear-gradient( to top left, ${color}40 25%, ${color2}20 50%, ${color}40 75% )`;
+    } else {
+      backgroundColor = `#000000${fade}`;
+    }
   } else if (restricted) {
     backgroundImage = `repeating-linear-gradient( to top left, #00000060 15%, #00000030 30%, #00000060 45% )`;
   } else {

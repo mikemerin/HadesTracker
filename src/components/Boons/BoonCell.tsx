@@ -59,6 +59,7 @@ const BoonCell = ({
 
   const { active, image, prophecyForetold, requirements, restricted, restrictions, unlocked, unlocks } = boon;
   const { requiresBoons, restrictsBoons, unlocksBoons } = display;
+  const clickable = active || unlocked;
 
   const displayRelatedBoons = (show: boolean) => {
     if (requirements || restrictions || unlocks) {
@@ -81,13 +82,13 @@ const BoonCell = ({
   } else if (unlocksBoons.includes(name)) { // TODO: after this becomes a Set, unlocksBoons.has(name)
     activeImage = boons[Items.Chthonic_Key].image;
   } else {
+    activeStyle = { opacity: `${unlocked && !restricted ? 1 : .3}` };
     activeImage = boons[active ? Items.Active : restricted ? Items.Restricted : Items.Inactive].image;
-    activeImage.title = unlocked
+    activeImage.title = clickable
       ? `${restricted ? 'Swap to' : active ? 'Deactivate' : 'Activate'} ${name}`
       : `Unlock ${name} before you can activate it`;
   }
-  activeStyle = { opacity: `${unlocked && !restricted ? 1 : .3}` };
-  activeClass = `${unlocked ? '' : 'un'}clickable`;
+  activeClass = `${clickable ? '' : 'un'}clickable`;
 
   return (
     <Segment style={{...style}}>
@@ -102,7 +103,7 @@ const BoonCell = ({
               <img className='rowIcon clickable' {...prophecyImage} alt={prophecyImage.alt} />
             </td>
             <td width='10%'
-              {...(unlocked && { onClick: handleActive })}
+              {...(clickable && { onClick: handleActive })}
               onMouseEnter={() => displayRelatedBoons(true)}
               onMouseLeave={() => displayRelatedBoons(false)}
             >
