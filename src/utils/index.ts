@@ -5,7 +5,7 @@ import { setLocalState } from 'redux/state';
 const tempLocalStorageName = 'temp';
 
 const getBoonHoverText = (
-  boon: Boon,
+  boon: BoonInfo,
   clickable: boolean,
   name: Boon,
 ) => {
@@ -16,7 +16,7 @@ const getBoonHoverText = (
     : `Unlock ${name} before you can activate it`];
 
   if (requirements) {
-    const requirementText = [];
+    const requirementText: string[] = [];
     requirements.map(({ number, boons }) => {
       requirementText.push([`Requires ${number} of the following:`, ...boons].join('\n'))
     });
@@ -99,12 +99,11 @@ const isUnlocked = (
   state: AppState,
   requirements: Requirements[],
 ): boolean => (
-  requirements.every((requirement) => (
-    requirement.boons.filter((boon) => (
-      state.boons[boon].active).length >= requirement.number
-    )
-  )
-));
+  requirements.every((requirement) => {
+    const requiredActiveBoons = requirement.boons.filter((boon) => state.boons[boon].active);
+    return requiredActiveBoons.length >= requirement.number;
+  })
+);
 
 const nameSanitizer = (filename: string): string => {
   return filename.replace(/ /g, '_');
