@@ -15,6 +15,7 @@ import {
 } from 'redux/domain';
 
 import { BoonStyle } from './Boon.styles';
+import { getBoonHoverText } from 'utils';
 
 type DisplayInfo = {
   requirements?: Requirements[],
@@ -84,9 +85,7 @@ const BoonCell = ({
   } else {
     activeStyle = { opacity: `${unlocked && !restricted ? 1 : .3}` };
     activeImage = boons[active ? Items.Active : restricted ? Items.Restricted : Items.Inactive].image;
-    activeImage.title = clickable
-      ? `${restricted ? 'Swap to' : active ? 'Deactivate' : 'Activate'} ${name}`
-      : `Unlock ${name} before you can activate it`;
+    activeImage.title = getBoonHoverText(boon, clickable, name);
   }
   activeClass = `${clickable ? '' : 'un'}clickable`;
 

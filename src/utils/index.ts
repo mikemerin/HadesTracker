@@ -4,6 +4,34 @@ import { setLocalState } from 'redux/state';
 
 const tempLocalStorageName = 'temp';
 
+const getBoonHoverText = (
+  boon: Boon,
+  clickable: boolean,
+  name: Boon,
+) => {
+  const { active, requirements, restricted, unlocks } = boon;
+
+  const baseText = [clickable
+    ? `${restricted ? 'Swap to' : active ? 'Deactivate' : 'Activate'} ${name}`
+    : `Unlock ${name} before you can activate it`];
+
+  if (requirements) {
+    const requirementText = [];
+    requirements.map(({ number, boons }) => {
+      requirementText.push([`Requires ${number} of the following:`, ...boons].join('\n'))
+    });
+    baseText.push(requirementText.join('\n\n'));
+  } else {
+    baseText.push('Requirements: none');
+  }
+
+  if (unlocks) {
+    baseText.push([`Helps unlock the following:`, ...unlocks].join('\n'))
+  }
+
+  return baseText.join('\n\n');
+};
+
 const boonFileChecker = (changeEvent: ChangeEvent<HTMLInputElement>) => {
   //@ts-ignore // TODO: fix this ts issue
   var file = changeEvent?.target?.files[0];
@@ -67,13 +95,14 @@ const isRestricted = (
   !!restrictions.filter((boon) => state.boons[boon].active).length
 );
 
-// TODO: refine to include if >1 boons are required
 const isUnlocked = (
   state: AppState,
   requirements: Requirements[],
 ): boolean => (
   requirements.every((requirement) => (
-    requirement.boons.filter((boon) => state.boons[boon].active).length
+    requirement.boons.filter((boon) => (
+      state.boons[boon].active).length >= requirement.number
+    )
   )
 ));
 
@@ -83,6 +112,7 @@ const nameSanitizer = (filename: string): string => {
 
 export {
   boonFileChecker,
+  getBoonHoverText,
   getBoonStatuses,
   getRelatedBoons,
   isUnlocked,
