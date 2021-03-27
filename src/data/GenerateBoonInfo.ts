@@ -1,6 +1,7 @@
 import {
   Boon,
   BoonRow,
+  BoonRows,
   BoonState,
   BoonTables,
   Gods,
@@ -13,7 +14,7 @@ import { boonRequirements } from './BoonRequirements';
 import { boonRestrictionGroups } from './BoonRestrictionGroups';
 import { nameSanitizer } from 'utils';
 
-const generateBoonInfo = (groupBoons: GroupBoons) => {
+const generateBoonInfo = (groupBoons: GroupBoons): BoonState => {
   const boonState: BoonState = {};
   const restrictedBoonList: {[key: string]: Boon[]} = {};
   boonRestrictionGroups.forEach((boonRestrictionGroup) => restrictedBoonList[boonRestrictionGroup] = []);
@@ -26,29 +27,42 @@ const generateBoonInfo = (groupBoons: GroupBoons) => {
   };
 
   const boonLoader = (
+    owner: string,
     path: string,
     boon: string,
     suffix: string,
   ): void => {
-    const src = `${process.env.PUBLIC_URL}/assets/${path}/${nameSanitizer(boon)}.png`;
-    const alt = `${boon} ${suffix}`;
-    const image: Image = { src, alt };
-    boonState[boon] = {
-      image,
-      active: false,
-      unlocked: true,
-      restricted: false,
-      prophecyForetold: false,
+    if (boonState[boon]) {
+      boonState[boon].owners.push(owner);
+    } else {
+      const src = `${process.env.PUBLIC_URL}/assets/${path}/${nameSanitizer(boon)}.png`;
+      const alt = `${boon} ${suffix}`;
+      const image: Image = { src, alt };
+      boonState[boon] = {
+        image,
+        owners: [owner],
+        active: false,
+        prophecyForetold: false,
+        restricted: false,
+        unlocked: true,
+      };
     };
   };
 
-  Object.values(groupBoons).forEach((boonGroupObj) => {
+  Object.entries(groupBoons).forEach(([owner, boonGroupObj]) => {
     Object.entries(boonGroupObj).forEach(([boonGroup, boonRowObj]) => {
       let path = paths[boonGroup] || 'boons';
       Object.keys(boonRowObj).forEach((boonRow) => {
         const rowBoons: Boon[] = [...boonRowObj[boonRow], ...(boonState[boonRow] ? [] : [boonRow])] as Boon[];
-        rowBoons.forEach((boon) => {
-          boonLoader(path, boon, 'Icon');
+        rowBoons.forEach((boon: Boon) => {
+          // TBD: this works here, but later down the line it may need to be handled in the boonLoader as:
+          // if (boonState[boon] && boonState[boon].owners[0] === 'Icon')
+          if ((BoonRows as any)[boon]) {
+            boonLoader('Icon', path, boon, 'Row Icon');
+          } else if (!(Gods as any)[boon]) {
+            boonLoader(owner, path, boon, 'Row Icon');
+          }
+
           if (boonRestrictionGroups.has(boonRow as BoonRow) && boon !== boonRow) {
             restrictedBoonList[boonRow].push(boon);
           }
@@ -62,7 +76,7 @@ const generateBoonInfo = (groupBoons: GroupBoons) => {
       ...boonState[boon],
       requirements,
       unlocked: false,
-    }
+    };
 
   requirements.forEach((requirements: Requirements) => {
       requirements.boons.forEach((requiredBoon: Boon) => {
@@ -77,8 +91,8 @@ const generateBoonInfo = (groupBoons: GroupBoons) => {
     });
   });
 
-  Object.values(Weapons).forEach((weapon) => boonLoader('weapons', weapon, 'Symbol'));
-  Object.values(Gods).forEach((god) => boonLoader('gods', god, 'Symbol'));
+  Object.values(Weapons).forEach((weapon) => boonLoader(weapon, 'weapons', weapon, 'Symbol'));
+  Object.values(Gods).forEach((god) => boonLoader('Gods', 'gods', god, 'Symbol'));
 
   Object.values(restrictedBoonList).forEach((boons) => {
     boons.forEach((boon, index) => {
@@ -88,8 +102,6 @@ const generateBoonInfo = (groupBoons: GroupBoons) => {
 
   return boonState;
 };
-
-
 
 export {
   generateBoonInfo,

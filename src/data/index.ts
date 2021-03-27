@@ -15,8 +15,8 @@ import { weapons } from './Weapons';
 const groupBoons: GroupBoons = deepmerge.all([boonSolos, boonDuos, items, weapons]) as GroupBoons;
 const boonInfoUnsorted = generateBoonInfo(groupBoons);
 const boonInfo = Object.keys(boonInfoUnsorted).sort().reduce((acc, boon) => {
-    acc[boon] = boonInfoUnsorted[boon];
-    return acc;
+  acc[boon] = boonInfoUnsorted[boon];
+  return acc;
 }, {} as BoonState);
 
 export {

@@ -137,14 +137,15 @@ export type BoonRequirements = {
 };
 
 export type BoonInfo = {
-  image: Image,
-  requirements?: Requirements[],
-  unlocks?: Boon[],
-  restrictions?: Boon[],
   active: boolean,
-  unlocked: boolean,
-  restricted: boolean,
+  image: Image,
+  owners: string[],
   prophecyForetold: boolean,
+  requirements?: Requirements[],
+  restricted: boolean,
+  restrictions?: Boon[],
+  unlocked: boolean,
+  unlocks?: Boon[],
 }
 
 export const BoonResetTypes = {

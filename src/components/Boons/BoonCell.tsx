@@ -64,11 +64,7 @@ const BoonCell = ({
 
   const displayRelatedBoons = (show: boolean) => {
     if (requirements || restrictions || unlocks) {
-      if (show) {
-        onSetDisplayInfo({requirements, restrictions, unlocks});
-      } else {
-        onSetDisplayInfo({});
-      }
+      onSetDisplayInfo(show ? {requirements, restrictions, unlocks} : {});
     }
   };
 

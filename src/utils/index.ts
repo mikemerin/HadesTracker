@@ -17,7 +17,7 @@ const getBoonHoverText = (
 
   if (requirements) {
     const requirementText: string[] = [];
-    requirements.map(({ number, boons }) => {
+    requirements.forEach(({ number, boons }) => {
       requirementText.push([`Requires ${number} of the following:`, ...boons].join('\n'))
     });
     baseText.push(requirementText.join('\n\n'));
