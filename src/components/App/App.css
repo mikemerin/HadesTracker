@@ -29,6 +29,10 @@
   padding: 0 !important;
 }
 
+.segment {
+  line-height: 100%;
+}
+
 /* cells and components */
 
 .rowIcon {
@@ -38,6 +42,8 @@
 
 .boonCellTable {
   width: 100%;
+  display: inline-block;
+  margin-top: -2px;
 }
 
 .boonCellTable > tbody > tr > td {
