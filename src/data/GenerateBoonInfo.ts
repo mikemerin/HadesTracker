@@ -23,6 +23,7 @@ const generateBoonInfo = (groupBoons: GroupBoons): BoonState => {
     [BoonTables.Aspects]: 'aspects',
     [BoonTables.Chaos]: 'chaos',
     [BoonTables.Items]: 'items',
+    [BoonTables.TBD]: 'items',
     [BoonTables.Weapon]: 'daedalus',
   };
 

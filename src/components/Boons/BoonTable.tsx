@@ -32,36 +32,33 @@ const BoonTable = ({
     return [...columnHeader, ...boonRows].map((boonRow: string) => {
       const rowHeader = (
         <BoonHeader
+          key={`${boonRow}Header`}
           name={boonRow}
           boonColumns={boonColumns}
           boonType={boonType}
           headerType='row'
         />
       );
-      const columns = boonKeys.map((boonKey: string) => {
-        if (boonRow === 'header') {
-          return (
-            <BoonHeader
+
+      const columns = boonKeys.map((boonKey: string) => (
+        boonRow === 'header'
+          ? <BoonHeader
               key={`${boonKey}${boonRow}ColumnHeader`}
               name={boonKey}
               boonColumns={boonColumns}
               boonType={boonType}
               headerType='column'
             />
-          );
-        } else {
-          return (
-            <BoonRowGroup
+          : <BoonRowGroup
               key={`${boonKey}${boonRow}Column`}
               boonKey={boonKey}
               boonType={boonType}
               boonRow={boonRow}
             />
-          );
-        }
-      });
+      ));
+
       return (
-        <Grid.Row key={boonRow} columns={boonColumns}>
+        <Grid.Row key={`${boonRow}Row`} columns={boonColumns}>
           {rowHeader}
           {columns}
         </Grid.Row>

@@ -90,14 +90,14 @@ const BoonCell = ({
       <table className='boonCellTable'>
         <tbody>
           <tr>
-            <td width='10%' style={{...activeStyle}}>
+            <td width='5%' style={{...activeStyle}}>
               <img className={`rowIcon ${unlocked ? '' : 'greyscale'}`} {...image} alt={image.alt} />
             </td>
-            <td width='70%' className='outlineText'>{name}</td>
-            <td width='10%' onClick={handleProphecyChange}>
+            <td width='85%' className='outlineText'>{name}</td>
+            <td width='5%' onClick={handleProphecyChange}>
               <img className='rowIcon clickable' {...prophecyImage} alt={prophecyImage.alt} />
             </td>
-            <td width='10%'
+            <td width='5%'
               {...(clickable && { onClick: handleActive })}
               onMouseEnter={() => displayRelatedBoons(true)}
               onMouseLeave={() => displayRelatedBoons(false)}

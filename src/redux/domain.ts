@@ -10,6 +10,7 @@ export const BoonTables = {
   Items: 'Items',
   Other: 'Other',
   Solo: 'Solo',
+  TBD: 'TBD',
   Weapon: 'Weapon',
 } as const;
 
@@ -25,9 +26,11 @@ export const BoonRows = {
   Daedalus: 'Daedalus Upgrades',
   Dash: 'Dash',
   Item: 'Item',
+  Keepsakes: 'Keepsakes',
+  Legendary: 'Legendary',
   Other: 'Other',
   Special: 'Special',
-  Legendary: 'Legendary',
+  TBD: 'TBD',
 } as const;
 
 export type BoonRow = typeof BoonRows[keyof typeof BoonRows];
@@ -89,19 +92,46 @@ export type Aspect = typeof Aspects[keyof typeof Aspects];
 
 export const Items = {
   Active: 'Active',
+  Ambrosia: 'Ambrosia',
+  Ammo: 'Ammo',
+  Anvil_of_Fates: 'Anvil of Fates',
+  Centaur_Heart: 'Centaur Heart',
+  Charons_Obol: 'Charon\'s Obol',
   Chthonic_Key: 'Chthonic Key',
   Codex_Locked: 'Codex Locked',
+  Contractor_Item: 'Contractor Item',
+  Curse: 'Curse',
+  Darkness: 'Darkness',
+  Diamond: 'Diamond',
+  Extreme_Measures: 'Extreme Measures',
+  Fated_List: 'Fated List',
+  Gemstone: 'Gemstone',
+  Heat: 'Heat',
   Inactive: 'Inactive',
+  Infernal_Gate: 'Infernal Gate',
   Infernal_Soul: 'Infernal Soul',
+  Keepsakes: 'Keepsakes',
   Lambent_Plume: 'Lambent Plume', // TODO: make keepsakes
+  Loyalty_Card: 'Loyalty Card',
+  Nectar: 'Nectar',
+  Pom_of_Power: 'Pom of Power',
   Prophecy_Foretold: 'Prophecy Foretold',
   Prophecy_Not_Foretold: 'Prophecy Not Foretold',
   Restricted: 'Restricted',
+  Rod_of_Fishing: 'Rod of Fishing',
   Skeleton_Key: 'Skeleton Key',
   Stygian_Soul: 'Stygian Soul',
+  Titan_Blood: 'Titan Blood',
+  Trove_Tracker: 'Trove Tracker',
 } as const;
 
 export type Item = typeof Items[keyof typeof Items];
+
+export const Talents = {
+  ResetRun: 'Reset Run',
+} as const;
+
+export type Talent = typeof Talents[keyof typeof Talents];
 
 export const Pages = {
   Main: {text: 'Main Gods', url: '/Boons/Main'},

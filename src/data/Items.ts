@@ -6,15 +6,21 @@ import {
 } from 'redux/domain';
 
 const items: GroupBoons = {
-  items: {
+  [Items.Fated_List]: {
     [BoonTables.Items]: {
-      [BoonRows.Item]: [
+      [BoonRows.Keepsakes]: [
+        Items.Lambent_Plume,
+      ],
+    },
+    [BoonTables.TBD]: {
+      [BoonRows.TBD]: [
         Items.Active,
         Items.Chthonic_Key,
         Items.Codex_Locked,
+        Items.Fated_List,
         Items.Inactive,
         Items.Infernal_Soul,
-        Items.Lambent_Plume, // TODO: make keepsakes
+        Items.Keepsakes,
         Items.Prophecy_Foretold,
         Items.Prophecy_Not_Foretold,
         Items.Restricted,

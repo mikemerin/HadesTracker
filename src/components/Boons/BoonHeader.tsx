@@ -5,12 +5,17 @@ import { Grid, SemanticWIDTHS } from 'semantic-ui-react';
 import {
   AppState,
   BoonTables,
+  Items,
   Weapons,
 } from 'redux/domain';
 
 const mapStateToProps = (state: AppState) => ({
   boons: state.boons
 });
+
+interface Mapping {
+  [key: string]: string;
+};
 
 type Props = ReturnType<typeof mapStateToProps> & {
   name: string,
@@ -19,7 +24,11 @@ type Props = ReturnType<typeof mapStateToProps> & {
   headerType: string,
 };
 
-const weaponNames: {[key: string]: string} = {
+const nameMaps: Mapping = {
+  [Items.Fated_List]: 'Active Items'
+}
+
+const weaponNames: Mapping  = {
   [Weapons.Blade]: 'Stygius',
   [Weapons.Bow]: 'Coronacht',
   [Weapons.Fists]: 'Malphon',
@@ -53,7 +62,7 @@ const BoonHeader = ({
       );
     } else {
       const size = '40px';
-      const text = name + (boonType === BoonTables.Weapon ? ` (${weaponNames[name]})` : '')
+      const text = (nameMaps[name] || name) + (boonType === BoonTables.Weapon ? ` (${weaponNames[name]})` : '')
       return (
         <Grid.Column key={`${name}Header`}>
           <b>{text}</b>

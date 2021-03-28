@@ -41,10 +41,17 @@ const Boons = ({
     );
   } else {
     return (
-      <>
-        <BoonTable boonType={BoonTables.Solo} />
-        <BoonTable boonType={BoonTables.Duo} hideHeader />
-      </>
+      <Grid key={currentPage} padded>
+        <Grid.Row key={`${currentPage}_row`} columns={16}>
+          <Grid.Column key={'Solo_Duo_Tables'} width={14}>
+            <BoonTable boonType={BoonTables.Solo} />
+            <BoonTable boonType={BoonTables.Duo} hideHeader />
+          </Grid.Column>
+          <Grid.Column key={'Item_Table'} width={2}>
+            <BoonTable boonType={BoonTables.Items} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 
