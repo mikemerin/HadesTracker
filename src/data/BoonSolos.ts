@@ -11,7 +11,7 @@ const boonSolos: GroupBoons = {
     [BoonTables.Solo]: {
       [BoonRows.Attack]: [Boons.Heartbreak_Strike],
       [BoonRows.Special]: [Boons.Heartbreak_Flourish],
-      [BoonRows.Cast]: [Boons.Crush_Shot],
+      [BoonRows.Cast]: [Boons.Crush_Shot, Boons.Passion_Flare],
       [BoonRows.Dash]: [Boons.Passion_Dash],
       [BoonRows.Call]: [Boons.Aphrodites_Aid],
       [BoonRows.Other]: [
@@ -31,7 +31,7 @@ const boonSolos: GroupBoons = {
     [BoonTables.Solo]: {
       [BoonRows.Attack]: [Boons.Curse_of_Agony],
       [BoonRows.Special]: [Boons.Curse_of_Pain],
-      [BoonRows.Cast]: [Boons.Slicing_Shot],
+      [BoonRows.Cast]: [Boons.Slicing_Shot, Boons.Slicing_Flare],
       [BoonRows.Dash]: [Boons.Blade_Dash],
       [BoonRows.Call]: [Boons.Ares_Aid],
       [BoonRows.Other]: [
@@ -51,7 +51,7 @@ const boonSolos: GroupBoons = {
     [BoonTables.Solo]: {
       [BoonRows.Attack]: [Boons.Deadly_Strike],
       [BoonRows.Special]: [Boons.Deadly_Flourish],
-      [BoonRows.Cast]: [Boons.True_Shot],
+      [BoonRows.Cast]: [Boons.True_Shot, Boons.Hunters_Flare],
       [BoonRows.Dash]: [Boons.Hunter_Dash],
       [BoonRows.Call]: [Boons.Artemis_Aid],
       [BoonRows.Other]: [
@@ -70,7 +70,7 @@ const boonSolos: GroupBoons = {
     [BoonTables.Solo]: {
       [BoonRows.Attack]: [Boons.Divine_Strike],
       [BoonRows.Special]: [Boons.Divine_Flourish],
-      [BoonRows.Cast]: [Boons.Phalanx_Shot],
+      [BoonRows.Cast]: [Boons.Phalanx_Shot, Boons.Phalanx_Flare],
       [BoonRows.Dash]: [Boons.Divine_Dash],
       [BoonRows.Call]: [Boons.Athenas_Aid],
       [BoonRows.Other]: [
@@ -123,7 +123,7 @@ const boonSolos: GroupBoons = {
     [BoonTables.Solo]: {
       [BoonRows.Attack]: [Boons.Frost_Strike],
       [BoonRows.Special]: [Boons.Frost_Flourish],
-      [BoonRows.Cast]: [Boons.Crystal_Beam],
+      [BoonRows.Cast]: [Boons.Crystal_Beam, Boons.Icy_Flare],
       [BoonRows.Dash]: [Boons.Mistral_Dash],
       [BoonRows.Call]: [Boons.Demeters_Aid],
       [BoonRows.Other]: [
@@ -184,7 +184,7 @@ const boonSolos: GroupBoons = {
     [BoonTables.Solo]: {
       [BoonRows.Attack]: [Boons.Tempest_Strike],
       [BoonRows.Special]: [Boons.Tempest_Flourish],
-      [BoonRows.Cast]: [Boons.Flood_Shot],
+      [BoonRows.Cast]: [Boons.Flood_Shot, Boons.Flood_Flare],
       [BoonRows.Dash]: [Boons.Tidal_Dash],
       [BoonRows.Call]: [Boons.Poseidons_Aid],
       [BoonRows.Other]: [
@@ -205,7 +205,7 @@ const boonSolos: GroupBoons = {
     [BoonTables.Solo]: {
       [BoonRows.Attack]: [Boons.Lightning_Strike],
       [BoonRows.Special]: [Boons.Thunder_Flourish],
-      [BoonRows.Cast]: [Boons.Electric_Shot],
+      [BoonRows.Cast]: [Boons.Electric_Shot, Boons.Thunder_Flare],
       [BoonRows.Dash]: [Boons.Thunder_Dash],
       [BoonRows.Call]: [Boons.Zeus_Aid],
       [BoonRows.Other]: [

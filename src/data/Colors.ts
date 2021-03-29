@@ -18,6 +18,7 @@ const colors: {[key: string]: string} = {
   [Weapons.Rail]: '#bbae99',
   [Weapons.Shield]: '#d5c327',
   [Weapons.Spear]: '#45a990',
+  // TODO: Active Items
 };
 
 export {

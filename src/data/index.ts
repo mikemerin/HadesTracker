@@ -8,11 +8,11 @@ import { boonSolos } from './BoonSolos';
 import { colors } from './Colors';
 import { generateBoonInfo } from './GenerateBoonInfo';
 import { groupRowOrder } from './GroupRowOrder';
-import { items } from './Items';
+import { activeItems } from './Items';
 import { pageList } from './PageList';
 import { weapons } from './Weapons';
 
-const groupBoons: GroupBoons = deepmerge.all([boonSolos, boonDuos, items, weapons]) as GroupBoons;
+const groupBoons: GroupBoons = deepmerge.all([boonSolos, boonDuos, activeItems, weapons]) as GroupBoons;
 const boonInfoUnsorted = generateBoonInfo(groupBoons);
 const boonInfo = Object.keys(boonInfoUnsorted).sort().reduce((acc, boon) => {
   acc[boon] = boonInfoUnsorted[boon];

@@ -25,7 +25,7 @@ type Props = ReturnType<typeof mapStateToProps> & {
 };
 
 const nameMaps: Mapping = {
-  [Items.Fated_List]: 'Active Items'
+  [Items.Fated_List]: 'Active Items/Aspects'
 }
 
 const weaponNames: Mapping  = {
@@ -48,6 +48,15 @@ const BoonHeader = ({
     const { image } = boons[name] || {};
 
     if (headerType === 'row') {
+      if (!image && name !== 'header') {
+        console.error('can not find the following row:');
+        console.error('name:', name);
+        console.error('boonColumns:', boonColumns);
+        console.error('boonType:', boonType);
+        console.error('headerType:', headerType);
+        return null;
+      }
+
       const size = '20px';
       const width = boonColumns > 5 ? 1 : 2;
       return (
@@ -61,6 +70,15 @@ const BoonHeader = ({
         </Grid.Column>
       );
     } else {
+      if (!image) {
+        console.error('can not find the following header:');
+        console.error('name:', name);
+        console.error('boonColumns:', boonColumns);
+        console.error('boonType:', boonType);
+        console.error('headerType:', headerType);
+        return null;
+      }
+
       const size = '40px';
       const text = (nameMaps[name] || name) + (boonType === BoonTables.Weapon ? ` (${weaponNames[name]})` : '')
       return (

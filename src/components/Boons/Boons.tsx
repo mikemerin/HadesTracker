@@ -43,11 +43,11 @@ const Boons = ({
     return (
       <Grid key={currentPage} padded>
         <Grid.Row key={`${currentPage}_row`} columns={16}>
-          <Grid.Column key={'Solo_Duo_Tables'} width={14}>
+          <Grid.Column key={'Solo_Duo_Tables'} width={13}>
             <BoonTable boonType={BoonTables.Solo} />
             <BoonTable boonType={BoonTables.Duo} hideHeader />
           </Grid.Column>
-          <Grid.Column key={'Item_Table'} width={2}>
+          <Grid.Column key={'Item_Table'} width={3}>
             <BoonTable boonType={BoonTables.Items} />
           </Grid.Column>
         </Grid.Row>

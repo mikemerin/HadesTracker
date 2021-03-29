@@ -1,15 +1,19 @@
 import {
-  Items,
+  Aspects,
   BoonRows,
   BoonTables,
   GroupBoons,
+  Items,
 } from 'redux/domain';
 
-const items: GroupBoons = {
+const activeItems: GroupBoons = {
   [Items.Fated_List]: {
     [BoonTables.Items]: {
       [BoonRows.Keepsakes]: [
         Items.Lambent_Plume,
+      ],
+      [BoonRows.Aspect]: [
+        Aspects.Shield_Beowulf,
       ],
     },
     [BoonTables.TBD]: {
@@ -32,5 +36,5 @@ const items: GroupBoons = {
 };
 
 export {
-  items,
+  activeItems,
 };

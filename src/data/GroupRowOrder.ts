@@ -28,6 +28,7 @@ const groupRowOrder: GroupRowOrder = {
   ],
   [BoonTables.Items]: [
     BoonRows.Keepsakes,
+    BoonRows.Aspect,
   ],
   [BoonTables.Other]: [
     BoonRows.Other,
