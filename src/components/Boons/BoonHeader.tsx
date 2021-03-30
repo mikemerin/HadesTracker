@@ -4,6 +4,7 @@ import { Grid, SemanticWIDTHS } from 'semantic-ui-react';
 
 import {
   AppState,
+  BoonRows,
   BoonTables,
   Items,
   Weapons,
@@ -25,16 +26,18 @@ type Props = ReturnType<typeof mapStateToProps> & {
 };
 
 const nameMaps: Mapping = {
-  [Items.Fated_List]: 'Active Items/Aspects'
+  [Items.Fated_List]: 'Active Items/Aspects',
+  [BoonRows.Aspect]: 'Aspect Unlocks',
+  [BoonRows.Daedalus]: 'Daedalus Upgrades',
 }
 
 const weaponNames: Mapping  = {
-  [Weapons.Blade]: 'Stygius',
-  [Weapons.Bow]: 'Coronacht',
-  [Weapons.Fists]: 'Malphon',
-  [Weapons.Rail]: 'Exagryph',
-  [Weapons.Shield]: 'Aegis',
-  [Weapons.Spear]: 'Varatha',
+  [Weapons.Stygian_Blade]: 'Stygius',
+  [Weapons.Heart_Seeker_Bow]: 'Coronacht',
+  [Weapons.Twin_Fists]: 'Malphon',
+  [Weapons.Adamant_Rail]: 'Exagryph',
+  [Weapons.Shield_of_Chaos]: 'Aegis',
+  [Weapons.Eternal_Spear]: 'Varatha',
 };
 
 const BoonHeader = ({
@@ -54,7 +57,7 @@ const BoonHeader = ({
         console.error('boonColumns:', boonColumns);
         console.error('boonType:', boonType);
         console.error('headerType:', headerType);
-        return null;
+        return <></>;
       }
 
       const size = '20px';
@@ -64,7 +67,7 @@ const BoonHeader = ({
           {name !== 'header' && (
             <table><tbody><tr>
               <td><img {...image} alt={image.alt} width={size} height={size}/></td>
-              <td>{name}</td>
+              <td>{nameMaps[name] || name}</td>
             </tr></tbody></table>
           )}
         </Grid.Column>
@@ -76,7 +79,7 @@ const BoonHeader = ({
         console.error('boonColumns:', boonColumns);
         console.error('boonType:', boonType);
         console.error('headerType:', headerType);
-        return null;
+        return <></>;
       }
 
       const size = '40px';

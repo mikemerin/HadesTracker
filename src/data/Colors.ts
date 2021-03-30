@@ -12,12 +12,12 @@ const colors: {[key: string]: string} = {
   [Gods.Hermes]: '#ffbd8e',
   [Gods.Poseidon]: '#289ad2',
   [Gods.Zeus]: '#ffdc62',
-  [Weapons.Blade]: '#fd3404',
-  [Weapons.Bow]: '#c985e2',
-  [Weapons.Fists]: '#f62c9a',
-  [Weapons.Rail]: '#bbae99',
-  [Weapons.Shield]: '#d5c327',
-  [Weapons.Spear]: '#45a990',
+  [Weapons.Stygian_Blade]: '#fd3404',
+  [Weapons.Heart_Seeker_Bow]: '#c985e2',
+  [Weapons.Twin_Fists]: '#f62c9a',
+  [Weapons.Adamant_Rail]: '#bbae99',
+  [Weapons.Shield_of_Chaos]: '#d5c327',
+  [Weapons.Eternal_Spear]: '#45a990',
   // TODO: Active Items
 };
 

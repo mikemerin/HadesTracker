@@ -1,16 +1,17 @@
-import { Boons } from './domainBoons';
+import { Boons, ChaosBoons } from './domain/boons';
 
 export type Boon = typeof Boons[keyof typeof Boons];
+export type ChaosBoon = typeof ChaosBoons[keyof typeof ChaosBoons];
 
 export const BoonTables = {
   Aspects: 'Aspects',
   Chaos: 'Chaos',
   CustomerLoyalty: 'CustomerLoyalty',
   Duo: 'Duo',
+  Extras: 'Extras',
   Items: 'Items',
   Other: 'Other',
   Solo: 'Solo',
-  TBD: 'TBD',
   Weapon: 'Weapon',
 } as const;
 
@@ -18,19 +19,19 @@ export type BoonTable = typeof BoonTables[keyof typeof BoonTables];
 
 export const BoonRows = {
   Attack: 'Attack',
-  Aspect: 'Aspect Unlocks',
+  Aspect: 'Titan Blood',
   Blessing: 'Blessing',
   Call: 'Call',
   Cast: 'Cast',
   Curse: 'Curse',
-  Daedalus: 'Daedalus Upgrades',
+  Daedalus: 'Daedalus Hammer',
   Dash: 'Dash',
+  Extras: 'Extras',
   Item: 'Item',
   Keepsakes: 'Keepsakes',
   Legendary: 'Legendary',
   Other: 'Other',
   Special: 'Special',
-  TBD: 'TBD',
 } as const;
 
 export type BoonRow = typeof BoonRows[keyof typeof BoonRows];
@@ -51,41 +52,41 @@ export const Gods = {
 export type God = typeof Gods[keyof typeof Gods];
 
 export const Weapons = {
-  Blade: 'Stygian Blade',
-  Bow: 'Heart-Seeker Bow',
-  Fists: 'Twin Fists',
-  Rail: 'Adamant Rail',
-  Shield: 'Shield of Chaos',
-  Spear: 'Eternal Spear',
+  Adamant_Rail: 'Adamant Rail',
+  Eternal_Spear: 'Eternal Spear',
+  Heart_Seeker_Bow: 'Heart Seeker Bow',
+  Shield_of_Chaos: 'Shield of Chaos',
+  Stygian_Blade: 'Stygian Blade',
+  Twin_Fists: 'Twin Fists',
 } as const;
 
 export type Weapon = typeof Weapons[keyof typeof Weapons];
 
 export const Aspects = {
-  Blade_Arthur: 'Aspect of Arthur',
-  Blade_Nemesis: 'Aspect of Nemesis',
-  Blade_Poseidon: 'Aspect of Poseidon',
-  Blade_Zagreus: 'Aspect of Zagreus (Blade)',
-  Bow_Chiron: 'Aspect of Chiron',
-  Bow_Hera: 'Aspect of Hera',
-  Bow_Rama: 'Aspect of Rama',
-  Bow_Zagreus: 'Aspect of Zagreus (Bow)',
-  Fists_Demeter: 'Aspect of Demeter',
-  Fists_Gilgamesh: 'Aspect of Gilgamesh',
-  Fists_Talos: 'Aspect of Talos',
-  Fists_Zagreus: 'Aspect of Zagreus (Fists)',
-  Rail_Eris: 'Aspect of Eris',
-  Rail_Hestia: 'Aspect of Hestia',
-  Rail_Lucifer: 'Aspect of Lucifer',
-  Rail_Zagreus: 'Aspect of Zagreus (Rail)',
-  Shield_Beowulf: 'Aspect of Beowulf',
-  Shield_Chaos: 'Aspect of Chaos',
-  Shield_Zagreus: 'Aspect of Zagreus (Shield)',
-  Shield_Zeus: 'Aspect of Zeus',
-  Spear_Achilles: 'Aspect of Achilles',
-  Spear_Guan_Yu: 'Aspect of Guan Yu',
-  Spear_Hades: 'Aspect of Hades',
-  Spear_Zagreus: 'Aspect of Zagreus (Spear)',
+  Aspect_of_Arthur: 'Aspect of Arthur',
+  Aspect_of_Nemesis: 'Aspect of Nemesis',
+  Aspect_of_Poseidon: 'Aspect of Poseidon',
+  Aspect_of_Zagreus_Blade: 'Aspect of Zagreus (Blade)',
+  Aspect_of_Chiron: 'Aspect of Chiron',
+  Aspect_of_Hera: 'Aspect of Hera',
+  Aspect_of_Rama: 'Aspect of Rama',
+  Aspect_of_Zagreus_Bow: 'Aspect of Zagreus (Bow)',
+  Aspect_of_Demeter: 'Aspect of Demeter',
+  Aspect_of_Gilgamesh: 'Aspect of Gilgamesh',
+  Aspect_of_Talos: 'Aspect of Talos',
+  Aspect_of_Zagreus_Fists: 'Aspect of Zagreus (Fists)',
+  Aspect_of_Eris: 'Aspect of Eris',
+  Aspect_of_Hestia: 'Aspect of Hestia',
+  Aspect_of_Lucifer: 'Aspect of Lucifer',
+  Aspect_of_Zagreus_Rail: 'Aspect of Zagreus (Rail)',
+  Aspect_of_Beowulf: 'Aspect of Beowulf',
+  Aspect_of_Chaos: 'Aspect of Chaos',
+  Aspect_of_Zagreus_Shield: 'Aspect of Zagreus (Shield)',
+  Aspect_of_Zeus: 'Aspect of Zeus',
+  Aspect_of_Achilles: 'Aspect of Achilles',
+  Aspect_of_Guan_Yu: 'Aspect of Guan Yu',
+  Aspect_of_Hades: 'Aspect of Hades',
+  Aspect_of_Zagreus_Spear: 'Aspect of Zagreus (Spear)',
 } as const;
 
 export type Aspect = typeof Aspects[keyof typeof Aspects];
@@ -95,13 +96,19 @@ export const Items = {
   Ambrosia: 'Ambrosia',
   Ammo: 'Ammo',
   Anvil_of_Fates: 'Anvil of Fates',
+  Attack: 'Attack',
+  Blessing: 'Blessing',
+  Call: 'Call',
+  Cast: 'Cast',
   Centaur_Heart: 'Centaur Heart',
   Charons_Obol: 'Charon\'s Obol',
   Chthonic_Key: 'Chthonic Key',
   Codex_Locked: 'Codex Locked',
   Contractor_Item: 'Contractor Item',
   Curse: 'Curse',
+  Daedalus_Hammer: 'Daedalus Hammer',
   Darkness: 'Darkness',
+  Dash: 'Dash',
   Diamond: 'Diamond',
   Extreme_Measures: 'Extreme Measures',
   Fated_List: 'Fated List',
@@ -110,16 +117,21 @@ export const Items = {
   Inactive: 'Inactive',
   Infernal_Gate: 'Infernal Gate',
   Infernal_Soul: 'Infernal Soul',
+  Item: 'Item',
   Keepsakes: 'Keepsakes',
   Lambent_Plume: 'Lambent Plume', // TODO: make keepsakes
+  Legendary: 'Legendary',
   Loyalty_Card: 'Loyalty Card',
   Nectar: 'Nectar',
+  Other: 'Other',
   Pom_of_Power: 'Pom of Power',
   Prophecy_Foretold: 'Prophecy Foretold',
   Prophecy_Not_Foretold: 'Prophecy Not Foretold',
   Restricted: 'Restricted',
   Rod_of_Fishing: 'Rod of Fishing',
   Skeleton_Key: 'Skeleton Key',
+  Special: 'Special',
+  Status_Curse: 'Status Curse',
   Stygian_Soul: 'Stygian Soul',
   Titan_Blood: 'Titan Blood',
   Trove_Tracker: 'Trove Tracker',
@@ -127,11 +139,11 @@ export const Items = {
 
 export type Item = typeof Items[keyof typeof Items];
 
-export const Talents = {
-  ResetRun: 'Reset Run',
-} as const;
-
-export type Talent = typeof Talents[keyof typeof Talents];
+// export const Talents = { // TODO
+//   ResetRun: 'Reset Run',
+// } as const;
+//
+// export type Talent = typeof Talents[keyof typeof Talents];
 
 export const Pages = {
   Main: {text: 'Main Gods', url: '/Boons/Main'},
@@ -228,4 +240,5 @@ export type AppState = {
 
 export {
   Boons,
+  ChaosBoons,
 };

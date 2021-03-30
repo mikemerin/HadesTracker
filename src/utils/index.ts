@@ -106,7 +106,7 @@ const isUnlocked = (
 );
 
 const nameSanitizer = (filename: string): string => {
-  return filename.replace(/ /g, '_');
+  return filename.replace(/ /g, '_').replace(/[()]/g, '');
 };
 
 export {

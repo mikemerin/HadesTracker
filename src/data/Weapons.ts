@@ -8,7 +8,7 @@ import {
 } from 'redux/domain';
 
 const weapons: GroupBoons = {
-  [Weapons.Blade]: {
+  [Weapons.Stygian_Blade]: {
     [BoonTables.Weapon]: {
       [BoonRows.Daedalus]: [
         Boons.Breaching_Slash,
@@ -27,14 +27,14 @@ const weapons: GroupBoons = {
     },
     [BoonTables.Aspects]: {
       [BoonRows.Aspect]: [
-        Aspects.Blade_Zagreus,
-        Aspects.Blade_Nemesis,
-        Aspects.Blade_Poseidon,
-        Aspects.Blade_Arthur,
+        Aspects.Aspect_of_Zagreus_Blade,
+        Aspects.Aspect_of_Nemesis,
+        Aspects.Aspect_of_Poseidon,
+        Aspects.Aspect_of_Arthur,
       ],
     },
   },
-  [Weapons.Spear]: {
+  [Weapons.Eternal_Spear]: {
     [BoonTables.Weapon]: {
       [BoonRows.Daedalus]: [
         Boons.Breaching_Skewer,
@@ -53,14 +53,14 @@ const weapons: GroupBoons = {
     },
     [BoonTables.Aspects]: {
       [BoonRows.Aspect]: [
-        Aspects.Spear_Zagreus,
-        Aspects.Spear_Achilles,
-        Aspects.Spear_Hades,
-        Aspects.Spear_Guan_Yu,
+        Aspects.Aspect_of_Zagreus_Spear,
+        Aspects.Aspect_of_Achilles,
+        Aspects.Aspect_of_Hades,
+        Aspects.Aspect_of_Guan_Yu,
       ],
     },
   },
-  [Weapons.Shield]: {
+  [Weapons.Shield_of_Chaos]: {
     [BoonTables.Weapon]: {
       [BoonRows.Daedalus]: [
         Boons.Breaching_Rush,
@@ -79,14 +79,14 @@ const weapons: GroupBoons = {
     },
     [BoonTables.Aspects]: {
       [BoonRows.Aspect]: [
-        Aspects.Shield_Zagreus,
-        Aspects.Shield_Chaos,
-        Aspects.Shield_Zeus,
-        Aspects.Shield_Beowulf,
+        Aspects.Aspect_of_Zagreus_Shield,
+        Aspects.Aspect_of_Chaos,
+        Aspects.Aspect_of_Zeus,
+        Aspects.Aspect_of_Beowulf,
       ],
     },
   },
-  [Weapons.Bow]: {
+  [Weapons.Heart_Seeker_Bow]: {
     [BoonTables.Weapon]: {
       [BoonRows.Daedalus]: [
         Boons.Chain_Shot,
@@ -105,14 +105,14 @@ const weapons: GroupBoons = {
     },
     [BoonTables.Aspects]: {
       [BoonRows.Aspect]: [
-        Aspects.Bow_Zagreus,
-        Aspects.Bow_Chiron,
-        Aspects.Bow_Hera,
-        Aspects.Bow_Rama,
+        Aspects.Aspect_of_Zagreus_Bow,
+        Aspects.Aspect_of_Chiron,
+        Aspects.Aspect_of_Hera,
+        Aspects.Aspect_of_Rama,
       ],
     },
   },
-  [Weapons.Fists]: {
+  [Weapons.Twin_Fists]: {
     [BoonTables.Weapon]: {
       [BoonRows.Daedalus]: [
         Boons.Breaching_Cross,
@@ -131,14 +131,14 @@ const weapons: GroupBoons = {
     },
     [BoonTables.Aspects]: {
       [BoonRows.Aspect]: [
-        Aspects.Fists_Zagreus,
-        Aspects.Fists_Talos,
-        Aspects.Fists_Demeter,
-        Aspects.Fists_Gilgamesh,
+        Aspects.Aspect_of_Zagreus_Fists,
+        Aspects.Aspect_of_Talos,
+        Aspects.Aspect_of_Demeter,
+        Aspects.Aspect_of_Gilgamesh,
       ],
     },
   },
-  [Weapons.Rail]: {
+  [Weapons.Adamant_Rail]: {
     [BoonTables.Weapon]: {
       [BoonRows.Daedalus]: [
         Boons.Cluster_Bomb,
@@ -157,10 +157,10 @@ const weapons: GroupBoons = {
     },
     [BoonTables.Aspects]: {
       [BoonRows.Aspect]: [
-        Aspects.Rail_Zagreus,
-        Aspects.Rail_Eris,
-        Aspects.Rail_Hestia,
-        Aspects.Rail_Lucifer,
+        Aspects.Aspect_of_Zagreus_Rail,
+        Aspects.Aspect_of_Eris,
+        Aspects.Aspect_of_Hestia,
+        Aspects.Aspect_of_Lucifer,
       ],
     },
   },
