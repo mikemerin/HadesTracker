@@ -34,7 +34,7 @@ const getPath = (boon: string, boonGroup: string): string => {
 
 const generateBoonInfo = (groupBoons: GroupBoons): BoonState => {
   const boonState: BoonState = {};
-  const restrictedBoonList: {[key: string]: Boon[]} = {};
+  const restrictedBoonList: {[key: string]: Boon[]} = {}; // TODO: make set
   boonRestrictionGroups.forEach((boonRestrictionGroup) => restrictedBoonList[boonRestrictionGroup] = []);
 
   const boonLoader = (
@@ -67,13 +67,13 @@ const generateBoonInfo = (groupBoons: GroupBoons): BoonState => {
       Object.keys(boonRowObj).forEach((boonRow) => {
         const rowBoons: Boon[] = [...boonRowObj[boonRow], ...(boonState[boonRow] ? [] : [boonRow])] as Boon[];
         rowBoons.forEach((boon: Boon) => {
-          // TBD: this works here, but later down the line it may need to be handled in the boonLoader as:
-          // if (boonState[boon] && boonState[boon].owners[0] === 'Icon')
-          // if (!(Gods as any)[boon]) {
-            boonLoader(owner, boonGroup, boon);
-          // }
-
-          if (boonRestrictionGroups.has(boonRow as BoonRow) && boon !== boonRow) {
+          boonLoader(owner, boonGroup, boon);
+          if (
+            boonRestrictionGroups.has(boonRow as BoonRow) &&
+            boon !== boonRow &&
+            // TODO: making this a set will eliminate this extra check for duplicates
+            !restrictedBoonList[boonRow].includes(boon)
+          ) {
             restrictedBoonList[boonRow].push(boon);
           }
         });
