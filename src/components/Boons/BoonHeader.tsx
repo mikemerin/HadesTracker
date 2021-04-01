@@ -28,6 +28,7 @@ type Props = ReturnType<typeof mapStateToProps> & {
 const nameMaps: Mapping = {
   [Items.Fated_List]: 'Active Items/Aspects',
   [BoonRows.Aspect]: 'Aspect Unlocks',
+  [BoonRows.Talents]: 'Talents',
   [BoonRows.Daedalus]: 'Daedalus Upgrades',
 }
 

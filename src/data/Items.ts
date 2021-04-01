@@ -6,14 +6,31 @@ import {
   Items,
 } from 'redux/domain';
 
+// TODO:
+// Option A: different Fated_Lists for Main Gods vs. Other Gods vs. Infernal Arms
+// Option B: have a filter for the items based on requirements that populate the side-bar list
+// TODO part 2: bugfix for the aspect restrictions on this extra table vs. the primary aspects
 const items: GroupBoons = {
   [Items.Fated_List]: {
     [BoonTables.Items]: {
+      [BoonRows.Aspect]: [
+        Aspects.Aspect_of_Achilles,
+        Aspects.Aspect_of_Beowulf,
+        Aspects.Aspect_of_Chaos,
+        Aspects.Aspect_of_Gilgamesh,
+        Aspects.Aspect_of_Guan_Yu,
+        Aspects.Aspect_of_Hades,
+        Aspects.Aspect_of_Hera,
+        Aspects.Aspect_of_Lucifer,
+        Aspects.Aspect_of_Talos,
+      ],
+      [BoonRows.Talents]: [
+        Items.Infernal_Soul,
+        Items.Stygian_Soul,
+      ],
       [BoonRows.Keepsakes]: [
         Items.Lambent_Plume,
-      ],
-      [BoonRows.Aspect]: [
-        Aspects.Aspect_of_Beowulf,
+        Items.Sigil_of_the_Dead,
       ],
     },
   },
@@ -59,6 +76,7 @@ const extras: GroupBoons = {
         Items.Prophecy_Not_Foretold,
         Items.Restricted,
         Items.Rod_of_Fishing,
+        Items.Sigil_of_the_Dead, // TODO keepsakes
         Items.Skeleton_Key,
         Items.Special,
         Items.Status_Curse,

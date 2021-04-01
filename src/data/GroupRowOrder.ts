@@ -27,8 +27,9 @@ const groupRowOrder: GroupRowOrder = {
     Gods.Zeus,
   ],
   [BoonTables.Items]: [
-    BoonRows.Keepsakes,
     BoonRows.Aspect,
+    BoonRows.Keepsakes,
+    BoonRows.Talents,
   ],
   [BoonTables.Other]: [
     BoonRows.Other,
