@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 
-import Boons from 'components/Boons';
+import BoonPage from 'components/BoonPage';
 import Navbar from 'components/Navbar';
 
 const App = (): JSX.Element => (
@@ -12,7 +12,7 @@ const App = (): JSX.Element => (
     <div className='Main'>
       <Switch>
       <Route path={['/Boons/Main', '/Boons/Other', '/Boons/Weapons']}>
-        <Boons />
+        <BoonPage />
       </Route>
       <Route path='/'>
         <Redirect to='/Boons/Main' />

@@ -19,6 +19,7 @@ export const Items = {
   Diamond: 'Diamond',
   Extreme_Measures: 'Extreme Measures',
   Fated_List: 'Fated List',
+  Fiery_Presence: 'Fiery Presence', // TODO: make talents
   Gemstone: 'Gemstone',
   Heat: 'Heat',
   Inactive: 'Inactive',
@@ -36,6 +37,7 @@ export const Items = {
   Prophecy_Not_Foretold: 'Prophecy Not Foretold',
   Restricted: 'Restricted',
   Rod_of_Fishing: 'Rod of Fishing',
+  Shadow_Presence: 'Shadow Presence', // TODO: make talents
   Sigil_of_the_Dead: 'Sigil of the Dead', // TODO: make keepsakes
   Skeleton_Key: 'Skeleton Key',
   Special: 'Special',
@@ -46,7 +48,7 @@ export const Items = {
 } as const;
 
 // export const Talents = { // TODO
-//   ResetRun: 'Reset Run',
+//    Fiery_Presence: 'Fiery Presence',
 // } as const;
 //
 // export type Talent = typeof Talents[keyof typeof Talents];

@@ -62,13 +62,12 @@ const BoonHeader = ({
       }
 
       const size = '20px';
-      const width = boonColumns > 5 ? 1 : 2;
       return (
-        <Grid.Column key={`${name}RowHeader`} width={width}>
+        <Grid.Column key={`${name}RowHeader`}>
           {name !== 'header' && (
-            <table><tbody><tr>
-              <td><img {...image} alt={image.alt} width={size} height={size}/></td>
-              <td>{nameMaps[name] || name}</td>
+            <table className='rowHeaderTable'><tbody><tr>
+              <td className='rowTextCell'>{nameMaps[name] || name}</td>
+              <td className='rowIconCell'><img {...image} alt={image.alt} width={size} height={size}/></td>
             </tr></tbody></table>
           )}
         </Grid.Column>

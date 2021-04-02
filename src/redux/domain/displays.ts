@@ -29,7 +29,6 @@ export const BoonTables = {
 } as const;
 
 export const Pages = {
-  Main: {text: 'Main Gods', url: '/Boons/Main'},
-  Other: {text: 'Other Gods', url: '/Boons/Other'},
+  Main: {text: 'Gods', url: '/Boons/Main'},
   Weapons: {text: 'Infernal Arms', url: '/Boons/Weapons'},
 } as const;

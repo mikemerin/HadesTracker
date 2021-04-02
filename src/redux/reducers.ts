@@ -9,7 +9,7 @@ import {
   setDisplayInfo,
   setGroupRowOrder,
 } from './actions';
-import { AppState, Boon, BoonResetTypes } from './domain';
+import { AnyBoon, AppState, BoonResetTypes } from './domain';
 import initialState, { defaultState } from './state';
 import { getBoonStatuses, getRelatedBoons } from 'utils';
 
@@ -22,7 +22,7 @@ const handleResetBoons = (
     case BoonResetTypes.All:
       return defaultState();
     case BoonResetTypes.Active:
-      const allBoons = Object.keys(state.boons) as Boon[];
+      const allBoons = Object.keys(state.boons) as AnyBoon[];
       return {
         ...state,
         boons: getBoonStatuses(state, allBoons, true),

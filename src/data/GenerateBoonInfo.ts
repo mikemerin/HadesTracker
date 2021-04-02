@@ -1,6 +1,6 @@
 import {
+  AnyBoon,
   Aspects,
-  Boon,
   BoonRow,
   BoonState,
   BoonTables,
@@ -34,7 +34,7 @@ const getPath = (boon: string, boonGroup: string): string => {
 
 const generateBoonInfo = (groupBoons: GroupBoons): BoonState => {
   const boonState: BoonState = {};
-  const restrictedBoonList: {[key: string]: Boon[]} = {}; // TODO: make set
+  const restrictedBoonList: {[key: string]: AnyBoon[]} = {}; // TODO: make set
   boonRestrictionGroups.forEach((boonRestrictionGroup) => restrictedBoonList[boonRestrictionGroup] = []);
 
   const boonLoader = (
@@ -65,8 +65,8 @@ const generateBoonInfo = (groupBoons: GroupBoons): BoonState => {
   Object.entries(groupBoons).forEach(([owner, boonGroupObj]) => {
     Object.entries(boonGroupObj).forEach(([boonGroup, boonRowObj]) => {
       Object.keys(boonRowObj).forEach((boonRow) => {
-        const rowBoons: Boon[] = [...boonRowObj[boonRow], ...(boonState[boonRow] ? [] : [boonRow])] as Boon[];
-        rowBoons.forEach((boon: Boon) => {
+        const rowBoons: AnyBoon[] = [...boonRowObj[boonRow], ...(boonState[boonRow] ? [] : [boonRow])] as AnyBoon[];
+        rowBoons.forEach((boon: AnyBoon) => {
           boonLoader(owner, boonGroup, boon);
           if (
             boonRestrictionGroups.has(boonRow as BoonRow) &&
@@ -89,7 +89,7 @@ const generateBoonInfo = (groupBoons: GroupBoons): BoonState => {
     };
 
   requirements.forEach((requirements: Requirements) => {
-      requirements.boons.forEach((requiredBoon: Boon) => {
+      requirements.boons.forEach((requiredBoon: AnyBoon) => {
         boonState[requiredBoon] = {
           ...boonState[requiredBoon],
           unlocks: [

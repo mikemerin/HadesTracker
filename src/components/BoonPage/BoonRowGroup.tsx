@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Segment } from 'semantic-ui-react';
 
-import { AppState, Boon } from 'redux/domain';
+import { AnyBoon, AppState } from 'redux/domain';
 import { nameSanitizer } from 'utils';
 
 import BoonCell from './BoonCell';
@@ -26,7 +26,7 @@ const BoonRowGroup = ({
   groupBoons,
   state,
 }: Props): JSX.Element => {
-  const rowBoons: Boon[] = groupBoons[boonKey][boonType][boonRow] as Boon[];
+  const rowBoons: AnyBoon[] = groupBoons[boonKey][boonType][boonRow] as AnyBoon[];
   const rowGroupId = `${boonKey} ${boonRow} RowGroup`;
   return (
     <Grid.Column key={rowGroupId} id={rowGroupId}>

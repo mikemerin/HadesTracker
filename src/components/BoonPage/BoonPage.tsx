@@ -16,23 +16,10 @@ const mapStateToProps = (state: AppState) => ({
 
 type Props = ReturnType<typeof mapStateToProps>;
 
-const Boons = ({
+const BoonPage = ({
   currentPage,
 }: Props): JSX.Element => {
-  if (currentPage === Pages.Other.text) {
-    return (
-      <Grid key={currentPage} padded>
-        <Grid.Row columns={2} >
-          <Grid.Column>
-            <BoonTable boonType={BoonTables.Other} />
-          </Grid.Column>
-          <Grid.Column>
-            <BoonTable boonType={BoonTables.Chaos} />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    );
-  } else if (currentPage === Pages.Weapons.text) {
+  if (currentPage === Pages.Weapons.text) {
     return (
       <>
         <BoonTable boonType={BoonTables.Weapon} />
@@ -42,12 +29,18 @@ const Boons = ({
   } else {
     return (
       <Grid key={currentPage} padded>
-        <Grid.Row key={`${currentPage}_row`} columns={16}>
-          <Grid.Column key={'Solo_Duo_Tables'} width={13}>
+        <Grid.Row key={`${currentPage}_row`}>
+          <Grid.Column key={'Solo_Duo_Tables'} width={10}>
             <BoonTable boonType={BoonTables.Solo} />
             <BoonTable boonType={BoonTables.Duo} hideHeader />
           </Grid.Column>
-          <Grid.Column key={'Item_Table'} width={3}>
+          <Grid.Column key={'Other_Table'} width={2}>
+            <BoonTable boonType={BoonTables.Other} />
+          </Grid.Column>
+          <Grid.Column key={'Chaos_Table'} width={2}>
+            <BoonTable boonType={BoonTables.Chaos} />
+          </Grid.Column>
+          <Grid.Column key={'Active_Table'} width={2}>
             <BoonTable boonType={BoonTables.Items} />
           </Grid.Column>
         </Grid.Row>
@@ -57,4 +50,4 @@ const Boons = ({
 
 };
 
-export default connect(mapStateToProps)(Boons);
+export default connect(mapStateToProps)(BoonPage);

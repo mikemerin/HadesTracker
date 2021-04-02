@@ -25,13 +25,15 @@ export type Image = {
   title?: string,
 };
 
+export type AnyBoon = Aspect | Boon | ChaosBoon | Item;
+
 export type Requirements = {
   number: number,
-  boons: Boon[],
-}
+  boons: AnyBoon[],
+};
 
 export type BoonRequirements = {
-  boon: Boon,
+  boon: AnyBoon,
   requirements: Requirements[],
 };
 
@@ -42,10 +44,10 @@ export type BoonInfo = {
   prophecyForetold: boolean,
   requirements?: Requirements[],
   restricted: boolean,
-  restrictions?: Boon[],
+  restrictions?: AnyBoon[],
   unlocked: boolean,
-  unlocks?: Boon[],
-}
+  unlocks?: AnyBoon[],
+};
 
 export type GroupBoons = {
   // boonGroup: eg.: Gods.___, Weapons.___, etc.
@@ -68,7 +70,7 @@ export type BoonState = {
 
 export type Display = {
   requiresBoons: Requirements[],
-  restrictsBoons: Boon[], // TODO: make Set<Boon>
+  restrictsBoons: AnyBoon[], // TODO: make Set<Boon>
   unlocksBoons: string[], // TODO: make Set<Boon>
 }
 

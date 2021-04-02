@@ -1,7 +1,7 @@
 import { createAction } from 'typesafe-actions';
 
 import {
-  Boon,
+  AnyBoon,
   BoonResetType,
   BoonState,
   GroupRowOrder,
@@ -37,7 +37,7 @@ const setDisplayInfo = createAction(
   '[Display] Set Display Info',
   (
     requiresBoons: Requirements[],
-    restrictsBoons: Boon[],
+    restrictsBoons: AnyBoon[],
     unlocksBoons: string[]
   ) => ({ requiresBoons, restrictsBoons, unlocksBoons })
 )();

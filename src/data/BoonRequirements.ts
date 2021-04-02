@@ -1,18 +1,30 @@
-import { Boons, BoonRequirements } from 'redux/domain';
+import { Boons, ChaosBoons, BoonRequirements, Items } from 'redux/domain';
 
 const boonRequirements: BoonRequirements[] = [
+  {
+    boon: ChaosBoons.Ambush,
+    requirements: [
+      { number: 1, boons: [Items.Shadow_Presence] },
+    ],
+  },
   {
     boon: Boons.Arctic_Blast,
     requirements: [
       { number: 1, boons: [Boons.Frost_Strike, Boons.Frost_Flourish, Boons.Mistral_Dash, Boons.Demeters_Aid, Boons.Snow_Burst] },
     ],
   },
-  // {
-  //   boon: Boons.Auto_Reload,
-  //   requirements: [
-  //     // { number: 1, boons: [Items.Stygian_Soul] }, // TODO: add alt RequiredBoonCounts
-  //   ],
-  // },
+  {
+    boon: ChaosBoons.Assault,
+    requirements: [
+      { number: 1, boons: [Items.Fiery_Presence] },
+    ],
+  },
+  {
+    boon: Boons.Auto_Reload,
+    requirements: [
+      { number: 1, boons: [Items.Stygian_Soul] },
+    ],
+  },
   {
     boon: Boons.Bad_Influence,
     requirements: [
@@ -22,15 +34,14 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Bad_News,
     requirements: [
-      // { number: 1, boons: [Items.Stygian_Soul] }, // TODO: add alt RequiredBoonCounts
-      // { number: 1, boons: [Boons.Auto_Reload, Items.Lambent_Plume] }, // TODO: add item
-      { number: 1, boons: [Boons.Auto_Reload] },
+      { number: 1, boons: [Items.Stygian_Soul] },
+      { number: 1, boons: [Boons.Auto_Reload, Items.Lambent_Plume] },
     ],
   },
   {
     boon: Boons.Black_Metal,
     requirements: [
-      { number: 1, boons: [Boons.Slicing_Shot, Boons.Blade_Dash, Boons.Ares_Aid] },
+      { number: 1, boons: [Boons.Slicing_Shot, Boons.Slicing_Flare, Boons.Blade_Dash, Boons.Ares_Aid] },
     ],
   },
   {
@@ -43,26 +54,26 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Blinding_Flash,
     requirements: [
-      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Divine_Dash] },
+      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Phalanx_Flare, Boons.Divine_Dash] },
     ],
   },
   {
     boon: Boons.Blizzard_Shot,
     requirements: [
       { number: 1, boons: [Boons.Frost_Strike, Boons.Frost_Flourish, Boons.Mistral_Dash, Boons.Demeters_Aid] },
-      { number: 1, boons: [Boons.Flood_Shot] },
+      { number: 1, boons: [Boons.Flood_Shot, Boons.Flood_Flare] },
     ],
   },
   {
     boon: Boons.Blown_Kiss,
     requirements: [
-      { number: 1, boons: [Boons.Crush_Shot] },
+      { number: 1, boons: [Boons.Crush_Shot, Boons.Passion_Flare] },
     ],
   },
   {
     boon: Boons.Breaking_Wave,
     requirements: [
-      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
+      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
     ],
   },
   {
@@ -74,7 +85,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Broken_Resolve,
     requirements: [
-      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Dash] },
+      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash] },
     ],
   },
   {
@@ -87,13 +98,13 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Clean_Kill,
     requirements: [
-      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Artemis_Aid, Boons.Pressure_Points] },
+      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Artemis_Aid, Boons.Pressure_Points] },
     ],
   },
   {
     boon: Boons.Cold_Embrace,
     requirements: [
-      { number: 1, boons: [Boons.Crystal_Beam] },
+      { number: 1, boons: [Boons.Crystal_Beam, Boons.Icy_Flare] },
       { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Passion_Dash, Boons.Aphrodites_Aid] },
     ],
   },
@@ -108,21 +119,21 @@ const boonRequirements: BoonRequirements[] = [
     boon: Boons.Crystal_Clarity,
     requirements: [
       { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.Hunter_Dash, Boons.Artemis_Aid] },
-      { number: 1, boons: [Boons.Crystal_Beam] },
+      { number: 1, boons: [Boons.Crystal_Beam, Boons.Icy_Flare] },
     ],
   },
   {
     boon: Boons.Curse_of_Drowning,
     requirements: [
       { number: 1, boons: [Boons.Curse_of_Agony, Boons.Curse_of_Pain, Boons.Blade_Dash, Boons.Ares_Aid] },
-      { number: 1, boons: [Boons.Flood_Shot] },
+      { number: 1, boons: [Boons.Flood_Shot, Boons.Flood_Flare] },
     ],
   },
   {
     boon: Boons.Curse_of_Longing,
     requirements: [
       { number: 1, boons: [Boons.Curse_of_Agony, Boons.Curse_of_Pain] },
-      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Dash] },
+      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash] },
     ],
   },
   {
@@ -135,14 +146,14 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Deadly_Reversal,
     requirements: [
-      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Artemis_Aid] },
+      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Artemis_Aid] },
       { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish] },
     ],
   },
   {
     boon: Boons.Deathless_Stand,
     requirements: [
-      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Divine_Dash] },
+      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Phalanx_Flare, Boons.Divine_Dash] },
     ],
   },
   {
@@ -166,38 +177,38 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Empty_Inside,
     requirements: [
-      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Dash] },
+      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash] },
     ],
   },
   {
     boon: Boons.Engulfing_Vortex,
     requirements: [
-      { number: 1, boons: [Boons.Slicing_Shot, Boons.Blade_Dash, Boons.Ares_Aid] },
+      { number: 1, boons: [Boons.Slicing_Shot, Boons.Slicing_Flare, Boons.Blade_Dash, Boons.Ares_Aid] },
     ],
   },
   {
     boon: Boons.Exclusive_Access,
     requirements: [
-      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
+      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
       { number: 1, boons: [Boons.Drunken_Strike, Boons.Drunken_Flourish, Boons.Trippy_Shot, Boons.Trippy_Flare, Boons.Drunken_Dash, Boons.Dionysus_Aid] },
     ],
   },
   {
     boon: Boons.Exit_Wounds,
     requirements: [
-      { number: 1, boons: [Boons.True_Shot, Boons.Flood_Shot, Boons.Electric_Shot, Boons.Crush_Shot, Boons.Phalanx_Shot] },
+      { number: 1, boons: [Boons.True_Shot, Boons.Hunters_Flare, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Electric_Shot, Boons.Thunder_Flare, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Phalanx_Shot, Boons.Phalanx_Flare] },
     ],
   },
-  // {
-  //   boon: Boons.Flurry_Cast,
-  //   requirements: [
-  //     // { number: 1, boons: [Items.Infernal_Soul] }, // TODO: add alt RequiredBoonCounts
-  //   ],
-  // },
+  {
+    boon: Boons.Flurry_Cast,
+    requirements: [
+      { number: 1, boons: [Items.Infernal_Soul] },
+    ],
+  },
   {
     boon: Boons.Freezing_Vortex,
     requirements: [
-      { number: 1, boons: [Boons.Slicing_Shot] },
+      { number: 1, boons: [Boons.Slicing_Shot, Boons.Slicing_Flare] },
       { number: 1, boons: [Boons.Frost_Strike, Boons.Frost_Flourish, Boons.Mistral_Dash, Boons.Demeters_Aid] },
     ],
   },
@@ -210,28 +221,27 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Glacial_Glare,
     requirements: [
-      { number: 1, boons: [Boons.Crystal_Beam] },
+      { number: 1, boons: [Boons.Crystal_Beam, Boons.Icy_Flare] },
     ],
   },
   {
     boon: Boons.Greater_Recall,
     requirements: [
-      // { number: 1, boons: [Items.Infernal_Soul] }, // TODO: add alt RequiredBoonCounts
-      // { number: 1, boons: [Boons.Flurry_Cast, Boons.Quick_Reload, Items.Lambent_Plume] }, // TODO: add item
-      { number: 1, boons: [Boons.Flurry_Cast, Boons.Quick_Reload] },
+      { number: 1, boons: [Items.Infernal_Soul] },
+      { number: 1, boons: [Boons.Flurry_Cast, Boons.Quick_Reload, Items.Lambent_Plume] },
     ],
   },
   {
     boon: Boons.Heart_Rend,
     requirements: [
-      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot] },
-      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Dash] },
+      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare] },
+      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash] },
     ],
   },
   {
     boon: Boons.Hide_Breaker,
     requirements: [
-      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Artemis_Aid, Boons.Pressure_Points] },
+      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Artemis_Aid, Boons.Pressure_Points] },
     ],
   },
   {
@@ -256,19 +266,19 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Hunter_Instinct,
     requirements: [
-      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Pressure_Points] },
+      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Pressure_Points] },
     ],
   },
   {
     boon: Boons.Hunters_Mark,
     requirements: [
-      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Artemis_Aid, Boons.Pressure_Points] },
+      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Artemis_Aid, Boons.Pressure_Points] },
     ],
   },
   {
     boon: Boons.Hunting_Blades,
     requirements: [
-      { number: 1, boons: [Boons.Slicing_Shot] },
+      { number: 1, boons: [Boons.Slicing_Shot, Boons.Slicing_Flare] },
       { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.Hunter_Dash, Boons.Artemis_Aid] },
     ],
   },
@@ -294,29 +304,29 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Last_Stand,
     requirements: [
-      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Divine_Dash] },
+      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Phalanx_Flare, Boons.Divine_Dash] },
     ],
   },
   {
     boon: Boons.Lightning_Rod,
     requirements: [
       // { number: 1, boons: [Items.Infernal_Soul] }, // TODO: add alt RequiredBoonCounts
-      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunter_Dash, Boons.Artemis_Aid] },
-      { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Dash, Boons.Zeus_Aid] },
+      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Hunter_Dash, Boons.Artemis_Aid] },
+      { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Flare, Boons.Thunder_Dash, Boons.Zeus_Aid] },
     ],
   },
   {
     boon: Boons.Lightning_Phalanx,
     requirements: [
       { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Thunder_Dash, Boons.Zeus_Aid] },
-      { number: 1, boons: [Boons.Phalanx_Shot] },
+      { number: 1, boons: [Boons.Phalanx_Shot, Boons.Phalanx_Flare] },
     ],
   },
   {
     boon: Boons.Low_Tolerance,
     requirements: [
       { number: 1, boons: [Boons.Drunken_Strike, Boons.Drunken_Flourish, Boons.Drunken_Dash, Boons.Dionysus_Aid] },
-      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Dash] },
+      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash] },
     ],
   },
   {
@@ -329,8 +339,8 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Mirage_Shot,
     requirements: [
-      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Artemis_Aid] },
-      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
+      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Artemis_Aid] },
+      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
     ],
   },
   {
@@ -342,8 +352,8 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Parting_Shot,
     requirements: [
-      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Divine_Dash, Boons.Athenas_Aid] },
-      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Dash, Boons.Aphrodites_Aid] },
+      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Phalanx_Flare, Boons.Divine_Dash, Boons.Athenas_Aid] },
+      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash, Boons.Aphrodites_Aid] },
     ],
   },
   {
@@ -352,16 +362,22 @@ const boonRequirements: BoonRequirements[] = [
       { number: 1, boons: [Boons.Drunken_Strike, Boons.Drunken_Flourish, Boons.Drunken_Dash] },
     ],
   },
-  // {
-  //   boon: Boons.Quick_Reload,
-  //   requirements: [
-  //     // { number: 1, boons: [Items.Infernal_Soul] }, // TODO: add alt RequiredBoonCounts
-  //   ],
-  // },
+  {
+    boon: Boons.Quick_Favor,
+    requirements: [
+      { number: 1, boons: [Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
+    ],
+  },
+  {
+    boon: Boons.Quick_Reload,
+    requirements: [
+      { number: 1, boons: [Items.Infernal_Soul] },
+    ],
+  },
   {
     boon: Boons.Razor_Shoals,
     requirements: [
-      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
+      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
     ],
   },
   {
@@ -373,36 +389,35 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Rush_Delivery,
     requirements: [
-      // { number: 1, boons: [Boons.Greater_Haste, Boons.Hyper_Sprint, Items.Lambent_Plume] }, // TODO: add item
-      { number: 1, boons: [Boons.Greater_Haste, Boons.Hyper_Sprint] },
+      { number: 1, boons: [Boons.Greater_Haste, Boons.Hyper_Sprint, Items.Lambent_Plume] },
     ],
   },
   {
     boon: Boons.Scintillating_Feast,
     requirements: [
       { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Thunder_Dash, Boons.Zeus_Aid] },
-      { number: 1, boons: [Boons.Trippy_Shot] },
+      { number: 1, boons: [Boons.Trippy_Shot, Boons.Trippy_Flare] },
     ],
   },
   {
     boon: Boons.Sea_Storm,
     requirements: [
-      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Poseidons_Aid] },
-      { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Dash, Boons.Zeus_Aid] },
+      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Poseidons_Aid] },
+      { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Flare, Boons.Thunder_Dash, Boons.Zeus_Aid] },
     ],
   },
   {
     boon: Boons.Second_Wave,
     requirements: [
       { number: 1, boons: [Boons.Typhoons_Fury, Boons.Breaking_Wave] },
-      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
+      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
     ],
   },
   {
     boon: Boons.Smoldering_Air,
     requirements: [
-      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Dash, Boons.Aphrodites_Aid] },
-      { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Dash, Boons.Zeus_Aid] },
+      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash, Boons.Aphrodites_Aid] },
+      { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Flare, Boons.Thunder_Dash, Boons.Zeus_Aid] },
     ],
   },
   {
@@ -415,45 +430,45 @@ const boonRequirements: BoonRequirements[] = [
     boon: Boons.Splitting_Headache,
     requirements: [
       { number: 1, boons: [Boons.Drunken_Strike, Boons.Drunken_Flourish, Boons.Drunken_Dash, Boons.Dionysus_Aid] },
-      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Artemis_Aid] },
+      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Artemis_Aid] },
     ],
   },
   {
     boon: Boons.Static_Discharge,
     requirements: [
-      { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Dash, Boons.Zeus_Aid, Boons.Heavens_Vengeance, Boons.Lightning_Reflexes] },
+      { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Flare, Boons.Thunder_Dash, Boons.Zeus_Aid, Boons.Heavens_Vengeance, Boons.Lightning_Reflexes] },
     ],
   },
   {
     boon: Boons.Storm_Lightning,
     requirements: [
-      { number: 1, boons: [Boons.Lightning_Strike, Boons.Electric_Shot] },
+      { number: 1, boons: [Boons.Lightning_Strike, Boons.Electric_Shot, Boons.Thunder_Flare] },
     ],
   },
   {
     boon: Boons.Stubborn_Roots,
     requirements: [
-      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Divine_Dash, Boons.Athenas_Aid] },
-      { number: 1, boons: [Boons.Frost_Strike, Boons.Frost_Flourish, Boons.Crystal_Beam, Boons.Mistral_Dash, Boons.Demeters_Aid] },
+      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Phalanx_Flare, Boons.Divine_Dash, Boons.Athenas_Aid] },
+      { number: 1, boons: [Boons.Frost_Strike, Boons.Frost_Flourish, Boons.Crystal_Beam, Boons.Icy_Flare, Boons.Mistral_Dash, Boons.Demeters_Aid] },
     ],
   },
   {
     boon: Boons.Support_Fire,
     requirements: [
-      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunter_Dash, Boons.Artemis_Aid, Boons.Pressure_Points] },
+      { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Hunter_Dash, Boons.Artemis_Aid, Boons.Pressure_Points] },
     ],
   },
   {
     boon: Boons.Sweet_Nectar,
     requirements: [
-      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
-      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Dash, Boons.Aphrodites_Aid] },
+      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
+      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash, Boons.Aphrodites_Aid] },
     ],
   },
   {
     boon: Boons.Sweet_Surrender,
     requirements: [
-      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Dash] },
+      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash] },
     ],
   },
   // {
@@ -465,28 +480,28 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Typhoons_Fury,
     requirements: [
-      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
+      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
     ],
   },
   {
     boon: Boons.Unhealthy_Fixation,
     requirements: [
-      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Dash] },
+      { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash] },
       { number: 1, boons: [Boons.Empty_Inside, Boons.Sweet_Surrender, Boons.Broken_Resolve] },
     ],
   },
   {
     boon: Boons.Unshakable_Mettle,
     requirements: [
-      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Athenas_Aid] },
-      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Poseidons_Aid] },
+      { number: 1, boons: [Boons.Divine_Strike, Boons.Divine_Flourish, Boons.Phalanx_Shot, Boons.Phalanx_Flare, Boons.Athenas_Aid] },
+      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Poseidons_Aid] },
     ],
   },
   {
     boon: Boons.Vengeful_Mood,
     requirements: [
-      { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Dash, Boons.Zeus_Aid] },
-      { number: 1, boons: [Boons.Curse_of_Agony, Boons.Curse_of_Pain, Boons.Slicing_Shot, Boons.Blade_Dash, Boons.Ares_Aid] },
+      { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Flare, Boons.Thunder_Dash, Boons.Zeus_Aid] },
+      { number: 1, boons: [Boons.Curse_of_Agony, Boons.Curse_of_Pain, Boons.Slicing_Shot, Boons.Slicing_Flare, Boons.Blade_Dash, Boons.Ares_Aid] },
       { number: 1, boons: [Boons.Curse_of_Vengeance, Boons.Heavens_Vengeance, Boons.Holy_Shield, Boons.Wave_of_Despair, Boons.Frozen_Touch] },
     ],
   },
@@ -499,7 +514,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Wave_Pounding,
     requirements: [
-      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
+      { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
     ],
   },
   {

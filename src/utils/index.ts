@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { AppState, Boon, BoonInfo, BoonState, Requirements } from 'redux/domain';
+import { AnyBoon, AppState, BoonInfo, BoonState, Requirements } from 'redux/domain';
 import { setLocalState } from 'redux/state';
 
 const tempLocalStorageName = 'temp';
@@ -7,7 +7,7 @@ const tempLocalStorageName = 'temp';
 const getBoonHoverText = (
   boon: BoonInfo,
   clickable: boolean,
-  name: Boon,
+  name: AnyBoon,
 ) => {
   const { active, requirements, restricted, unlocks } = boon;
 
@@ -51,12 +51,12 @@ const boonFileChecker = (changeEvent: ChangeEvent<HTMLInputElement>) => {
 
 const getBoonStatuses = (
   state: AppState,
-  boons: Boon[],
+  boons: AnyBoon[],
   allInactive?: boolean,
 ): BoonState => {
   let stateBoons: BoonState = state.boons;
 
-  boons.forEach((boon: Boon) => {
+  boons.forEach((boon: AnyBoon) => {
     if (allInactive) {
       stateBoons[boon].active = false;
     }
@@ -74,10 +74,10 @@ const getBoonStatuses = (
   return stateBoons;
 };
 
-const getRelatedBoons = (boon: BoonInfo): Boon[] => {
+const getRelatedBoons = (boon: BoonInfo): AnyBoon[] => {
   const { restrictions, unlocks } = boon;
 
-  let boonList: Boon[] = [];
+  let boonList: AnyBoon[] = [];
   if (restrictions) {
     boonList = restrictions;
   }

@@ -25,7 +25,9 @@ const items: GroupBoons = {
         Aspects.Aspect_of_Talos,
       ],
       [BoonRows.Talents]: [
+        Items.Fiery_Presence,
         Items.Infernal_Soul,
+        Items.Shadow_Presence,
         Items.Stygian_Soul,
       ],
       [BoonRows.Keepsakes]: [

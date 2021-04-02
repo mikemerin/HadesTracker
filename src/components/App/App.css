@@ -6,6 +6,7 @@
 
 .Main {
   padding-top: 20px;
+  padding-right: 30px;
 }
 
 .NavbarButton {
@@ -21,7 +22,7 @@
 }
 
 .ui.grid > .row {
-  padding-bottom: .1rem;
+  padding-bottom: .2rem;
   padding-top: .1rem;
 }
 
@@ -35,19 +36,33 @@
 
 /* cells and components */
 
-.rowIcon {
+.rowTextCell {
+  display: block;
+}
+
+.rowIconCell {
   height: 20px;
   width: 20px;
 }
 
-.boonCellTable {
+.rowIcon {
+  height: 100%;
   width: 100%;
-  display: inline-block;
-  margin-top: -2px;
 }
 
-.boonCellTable > tbody > tr > td {
-  padding-bottom: 0;
+.boonCellTable {
+  width: 100%;
+  margin-left: 2px;
+  border-collapse: collapse;
+}
+
+.rowHeaderTable {
+  width: 100%;
+  text-align: right;
+}
+
+.boonCellTable, .rowHeaderTable > tbody > tr > td {
+  font-size: 70%;
 }
 
 .modalButtons {

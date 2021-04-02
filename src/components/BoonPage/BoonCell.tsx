@@ -8,8 +8,8 @@ import {
   setDisplayInfo,
 } from 'redux/actions';
 import {
+  AnyBoon,
   AppState,
-  Boon,
   Items,
   Requirements,
 } from 'redux/domain';
@@ -19,12 +19,12 @@ import { getBoonHoverText } from 'utils';
 
 type DisplayInfo = {
   requirements?: Requirements[],
-  restrictions?: Boon[],
+  restrictions?: AnyBoon[],
   unlocks?: string[],
 }
 
 type OwnProps = {
-  name: Boon,
+  name: AnyBoon,
   style: BoonStyle,
 }
 
@@ -72,7 +72,7 @@ const BoonCell = ({
   prophecyImage.title = `${prophecyForetold ? 'Remove' : 'Foretell'} prophecy ${name}`;
 
   let activeClass, activeImage, activeStyle;
-  if (requiresBoons.map(({boons}) => boons).flat().includes(name as Boon)) { // TODO: next commit: requirements (more complex)
+  if (requiresBoons.map(({boons}) => boons).flat().includes(name as AnyBoon)) { // TODO: next commit: requirements (more complex)
     activeImage = boons[Items.Codex_Locked].image;
   } else if (restrictsBoons.includes(name)) { // TODO: after this becomes a Set, restrictsBoons.has(name)
     activeImage = boons[Items.Restricted].image;
@@ -90,19 +90,17 @@ const BoonCell = ({
       <table className='boonCellTable'>
         <tbody>
           <tr>
-            <td width='5%' style={{...activeStyle}}>
+            <td className='rowIconCell' style={{...activeStyle}}>
               <img className={`rowIcon ${unlocked ? '' : 'greyscale'}`} {...image} alt={image.alt} />
             </td>
-            <td width='85%' className='outlineText'>{name}</td>
-            <td width='5%' onClick={handleProphecyChange}>
+            <td className='outlineText'>{name}</td>
+            <td className='rowIconCell' onClick={handleProphecyChange}>
               <img className='rowIcon clickable' {...prophecyImage} alt={prophecyImage.alt} />
             </td>
-            <td width='5%'
-              {...(clickable && { onClick: handleActive })}
+            <td className='rowIconCell' onClick={handleProphecyChange}>
+              <img {...(clickable && { onClick: handleActive })}
               onMouseEnter={() => displayRelatedBoons(true)}
-              onMouseLeave={() => displayRelatedBoons(false)}
-            >
-              <img className={`rowIcon ${activeClass}`} {...activeImage} alt={activeImage.alt} style={{...activeStyle}}/>
+              onMouseLeave={() => displayRelatedBoons(false)} className={`rowIcon ${activeClass}`} {...activeImage} alt={activeImage.alt} style={{...activeStyle}}/>
             </td>
           </tr>
         </tbody>
