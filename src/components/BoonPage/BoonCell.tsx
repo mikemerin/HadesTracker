@@ -94,10 +94,10 @@ const BoonCell = ({
               <img className={`rowIcon ${unlocked ? '' : 'greyscale'}`} {...image} alt={image.alt} />
             </td>
             <td className='outlineText'>{name}</td>
-            <td className='rowIconCell' onClick={handleProphecyChange}>
-              <img className='rowIcon clickable' {...prophecyImage} alt={prophecyImage.alt} />
+            <td className='rowIconCell'>
+              <img className='rowIcon clickable' {...prophecyImage} alt={prophecyImage.alt} onClick={handleProphecyChange}/>
             </td>
-            <td className='rowIconCell' onClick={handleProphecyChange}>
+            <td className='rowIconCell'>
               <img {...(clickable && { onClick: handleActive })}
               onMouseEnter={() => displayRelatedBoons(true)}
               onMouseLeave={() => displayRelatedBoons(false)} className={`rowIcon ${activeClass}`} {...activeImage} alt={activeImage.alt} style={{...activeStyle}}/>
