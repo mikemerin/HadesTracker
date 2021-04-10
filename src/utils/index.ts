@@ -9,20 +9,24 @@ const getBoonHoverText = (
   clickable: boolean,
   name: AnyBoon,
 ) => {
-  const { active, requirements, restricted, unlocks } = boon;
+  const { active, requirements, restricted, restrictedBy, swappable, unlocks } = boon;
 
   const baseText = [clickable
-    ? `${restricted ? 'Swap to' : active ? 'Deactivate' : 'Activate'} ${name}`
-    : `Unlock ${name} before you can activate it`];
+    ? `${swappable ? 'Swap to' : active ? 'Deactivate' : 'Activate'} ${name}`
+    : `${restricted ? 'Remove restrictions on' : 'Unlock'} ${name} before you can activate it`];
 
   if (requirements) {
     const requirementText: string[] = [];
     requirements.forEach(({ number, boons }) => {
-      requirementText.push([`Requires ${number} of the following:`, ...boons].join('\n'))
+      requirementText.push([`Requires ${boons.length > 1 ? `${number} of ` : ''}the following:`, ...boons].join('\n'))
     });
     baseText.push(requirementText.join('\n\n'));
   } else {
     baseText.push('Requirements: none');
+  }
+
+  if (restrictedBy) {
+    baseText.push([`Restricted By the following:`, ...restrictedBy].join('\n'))
   }
 
   if (unlocks) {
@@ -61,38 +65,38 @@ const getBoonStatuses = (
       stateBoons[boon].active = false;
     }
 
-    const { requirements, restrictions } = stateBoons[boon];
+    const { requirements, restrictedBy, swapsWith } = stateBoons[boon];
 
-    const restricted = !restrictions || allInactive ? false : isRestricted(state, restrictions);
-    if (restricted && stateBoons[boon].active) {
+    const restricted = !restrictedBy || allInactive ? false : isRestricted(state, restrictedBy);
+    const swappable = !swapsWith || allInactive ? false : isSwappable(state, swapsWith);
+    if ((restricted || swappable) && stateBoons[boon].active) {
       stateBoons[boon].active = false;
       stateBoons = getBoonStatuses(state, getRelatedBoons(stateBoons[boon]));
     }
     stateBoons[boon].restricted = restricted;
+    stateBoons[boon].swappable = swappable;
     stateBoons[boon].unlocked = !requirements || (!allInactive && isUnlocked(state, requirements));
   });
   return stateBoons;
 };
 
 const getRelatedBoons = (boon: BoonInfo): AnyBoon[] => {
-  const { restrictions, unlocks } = boon;
-
-  let boonList: AnyBoon[] = [];
-  if (restrictions) {
-    boonList = restrictions;
-  }
-  if (unlocks) {
-    boonList = [...boonList, ...unlocks];
-  }
-
-  return boonList;
+  const { restrictedBy, restricts, swapsWith, unlocks } = boon;
+  return [restrictedBy, restricts, swapsWith, unlocks].filter(x => x).flat() as AnyBoon[];
 };
 
 const isRestricted = (
   state: AppState,
-  restrictions: string[],
+  restrictedBy: string[],
 ): boolean => (
-  !!restrictions.filter((boon) => state.boons[boon].active).length
+  !!restrictedBy.filter((boon) => state.boons[boon].active).length
+);
+
+const isSwappable = (
+  state: AppState,
+  swapsWith: string[],
+): boolean => (
+  !!swapsWith.filter((boon) => state.boons[boon].active).length
 );
 
 const isUnlocked = (

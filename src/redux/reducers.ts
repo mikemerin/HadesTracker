@@ -56,7 +56,6 @@ const handleSetBoonActive = (
   }
 
   const relatedBoons = getRelatedBoons(state.boons[boon]);
-
   if (relatedBoons.length) {
     return {
       ...newState,
@@ -109,7 +108,9 @@ const handleSetDisplayInfo = (
   ...state,
   display: {
     requiresBoons: payload.requiresBoons || [],
+    restrictedByBoons: payload.restrictedByBoons || [],
     restrictsBoons: payload.restrictsBoons || [],
+    swapsWithBoons: payload.swapsWithBoons || [],
     unlocksBoons: payload.unlocksBoons || [],
   }
 });

@@ -83,6 +83,7 @@ const extras: GroupBoons = {
         Items.Special,
         Items.Status_Curse,
         Items.Stygian_Soul,
+        Items.Swap,
         Items.Titan_Blood,
         Items.Trove_Tracker,
       ],

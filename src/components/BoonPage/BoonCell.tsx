@@ -19,7 +19,9 @@ import { getBoonHoverText } from 'utils';
 
 type DisplayInfo = {
   requirements?: Requirements[],
-  restrictions?: AnyBoon[],
+  restrictedBy?: AnyBoon[],
+  restricts?: AnyBoon[],
+  swapsWith?: AnyBoon[],
   unlocks?: string[],
 }
 
@@ -37,7 +39,13 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
 
 const mapDispatchToProps = {
   onSetBoonActive: (boon: any, active: any) => setBoonActive(boon, active),
-  onSetDisplayInfo: ({requirements = [], restrictions = [], unlocks = []}: DisplayInfo) => setDisplayInfo(requirements, restrictions, unlocks),
+  onSetDisplayInfo: ({
+    requirements = [],
+    restrictedBy = [],
+    restricts = [],
+    swapsWith = [],
+    unlocks = [],
+  }: DisplayInfo) => setDisplayInfo(requirements, restrictedBy, restricts, swapsWith, unlocks),
   onSetBoonProphecyForetold: (boon: any, prophecyForetold: any) => setBoonProphecyForetold(boon, prophecyForetold),
 };
 
@@ -58,13 +66,14 @@ const BoonCell = ({
   const handleActive = (event: any) => onSetBoonActive(name, !boon.active);
   const handleProphecyChange = (event: any) => onSetBoonProphecyForetold(name, !boon.prophecyForetold);
 
-  const { active, image, prophecyForetold, requirements, restricted, restrictions, unlocked, unlocks } = boon;
-  const { requiresBoons, restrictsBoons, unlocksBoons } = display;
-  const clickable = active || unlocked;
+  const { active, image, prophecyForetold, requirements, restricted, restrictedBy, restricts, swapsWith, unlocked, unlocks } = boon;
+  const { requiresBoons, restrictsBoons, swapsWithBoons, unlocksBoons } = display;
+
+  const clickable = (active || unlocked) && !restricted;
 
   const displayRelatedBoons = (show: boolean) => {
-    if (requirements || restrictions || unlocks) {
-      onSetDisplayInfo(show ? {requirements, restrictions, unlocks} : {});
+    if (requirements || restrictedBy || restricts || swapsWith || unlocks) {
+      onSetDisplayInfo(show ? {requirements, restrictedBy, restricts, swapsWith, unlocks} : {});
     }
   };
 
@@ -76,6 +85,8 @@ const BoonCell = ({
     activeImage = boons[Items.Codex_Locked].image;
   } else if (restrictsBoons.includes(name)) { // TODO: after this becomes a Set, restrictsBoons.has(name)
     activeImage = boons[Items.Restricted].image;
+  } else if (swapsWithBoons.includes(name)) { // TODO: after this becomes a Set, swapsWithBoons.has(name)
+    activeImage = boons[Items.Swap].image;
   } else if (unlocksBoons.includes(name)) { // TODO: after this becomes a Set, unlocksBoons.has(name)
     activeImage = boons[Items.Chthonic_Key].image;
   } else {

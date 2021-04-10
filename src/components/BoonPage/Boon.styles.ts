@@ -36,7 +36,7 @@ const BoonStyles = ({
   const color = colors[boonKey];
   const color2 = colors[isDuo ? boonRow : 'background'];
 
-  const { active, restricted, unlocked } = boons[individualBoon];
+  const { active, restricted, swappable, unlocked } = boons[individualBoon];
 
   let backgroundColor;
   let backgroundImage;
@@ -49,7 +49,9 @@ const BoonStyles = ({
       backgroundColor = `#000000${fade}`;
     }
   } else if (restricted) {
-    backgroundImage = `repeating-linear-gradient( to top left, #00000060 15%, #00000030 30%, #00000060 45% )`;
+    backgroundImage = `repeating-linear-gradient( to top left, #00000090 15%, #00000060 30%, #00000090 45% )`;
+  } else if (swappable) {
+    backgroundImage = `repeating-linear-gradient( to top left, #00000050 15%, #00000025 30%, #00000050 45% )`;
   } else {
     if (active) {
       backgroundImage = `linear-gradient(35deg, ${color}, ${color2})`;

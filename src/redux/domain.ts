@@ -27,6 +27,16 @@ export type Image = {
 
 export type AnyBoon = Aspect | Boon | ChaosBoon | Item;
 
+export type BoonRestrictions = {
+  boon: AnyBoon,
+  restricts: AnyBoon[],
+}
+
+export type GroupRestrictions = {
+  // [key: string]: Set<AnyBoon>
+  [key: string]: AnyBoon[], // TODO: make set (doesn't store correctly in Redux store atm)
+}
+
 export type Requirements = {
   number: number,
   boons: AnyBoon[],
@@ -39,13 +49,20 @@ export type BoonRequirements = {
 
 export type BoonInfo = {
   active: boolean,
+  boonRow?: BoonRow,
   image: Image,
   owners: string[],
+
   prophecyForetold: boolean,
-  requirements?: Requirements[],
+
   restricted: boolean,
-  restrictions?: AnyBoon[],
   unlocked: boolean,
+  swappable?: boolean,
+
+  requirements?: Requirements[],
+  restrictedBy?: AnyBoon[],
+  restricts?: AnyBoon[],
+  swapsWith?: AnyBoon[],
   unlocks?: AnyBoon[],
 };
 
@@ -70,8 +87,10 @@ export type BoonState = {
 
 export type Display = {
   requiresBoons: Requirements[],
-  restrictsBoons: AnyBoon[], // TODO: make Set<Boon>
-  unlocksBoons: string[], // TODO: make Set<Boon>
+  restrictedByBoons: AnyBoon[], // TODO: make Set<AnyBoon>
+  restrictsBoons: AnyBoon[], // TODO: make Set<AnyBoon>
+  swapsWithBoons: AnyBoon[], // TODO: make Set<AnyBoon>
+  unlocksBoons: string[], // TODO: make Set<AnyBoon>
 }
 
 export type AppState = {
@@ -80,6 +99,7 @@ export type AppState = {
   display: Display,
   groups: {
     boons: GroupBoons,
+    restrictions: GroupRestrictions
     rowOrder: GroupRowOrder,
   },
   pages: {

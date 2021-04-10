@@ -43,6 +43,7 @@ export const Items = {
   Special: 'Special',
   Status_Curse: 'Status Curse',
   Stygian_Soul: 'Stygian Soul',
+  Swap: 'Swap',
   Titan_Blood: 'Titan Blood',
   Trove_Tracker: 'Trove Tracker',
 } as const;

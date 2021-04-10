@@ -37,9 +37,11 @@ const setDisplayInfo = createAction(
   '[Display] Set Display Info',
   (
     requiresBoons: Requirements[],
+    restrictedByBoons: AnyBoon[],
     restrictsBoons: AnyBoon[],
+    swapsWithBoons: AnyBoon[],
     unlocksBoons: string[]
-  ) => ({ requiresBoons, restrictsBoons, unlocksBoons })
+  ) => ({ requiresBoons, restrictedByBoons, restrictsBoons, swapsWithBoons, unlocksBoons })
 )();
 
 const setGroupRowOrder = createAction(

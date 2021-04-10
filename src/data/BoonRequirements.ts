@@ -1,4 +1,10 @@
-import { Boons, ChaosBoons, BoonRequirements, Items } from 'redux/domain';
+import {
+  Aspects,
+  Boons,
+  ChaosBoons,
+  BoonRequirements,
+  Items
+} from 'redux/domain';
 
 const boonRequirements: BoonRequirements[] = [
   {
@@ -200,6 +206,12 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
+    boon: Boons.Flood_Flare,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Beowulf] },
+    ],
+  },
+  {
     boon: Boons.Flurry_Cast,
     requirements: [
       { number: 1, boons: [Items.Infernal_Soul] },
@@ -264,6 +276,12 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
+    boon: Boons.Hunters_Flare,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Beowulf] },
+    ],
+  },
+  {
     boon: Boons.Hunter_Instinct,
     requirements: [
       { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Pressure_Points] },
@@ -287,6 +305,12 @@ const boonRequirements: BoonRequirements[] = [
     requirements: [
       { number: 1, boons: [Boons.Frost_Strike, Boons.Frost_Flourish, Boons.Mistral_Dash, Boons.Demeters_Aid] },
       { number: 1, boons: [Boons.Trippy_Shot, Boons.Trippy_Flare] },
+    ],
+  },
+  {
+    boon: Boons.Icy_Flare,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Beowulf] },
     ],
   },
   {
@@ -357,9 +381,21 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
+    boon: Boons.Passion_Flare,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Beowulf] },
+    ],
+  },
+  {
     boon: Boons.Peer_Pressure,
     requirements: [
       { number: 1, boons: [Boons.Drunken_Strike, Boons.Drunken_Flourish, Boons.Drunken_Dash] },
+    ],
+  },
+  {
+    boon: Boons.Phalanx_Flare,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Beowulf] },
     ],
   },
   {
@@ -411,6 +447,12 @@ const boonRequirements: BoonRequirements[] = [
     requirements: [
       { number: 1, boons: [Boons.Typhoons_Fury, Boons.Breaking_Wave] },
       { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
+    ],
+  },
+  {
+    boon: Boons.Slicing_Flare,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Beowulf] },
     ],
   },
   {
@@ -471,12 +513,18 @@ const boonRequirements: BoonRequirements[] = [
       { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash] },
     ],
   },
-  // {
-  //   boon: Boons.Trippy_Flare, // TODO: No Prophecy Here, set to True
-  //   requirements: [
-  //     { number: 1, boons: [Aspects.Aspect_of_Hera] },
-  //   ],
-  // },
+  {
+    boon: Boons.Thunder_Flare,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Beowulf] },
+    ],
+  },
+  {
+    boon: Boons.Trippy_Flare,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Beowulf] },
+    ],
+  },
   {
     boon: Boons.Typhoons_Fury,
     requirements: [

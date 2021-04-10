@@ -13,14 +13,15 @@ import { pageList } from './PageList';
 import { weapons } from './Weapons';
 
 const groupBoons: GroupBoons = deepmerge.all([boonSolos, boonDuos, extras, weapons, items]) as GroupBoons;
-const boonInfoUnsorted = generateBoonInfo(groupBoons);
-const boonInfo = Object.keys(boonInfoUnsorted).sort().reduce((acc, boon) => {
-  acc[boon] = boonInfoUnsorted[boon];
+const { boonRestrictionGroups, boonState } = generateBoonInfo(groupBoons);
+const boonInfo = Object.keys(boonState).sort().reduce((acc, boon) => {
+  acc[boon] = boonState[boon];
   return acc;
 }, {} as BoonState);
 
 export {
   boonDuos,
+  boonRestrictionGroups,
   boonSolos,
   boonInfo,
   colors,

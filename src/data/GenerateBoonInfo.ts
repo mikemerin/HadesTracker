@@ -7,14 +7,20 @@ import {
   ChaosBoons,
   Gods,
   GroupBoons,
+  GroupRestrictions,
   Items,
   Image,
   Requirements,
   Weapons
 } from 'redux/domain';
 import { boonRequirements } from './BoonRequirements';
-import { boonRestrictionGroups } from './BoonRestrictionGroups';
+import { boonRestrictionGroups, boonRestrictions } from './BoonRestrictions';
 import { nameSanitizer } from 'utils';
+
+type GeneratedBoonInfo = {
+  boonState: BoonState,
+  boonRestrictionGroups: GroupRestrictions,
+}
 
 const paths: {[key: string]: string} = {
   [BoonTables.Aspects]: 'aspects',
@@ -32,15 +38,14 @@ const getPath = (boon: string, boonGroup: string): string => {
   return paths[boonGroup] || 'boons';
 };
 
-const generateBoonInfo = (groupBoons: GroupBoons): BoonState => {
+const generateBoonInfo = (groupBoons: GroupBoons): GeneratedBoonInfo => {
   const boonState: BoonState = {};
-  const restrictedBoonList: {[key: string]: AnyBoon[]} = {}; // TODO: make set
-  boonRestrictionGroups.forEach((boonRestrictionGroup) => restrictedBoonList[boonRestrictionGroup] = []);
 
   const boonLoader = (
     owner: string,
     boonGroup: string,
     boon: string,
+    boonRow?: BoonRow,
   ): void => {
     if (boonState[boon]) {
       boonState[boon].owners.push(owner);
@@ -51,6 +56,7 @@ const generateBoonInfo = (groupBoons: GroupBoons): BoonState => {
       boonState[boon] = {
         image,
         owners: [owner],
+        ...(boonRow && {boonRow}),
         active: false,
         prophecyForetold: false,
         restricted: false,
@@ -67,14 +73,16 @@ const generateBoonInfo = (groupBoons: GroupBoons): BoonState => {
       Object.keys(boonRowObj).forEach((boonRow) => {
         const rowBoons: AnyBoon[] = [...boonRowObj[boonRow], ...(boonState[boonRow] ? [] : [boonRow])] as AnyBoon[];
         rowBoons.forEach((boon: AnyBoon) => {
-          boonLoader(owner, boonGroup, boon);
-          if (
-            boonRestrictionGroups.has(boonRow as BoonRow) &&
-            boon !== boonRow &&
-            // TODO: making this a set will eliminate this extra check for duplicates
-            !restrictedBoonList[boonRow].includes(boon)
-          ) {
-            restrictedBoonList[boonRow].push(boon);
+          if (boon !== boonRow) {
+            boonLoader(owner, boonGroup, boon, boonRow as BoonRow); // TODO: if boon!==boonRow, activeBoon = true, then can have prophecy/restrict/unlock/etc
+            if (
+              boonRestrictionGroups[boonRow] &&
+              !boonRestrictionGroups[boonRow].includes(boon)
+            ) {
+              boonRestrictionGroups[boonRow].push(boon);
+            }
+          } else {
+            boonLoader(owner, boonGroup, boon);
           }
         });
       });
@@ -101,13 +109,28 @@ const generateBoonInfo = (groupBoons: GroupBoons): BoonState => {
     });
   });
 
-  Object.values(restrictedBoonList).forEach((boons) => {
-    boons.forEach((boon, index) => {
-      boonState[boon].restrictions = [...boons.slice(0, index), ...boons.slice(index + 1)];
-    });
+  Object.values(boonRestrictionGroups).forEach((boonRestrictionGroup) => {
+    boonRestrictionGroup.forEach((boon, index) => {
+      boonState[boon].swapsWith = [...boonRestrictionGroup.slice(0, index), ...boonRestrictionGroup.slice(index + 1)];
+    })
+  })
+
+  boonRestrictions.forEach(({boon, restricts}) => {
+    boonState[boon].restricts = restricts;
+    restricts.forEach((restrictsBoon) => {
+      if (boonState[restrictsBoon].restrictedBy) {
+        //@ts-ignore TODO: remove this ignore for 'possibly undefined'
+        boonState[restrictsBoon].restrictedBy.push(boon);
+      } else {
+        boonState[restrictsBoon].restrictedBy = [boon];
+      }
+    })
   });
 
-  return boonState;
+  return {
+    boonRestrictionGroups,
+    boonState,
+  };
 };
 
 export {

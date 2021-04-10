@@ -3,6 +3,7 @@ import fileDownload from 'js-file-download';
 import { AppState, BoonState } from './domain';
 import {
   boonInfo,
+  boonRestrictionGroups,
   colors,
   groupBoons,
   groupRowOrder,
@@ -58,9 +59,9 @@ const loadState = (): BoonState | undefined => {
           }
 
           parsedBoons[boon].restricted = false;
-          const { restrictions } = defaultBoons[boon];
-          if (restrictions) {
-              parsedBoons[boon].restrictions = restrictions;
+          const { restrictedBy } = defaultBoons[boon];
+          if (restrictedBy) {
+              parsedBoons[boon].restrictedBy = restrictedBy;
           }
         });
       }
@@ -83,11 +84,14 @@ const defaultState = (): AppState => ({
   colors,
   display: {
     requiresBoons: [], // TODO: make set, and delimit more complex
+    restrictedByBoons: [], // TODO: make set, and delimit more complex
     restrictsBoons: [], // TODO: make set, and delimit more complex
+    swapsWithBoons: [], // TODO: make set, and delimit more complex
     unlocksBoons: [], // TODO: make set
   },
   groups: {
     boons: groupBoons,
+    restrictions: boonRestrictionGroups,
     rowOrder: groupRowOrder,
   },
   pages: {
