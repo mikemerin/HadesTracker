@@ -1,6 +1,6 @@
 export const BoonRows = {
   Attack: 'Attack',
-  Aspect: 'Titan Blood',
+  Aspect: 'Aspect Unlocks',
   Blessing: 'Blessing',
   Call: 'Call',
   Cast: 'Cast',

@@ -50,21 +50,8 @@ const loadState = (): BoonState | undefined => {
     const parsedBoons = JSON.parse(boons);
     const parsedVersion = parseInt(version || '0');
 
-    if (parsedVersion !== stateVersion) {
-      if (parsedVersion < 1) {
-        const defaultBoons = defaultState().boons;
-        Object.keys(defaultBoons).forEach((boon) => {
-          if (!parsedBoons[boon]) {
-            parsedBoons[boon] = defaultBoons[boon];
-          }
-
-          parsedBoons[boon].restricted = false;
-          const { restrictedBy } = defaultBoons[boon];
-          if (restrictedBy) {
-              parsedBoons[boon].restrictedBy = restrictedBy;
-          }
-        });
-      }
+    if (parsedVersion !== stateVersion || parsedVersion < 1) {
+      return undefined;
     }
 
     return parsedBoons;

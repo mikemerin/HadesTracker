@@ -15,6 +15,7 @@ const items: GroupBoons = {
     [BoonTables.Items]: {
       [BoonRows.Aspect]: [
         Aspects.Aspect_of_Achilles,
+        Aspects.Aspect_of_Arthur,
         Aspects.Aspect_of_Beowulf,
         Aspects.Aspect_of_Chaos,
         Aspects.Aspect_of_Gilgamesh,
@@ -45,6 +46,7 @@ const extras: GroupBoons = {
         Items.Active,
         Items.Ambrosia,
         Items.Ammo,
+        Items.Aspect_Unlocks,
         Items.Anvil_of_Fates,
         Items.Attack,
         Items.Blessing,
@@ -76,6 +78,7 @@ const extras: GroupBoons = {
         Items.Pom_of_Power,
         Items.Prophecy_Foretold,
         Items.Prophecy_Not_Foretold,
+        Items.Requires,
         Items.Restricted,
         Items.Rod_of_Fishing,
         Items.Sigil_of_the_Dead, // TODO keepsakes
@@ -84,7 +87,6 @@ const extras: GroupBoons = {
         Items.Status_Curse,
         Items.Stygian_Soul,
         Items.Swap,
-        Items.Titan_Blood,
         Items.Trove_Tracker,
       ],
     },

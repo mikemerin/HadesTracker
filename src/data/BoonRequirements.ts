@@ -163,6 +163,12 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
+    boon: ChaosBoons.Defiance,
+    requirements: [
+      { number: 1, boons: [ChaosBoons.Strike, ChaosBoons.Shot, ChaosBoons.Grasp, ChaosBoons.Soul, ChaosBoons.Favor, ChaosBoons.Affluence, ChaosBoons.Eclipse, ChaosBoons.Flourish, ChaosBoons.Lunge, ChaosBoons.Ambush, ChaosBoons.Assault] },
+    ],
+  },
+  {
     boon: Boons.Dire_Misfortune,
     requirements: [
       { number: 1, boons: [Boons.Curse_of_Agony, Boons.Curse_of_Pain] },
@@ -177,7 +183,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Double_Strike,
     requirements: [
-      { number: 1, boons: [Boons.Thunder_Flourish, Boons.Thunder_Dash, Boons.Zeus_Aid, ] },
+      { number: 1, boons: [Boons.Thunder_Flare, Boons.Thunder_Flourish, Boons.Thunder_Dash, Boons.Zeus_Aid, ] },
     ],
   },
   {
@@ -265,7 +271,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.High_Voltage,
     requirements: [
-      { number: 1, boons: [Boons.Thunder_Flourish, Boons.Thunder_Dash, Boons.Zeus_Aid] },
+      { number: 1, boons: [Boons.Thunder_Flare, Boons.Thunder_Flourish, Boons.Thunder_Dash, Boons.Zeus_Aid] },
     ],
   },
   {
@@ -401,7 +407,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Quick_Favor,
     requirements: [
-      { number: 1, boons: [Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
+      { number: 1, boons: [Items.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
     ],
   },
   {
@@ -450,9 +456,21 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
+    boon: Boons.Second_Wind,
+    requirements: [
+      { number: 1, boons: [Items.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
+    ],
+  },
+  {
     boon: Boons.Slicing_Flare,
     requirements: [
       { number: 1, boons: [Aspects.Aspect_of_Beowulf] },
+    ],
+  },
+  {
+    boon: ChaosBoons.Slippery,
+    requirements: [
+      { number: 1, boons: [Items.Infernal_Soul] },
     ],
   },
   {

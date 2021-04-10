@@ -35,6 +35,7 @@ export const Items = {
   Pom_of_Power: 'Pom of Power',
   Prophecy_Foretold: 'Prophecy Foretold',
   Prophecy_Not_Foretold: 'Prophecy Not Foretold',
+  Requires: 'Requires',
   Restricted: 'Restricted',
   Rod_of_Fishing: 'Rod of Fishing',
   Shadow_Presence: 'Shadow Presence', // TODO: make talents
@@ -44,7 +45,7 @@ export const Items = {
   Status_Curse: 'Status Curse',
   Stygian_Soul: 'Stygian Soul',
   Swap: 'Swap',
-  Titan_Blood: 'Titan Blood',
+  Aspect_Unlocks: 'Aspect Unlocks',
   Trove_Tracker: 'Trove Tracker',
 } as const;
 

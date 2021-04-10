@@ -67,7 +67,7 @@ const BoonCell = ({
   const handleProphecyChange = (event: any) => onSetBoonProphecyForetold(name, !boon.prophecyForetold);
 
   const { active, image, prophecyForetold, requirements, restricted, restrictedBy, restricts, swapsWith, unlocked, unlocks } = boon;
-  const { requiresBoons, restrictsBoons, swapsWithBoons, unlocksBoons } = display;
+  const { requiresBoons, restrictedByBoons, restrictsBoons, swapsWithBoons, unlocksBoons } = display;
 
   const clickable = (active || unlocked) && !restricted;
 
@@ -82,6 +82,8 @@ const BoonCell = ({
 
   let activeClass, activeImage, activeStyle;
   if (requiresBoons.map(({boons}) => boons).flat().includes(name as AnyBoon)) { // TODO: next commit: requirements (more complex)
+    activeImage = boons[Items.Requires].image;
+  } else if (restrictedByBoons.includes(name)) { // TODO: after this becomes a Set, restrictedByBoons.has(name)
     activeImage = boons[Items.Codex_Locked].image;
   } else if (restrictsBoons.includes(name)) { // TODO: after this becomes a Set, restrictsBoons.has(name)
     activeImage = boons[Items.Restricted].image;

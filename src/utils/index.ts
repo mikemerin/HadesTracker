@@ -9,7 +9,8 @@ const getBoonHoverText = (
   clickable: boolean,
   name: AnyBoon,
 ) => {
-  const { active, requirements, restricted, restrictedBy, swappable, unlocks } = boon;
+  const { active, boonRow, requirements, restricted, swappable, swapsWith, unlocks } = boon;
+  let { restrictedBy, restricts } = boon;
 
   const baseText = [clickable
     ? `${swappable ? 'Swap to' : active ? 'Deactivate' : 'Activate'} ${name}`
@@ -18,19 +19,36 @@ const getBoonHoverText = (
   if (requirements) {
     const requirementText: string[] = [];
     requirements.forEach(({ number, boons }) => {
-      requirementText.push([`Requires ${boons.length > 1 ? `${number} of ` : ''}the following:`, ...boons].join('\n'))
+      requirementText.push([`Requires ${boons.length > 1 ? `${number} of ` : ''}the following:`, ...boons].join('\n'));
     });
     baseText.push(requirementText.join('\n\n'));
   } else {
     baseText.push('Requirements: none');
   }
 
-  if (restrictedBy) {
-    baseText.push([`Restricted By the following:`, ...restrictedBy].join('\n'))
+  if (restrictedBy && restricts) {
+    const singleActiveBoons = restrictedBy.filter((restrictedByBoon) => restricts && restricts.includes(restrictedByBoon));
+    if (singleActiveBoons.length) {
+      baseText.push([`Cannot be combined with:`, ...singleActiveBoons].join('\n'));
+      restrictedBy = restrictedBy.filter((el) => !singleActiveBoons.includes(el));
+      restricts = restricts.filter((el) => !singleActiveBoons.includes(el));
+    }
+  }
+
+  if (restrictedBy && restrictedBy.length) {
+    baseText.push([`Restricted by:`, ...restrictedBy].join('\n'));
+  }
+
+  if (restricts && restricts.length) {
+    baseText.push([`Restricts:`, ...restricts].join('\n'));
+  }
+
+  if (swapsWith) {
+    baseText.push([`Can swap with any unlocked ${boonRow}`, '(only one can be active at a time)', 'Note: boons requiring this may stop working'].join('\n'));
   }
 
   if (unlocks) {
-    baseText.push([`Helps unlock the following:`, ...unlocks].join('\n'))
+    baseText.push([`Helps unlock:`, ...unlocks].join('\n'));
   }
 
   return baseText.join('\n\n');
