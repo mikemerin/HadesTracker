@@ -25,7 +25,7 @@ export type Image = {
   title?: string,
 };
 
-export type AnyBoon = Aspect | Boon | ChaosBoon | Item;
+export type AnyBoon = Aspect | Boon | ChaosBoon | Item | Upgrade;
 
 export type BoonRestrictions = {
   boon: AnyBoon,

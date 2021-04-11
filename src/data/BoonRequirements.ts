@@ -340,7 +340,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Lightning_Rod,
     requirements: [
-      // { number: 1, boons: [Items.Infernal_Soul] }, // TODO: add alt RequiredBoonCounts
+      { number: 1, boons: [Items.Infernal_Soul] },
       { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Hunter_Dash, Boons.Artemis_Aid] },
       { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Flare, Boons.Thunder_Dash, Boons.Zeus_Aid] },
     ],
