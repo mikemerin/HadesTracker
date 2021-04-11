@@ -23,6 +23,7 @@ const weapons: GroupBoons = {
         Upgrades.Shadow_Slash,
         Upgrades.Super_Nova,
         Upgrades.World_Splitter,
+        Upgrades.Greater_Consecration,
       ],
     },
     [BoonTables.Aspects]: {
@@ -49,6 +50,7 @@ const weapons: GroupBoons = {
         Upgrades.Serrated_Point,
         Upgrades.Triple_Jab,
         Upgrades.Vicious_Skewer,
+        Upgrades.Winged_Serpent,
       ],
     },
     [BoonTables.Aspects]: {
@@ -75,6 +77,7 @@ const weapons: GroupBoons = {
         Upgrades.Minotaur_Rush,
         Upgrades.Pulverizing_Blow,
         Upgrades.Sudden_Rush,
+        Upgrades.Unyielding_Defense,
       ],
     },
     [BoonTables.Aspects]: {
@@ -101,6 +104,7 @@ const weapons: GroupBoons = {
         Upgrades.Sniper_Shot,
         Upgrades.Triple_Shot,
         Upgrades.Twin_Shot,
+        Upgrades.Repulse_Shot,
       ],
     },
     [BoonTables.Aspects]: {
@@ -127,6 +131,7 @@ const weapons: GroupBoons = {
         Upgrades.Quake_Cutter,
         Upgrades.Rolling_Knuckle,
         Upgrades.Rush_Kick,
+        Upgrades.Rending_Claws,
       ],
     },
     [BoonTables.Aspects]: {
@@ -142,6 +147,7 @@ const weapons: GroupBoons = {
     [BoonTables.Weapon]: {
       [BoonRows.Daedalus]: [
         Upgrades.Cluster_Bomb,
+        Upgrades.Concentrated_Fire, // TODO: no prophecyForetold for this upgrade
         Upgrades.Delta_Chamber,
         Upgrades.Explosive_Fire,
         Upgrades.Flurry_Fire,
@@ -153,6 +159,11 @@ const weapons: GroupBoons = {
         Upgrades.Spread_Fire,
         Upgrades.Targeting_System,
         Upgrades.Triple_Bomb,
+        Upgrades.Concentrated_Beam, // Lucifer-Specific Below
+        Upgrades.Eternal_Chamber,
+        Upgrades.Flash_Fire,
+        Upgrades.Greater_Inferno,
+        Upgrades.Triple_Beam,
       ],
     },
     [BoonTables.Aspects]: {

@@ -26,7 +26,6 @@ export const Aspects = {
 } as const;
 
 export const Upgrades = {
-  Bow_Rama_Repulse_Shot: 'Bow Rama Repulse Shot',
   Breaching_Cross: 'Breaching Cross',
   Breaching_Rush: 'Breaching Rush',
   Breaching_Skewer: 'Breaching Skewer',
@@ -71,6 +70,7 @@ export const Upgrades = {
   Flurry_Shot: 'Flurry Shot',
   Flurry_Slash: 'Flurry Slash',
   Flying_Cutter: 'Flying Cutter',
+  Greater_Consecration: 'Greater Consecration',
   Greater_Inferno: 'Greater Inferno',
   Hazard_Bomb: 'Hazard Bomb',
   Heavy_Knuckle: 'Heavy Knuckle',
@@ -95,6 +95,7 @@ export const Upgrades = {
   Quick_Spin: 'Quick Spin',
   Relentless_Volley: 'Relentless Volley',
   Rending_Claws: 'Rending Claws',
+  Repulse_Shot: 'Repulse Shot',
   Ricochet_Fire: 'Ricochet Fire',
   Rocket_Bomb: 'Rocket Bomb',
   Rolling_Knuckle: 'Rolling Knuckle',
@@ -103,11 +104,9 @@ export const Upgrades = {
   Serrated_Point: 'Serrated Point',
   Shadow_Slash: 'Shadow Slash',
   Sniper_Shot: 'Sniper Shot',
-  Spear_Winged_Serpent: 'Spear Winged Serpent',
   Spread_Fire: 'Spread Fire',
   Sudden_Rush: 'Sudden Rush',
   Super_Nova: 'Super Nova',
-  Sword_Greater_Consecration: 'Sword Greater Consecration',
   Targeting_System: 'Targeting System',
   Triple_Beam: 'Triple Beam',
   Triple_Bomb: 'Triple Bomb',
@@ -116,6 +115,7 @@ export const Upgrades = {
   Twin_Shot: 'Twin Shot',
   Unyielding_Defense: 'Unyielding Defense',
   Vicious_Skewer: 'Vicious Skewer',
+  Winged_Serpent: 'Winged Serpent',
   World_Splitter: 'World Splitter',
 } as const;
 

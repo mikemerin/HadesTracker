@@ -1,9 +1,10 @@
 import {
   Aspects,
+  BoonRequirements,
   Boons,
   ChaosBoons,
-  BoonRequirements,
-  Items
+  Items,
+  Upgrades,
 } from 'redux/domain';
 
 const boonRequirements: BoonRequirements[] = [
@@ -122,6 +123,12 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
+    boon: Upgrades.Concentrated_Beam,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Lucifer] },
+    ],
+  },
+  {
     boon: Boons.Crystal_Clarity,
     requirements: [
       { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.Hunter_Dash, Boons.Artemis_Aid] },
@@ -199,6 +206,12 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
+    boon: Upgrades.Eternal_Chamber,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Lucifer] },
+    ],
+  },
+  {
     boon: Boons.Exclusive_Access,
     requirements: [
       { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
@@ -209,6 +222,12 @@ const boonRequirements: BoonRequirements[] = [
     boon: Boons.Exit_Wounds,
     requirements: [
       { number: 1, boons: [Boons.True_Shot, Boons.Hunters_Flare, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Electric_Shot, Boons.Thunder_Flare, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Phalanx_Shot, Boons.Phalanx_Flare] },
+    ],
+  },
+  {
+    boon: Upgrades.Flash_Fire,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Lucifer] },
     ],
   },
   {
@@ -240,6 +259,18 @@ const boonRequirements: BoonRequirements[] = [
     boon: Boons.Glacial_Glare,
     requirements: [
       { number: 1, boons: [Boons.Crystal_Beam, Boons.Icy_Flare] },
+    ],
+  },
+  {
+    boon: Upgrades.Greater_Consecration,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Arthur] },
+    ],
+  },
+  {
+    boon: Upgrades.Greater_Inferno,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Lucifer] },
     ],
   },
   {
@@ -423,6 +454,18 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
+    boon: Upgrades.Rending_Claws,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Gilgamesh] },
+    ],
+  },
+  {
+    boon: Upgrades.Repulse_Shot,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Rama] },
+    ],
+  },
+  {
     boon: Boons.Rip_Current,
     requirements: [
       { number: 1, boons: [Boons.Poseidons_Aid] },
@@ -538,6 +581,12 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
+    boon: Upgrades.Triple_Beam,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Lucifer] },
+    ],
+  },
+  {
     boon: Boons.Trippy_Flare,
     requirements: [
       { number: 1, boons: [Aspects.Aspect_of_Beowulf] },
@@ -564,6 +613,12 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
+    boon: Upgrades.Unyielding_Defense,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Beowulf] },
+    ],
+  },
+  {
     boon: Boons.Vengeful_Mood,
     requirements: [
       { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Flare, Boons.Thunder_Dash, Boons.Zeus_Aid] },
@@ -581,6 +636,12 @@ const boonRequirements: BoonRequirements[] = [
     boon: Boons.Wave_Pounding,
     requirements: [
       { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
+    ],
+  },
+  {
+    boon: Upgrades.Winged_Serpent,
+    requirements: [
+      { number: 1, boons: [Aspects.Aspect_of_Guan_Yu] },
     ],
   },
   {
