@@ -7,16 +7,13 @@ import {
   BoonRows,
   BoonTables,
   Items,
+  Mapping,
   Weapons,
 } from 'redux/domain';
 
 const mapStateToProps = (state: AppState) => ({
   boons: state.boons
 });
-
-interface Mapping {
-  [key: string]: string;
-};
 
 type Props = ReturnType<typeof mapStateToProps> & {
   name: string,

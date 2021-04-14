@@ -1,10 +1,10 @@
 export const Items = {
   Active: 'Active',
   Ambrosia: 'Ambrosia',
-  Ammo: 'Ammo',
   Anvil_of_Fates: 'Anvil of Fates',
   Attack: 'Attack',
   Blessing: 'Blessing',
+  Bloodstone: 'Bloodstone',
   Call: 'Call',
   Cast: 'Cast',
   Centaur_Heart: 'Centaur Heart',

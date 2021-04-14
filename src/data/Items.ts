@@ -45,11 +45,11 @@ const extras: GroupBoons = {
       [BoonRows.Extras]: [
         Items.Active,
         Items.Ambrosia,
-        Items.Ammo,
         Items.Aspect_Unlocks,
         Items.Anvil_of_Fates,
         Items.Attack,
         Items.Blessing,
+        Items.Bloodstone,
         Items.Call,
         Items.Cast,
         Items.Centaur_Heart,

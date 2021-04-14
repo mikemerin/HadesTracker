@@ -1,6 +1,7 @@
 import { BoonResetTypes, DataActions } from './domain/actions';
 import { Boons } from './domain/boons';
 import { ChaosBoons } from './domain/chaosBoons';
+import { Descriptions } from './domain/descriptions';
 import { BoonRows, BoonTables, Pages } from './domain/displays';
 import { Gods } from './domain/gods';
 import { Items } from './domain/items';
@@ -13,6 +14,7 @@ export type BoonRow = typeof BoonRows[keyof typeof BoonRows];
 export type BoonTable = typeof BoonTables[keyof typeof BoonTables];
 export type ChaosBoon = typeof ChaosBoons[keyof typeof ChaosBoons];
 export type DataAction = typeof DataActions[keyof typeof DataActions];
+export type Description = typeof Descriptions[keyof typeof Descriptions];
 export type God = typeof Gods[keyof typeof Gods];
 export type Item = typeof Items[keyof typeof Items];
 export type Page = typeof Pages[keyof typeof Pages];
@@ -24,6 +26,10 @@ export type Image = {
   alt: string,
   title?: string,
 };
+
+export type Mapping = {
+  [key: string]: string;
+}
 
 export type AnyBoon = Aspect | Boon | ChaosBoon | Item | Upgrade;
 
@@ -50,6 +56,7 @@ export type BoonRequirements = {
 export type BoonInfo = {
   active: boolean,
   boonRow?: BoonRow,
+  description?: string,
   image: Image,
   owners: string[],
 
@@ -117,6 +124,7 @@ export {
   BoonTables,
   ChaosBoons,
   DataActions,
+  Descriptions,
   Gods,
   Items,
   Pages,

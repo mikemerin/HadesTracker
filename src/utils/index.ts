@@ -9,12 +9,16 @@ const getBoonHoverText = (
   clickable: boolean,
   name: AnyBoon,
 ) => {
-  const { active, boonRow, requirements, restricted, swappable, swapsWith, unlocks } = boon;
+  const { active, boonRow, description, requirements, restricted, swappable, swapsWith, unlocks } = boon;
   let { restrictedBy, restricts } = boon;
 
   const baseText = [clickable
     ? `${swappable ? 'Swap to' : active ? 'Deactivate' : 'Activate'} ${name}`
     : `${restricted ? 'Remove restrictions on' : 'Unlock'} ${name} before you can activate it`];
+
+  if (description) {
+    baseText.push(description);
+  }
 
   if (requirements) {
     const requirementText: string[] = [];

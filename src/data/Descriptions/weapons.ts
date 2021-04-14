@@ -1,0 +1,28 @@
+import { Descriptions, Mapping } from 'redux/domain';
+
+export const aspectDescriptions: Mapping = {
+  Aspect_of_Achilles: `After you ${Descriptions.Special}, you can retrieve your Spear with ${Descriptions.Raging_Rush}`,
+  Aspect_of_Arthur: `You have ${Descriptions.Holy_Excalibur}, and +50 ${Descriptions.Health_Up} to your Life Total`,
+  Aspect_of_Beowulf: `Aspect of Beowulf`,
+  Aspect_of_Chaos: `After your ${Descriptions.Bull_Rush}, your next ${Descriptions.Special} thows multiple Shields`,
+  Aspect_of_Chiron: `Your ${Descriptions.Special} automatically seeks the foe last struck by your ${Descriptions.Attack}`,
+  Aspect_of_Demeter: `After landing 12 strikes, your next ${Descriptions.Special} hits more times`,
+  Aspect_of_Eris: `For 4 Sec. after absorbing your ${Descriptions.Special}'s blast, deal more damage`,
+  Aspect_of_Gilgamesh: `You have the ${Descriptions.Claws_of_Enkindu}, whose ${Descriptions.Dash_Upper} can ${Descriptions.Maim} foes`,
+  Aspect_of_Guan_Yu: `You have the ${Descriptions.Frost_Fair_Blade}, but your ${Descriptions.Health_Up} and ${Descriptions.Healing} are reduced`,
+  Aspect_of_Hades: `Your ${Descriptions.Spin_Attack} becomes ${Descriptions.Punishing_Sweep}`,
+  Aspect_of_Hera: `Your ${Descriptions.Cast} loads ${Descriptions.Cast_Ammo} in your next ${Descriptions.Attack}, firing on impact`,
+  Aspect_of_Hestia: `After you manually ${Descriptions.Reload}, your next shot is empowered`,
+  Aspect_of_Lucifer: `You have ${Descriptions.Igneus_Eden}, which launches volatile ${Descriptions.Hellfire}`,
+  Aspect_of_Nemesis: `For 3 Sec. after your ${Descriptions.Special}, your ${Descriptions.Attack} may deal ${Descriptions.Critical} damage`,
+  Aspect_of_Poseidon: `Your ${Descriptions.Special} dislodges ${Descriptions.Cast_Ammo} from foes`,
+  Aspect_of_Rama: `You have ${Descriptions.Celestial_Sharanga}, which can cause ${Descriptions.Shared_Suffering}`,
+  Aspect_of_Talos: `Your ${Descriptions.Special} becomes ${Descriptions.Magnetic_Cutter}; its pull deals 20 damage`,
+  Aspect_of_Zagreus_Blade: `The form in which the heart-seeking bow first revealed itself`,
+  Aspect_of_Zagreus_Bow: `The form in which the blade of the underworld first revealed itself`,
+  Aspect_of_Zagreus_Fists: `The form in which the twin fists first revealed itself`,
+  Aspect_of_Zagreus_Rail: `The form in which the adamant rail first revealed itself`,
+  Aspect_of_Zagreus_Shield: `The form in which the shield of chaos first revealed itself`,
+  Aspect_of_Zagreus_Spear: `The form in which the eternal spear first revealed itself`,
+  Aspect_of_Zeus: `You have ${Descriptions.Naeglings_Board}, but take +10% damage`,
+} as const;

@@ -15,6 +15,7 @@ import {
 } from 'redux/domain';
 import { boonRequirements } from './BoonRequirements';
 import { boonRestrictionGroups, boonRestrictions } from './BoonRestrictions';
+import { descriptions } from './Descriptions';
 import { nameSanitizer } from 'utils';
 
 type GeneratedBoonInfo = {
@@ -50,10 +51,13 @@ const generateBoonInfo = (groupBoons: GroupBoons): GeneratedBoonInfo => {
     if (boonState[boon]) {
       boonState[boon].owners.push(owner);
     } else {
-      const path = getPath(nameSanitizer(boon), boonGroup);
-      const src = `${process.env.PUBLIC_URL}/assets/${path}/${nameSanitizer(boon)}.png`;
+      const sanitizedBoonName = nameSanitizer(boon);
+      const path = getPath(sanitizedBoonName, boonGroup);
+      const src = `${process.env.PUBLIC_URL}/assets/${path}/${sanitizedBoonName}.png`;
       const image: Image = { src, alt: boon };
+      const description = descriptions[sanitizedBoonName.replace(/'/g, '')];
       boonState[boon] = {
+        description,
         image,
         owners: [owner],
         ...(boonRow && {boonRow}),

@@ -18,12 +18,10 @@ export const ChaosBoons = {
   Lunge: 'Lunge',
   Maimed: 'Maimed',
   Pauper: 'Pauper',
-  Remedy: 'Remedy',
   Roiling: 'Roiling',
   Shot: 'Shot',
   Slippery: 'Slippery',
   Slothful: 'Slothful',
   Soul: 'Soul',
-  Stabbing: 'Stabbing',
   Strike: 'Strike',
 } as const;
