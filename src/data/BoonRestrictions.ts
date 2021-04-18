@@ -281,7 +281,7 @@ const boonRestrictions: BoonRestrictions[] = [
   },
   {
     boon: Items.Sigil_of_the_Dead,
-    restricts: [Boons.Smoldering_Air],
+    restricts: [Boons.Smoldering_Air, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid],
   },
   {
     boon: Boons.Slicing_Shot,
