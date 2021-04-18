@@ -24,6 +24,6 @@ export const chaosBoonDescriptions: Mapping = {
   Shot: `Your ${Descriptions.Cast} deals ${Descriptions.NUMBERm} damage`,
   Slippery: `For the next ${Descriptions.NUMBERn} ${Descriptions.Encounters}, you cannot collect ${Descriptions.Cast_Ammo} for ${Descriptions.NUMBERc} seconds`,
   Slothful: `For the next ${Descriptions.NUMBERn} ${Descriptions.Encounters}, you have ${Descriptions.NUMBERl} move speed`,
-  Soul: `You have ${Descriptions.NUMBERm} ${Descriptions.Health_Up}`,
+  Soul: `You have ${Descriptions.NUMBERm} ${Descriptions.Max_Life}`,
   Strike: `Your ${Descriptions.Attack} deals ${Descriptions.NUMBERm} damage`,
 } as const;
