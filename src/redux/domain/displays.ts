@@ -14,6 +14,14 @@ export const BoonRows = {
   Other: 'Other',
   Special: 'Special',
   Talents: 'Darkness',
+  Aphrodite: 'Aphrodite',
+  Ares: 'Ares',
+  Artemis: 'Artemis',
+  Athena: 'Athena',
+  Demeter: 'Demeter',
+  Dionysus: 'Dionysus',
+  Poseidon: 'Poseidon',
+  Zeus: 'Zeus',
 } as const;
 
 export const BoonTables = {

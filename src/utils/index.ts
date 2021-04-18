@@ -1,5 +1,13 @@
 import { ChangeEvent } from 'react';
-import { AnyBoon, AppState, BoonInfo, BoonState, Requirements } from 'redux/domain';
+import {
+  AnyBoon,
+  AppState,
+  BoonInfo,
+  BoonRow,
+  BoonRows,
+  BoonState,
+  Requirements
+} from 'redux/domain';
 import { setLocalState } from 'redux/state';
 
 const tempLocalStorageName = 'temp';
@@ -75,29 +83,53 @@ const boonFileChecker = (changeEvent: ChangeEvent<HTMLInputElement>) => {
   reader.readAsText(file);
 };
 
+const activeRunBoonRows = new Set<BoonRow>([
+  BoonRows.Attack,
+  BoonRows.Special,
+  BoonRows.Cast,
+  BoonRows.Dash,
+  BoonRows.Call,
+  BoonRows.Other,
+  BoonRows.Legendary,
+  BoonRows.Aphrodite,
+  BoonRows.Ares,
+  BoonRows.Artemis,
+  BoonRows.Athena,
+  BoonRows.Demeter,
+  BoonRows.Dionysus,
+  BoonRows.Poseidon,
+  BoonRows.Zeus,
+  BoonRows.Blessing,
+  BoonRows.Curse,
+  BoonRows.Daedalus,
+]);
+
 const getBoonStatuses = (
   state: AppState,
   boons: AnyBoon[],
-  allInactive?: boolean,
+  resetRun?: boolean,
 ): BoonState => {
   let stateBoons: BoonState = state.boons;
 
   boons.forEach((boon: AnyBoon) => {
-    if (allInactive) {
+    const isRunBoon = activeRunBoonRows.has(stateBoons[boon].boonRow as BoonRow);
+    const runBoonReset = resetRun && isRunBoon;
+
+    if (runBoonReset) {
       stateBoons[boon].active = false;
     }
 
     const { requirements, restrictedBy, swapsWith } = stateBoons[boon];
 
-    const restricted = !restrictedBy || allInactive ? false : isRestricted(state, restrictedBy);
-    const swappable = !swapsWith || allInactive ? false : isSwappable(state, swapsWith);
+    const restricted = !restrictedBy || runBoonReset ? false : isRestricted(state, restrictedBy);
+    const swappable = !swapsWith || runBoonReset ? false : isSwappable(state, swapsWith);
     if ((restricted || swappable) && stateBoons[boon].active) {
       stateBoons[boon].active = false;
       stateBoons = getBoonStatuses(state, getRelatedBoons(stateBoons[boon]));
     }
     stateBoons[boon].restricted = restricted;
     stateBoons[boon].swappable = swappable;
-    stateBoons[boon].unlocked = !requirements || (!allInactive && isUnlocked(state, requirements));
+    stateBoons[boon].unlocked = !requirements || (!runBoonReset && isUnlocked(state, requirements));
   });
   return stateBoons;
 };
