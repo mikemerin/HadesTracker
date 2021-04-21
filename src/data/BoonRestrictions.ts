@@ -2,9 +2,11 @@ import {
   Aspects,
   BoonRestrictions,
   BoonRows,
+  BoonSwappableGroups,
   Boons,
   GroupRestrictions,
-  Items,
+  Keepsakes,
+  Talents,
   Upgrades,
 } from 'redux/domain';
 
@@ -15,8 +17,14 @@ const boonRestrictionGroups: GroupRestrictions = {
   [BoonRows.Dash]: [],
   [BoonRows.Call]: [],
   [BoonRows.Aspect]: [],
-  [BoonRows.Keepsakes]: [],
+  [BoonRows.Keepsake_Items]: [],
+  [BoonRows.Companions]: [],
 };
+
+const boonSwappableGroups: BoonSwappableGroups = [
+  [Talents.Fiery_Presence, Talents.Shadow_Presence],
+  [Talents.Infernal_Soul, Talents.Stygian_Soul],
+];
 
 const boonRestrictions: BoonRestrictions[] = [
   {
@@ -280,7 +288,7 @@ const boonRestrictions: BoonRestrictions[] = [
     restricts: [Upgrades.Piercing_Fire, Upgrades.Ricochet_Fire, Upgrades.Spread_Fire],
   },
   {
-    boon: Items.Sigil_of_the_Dead,
+    boon: Keepsakes.Sigil_of_the_Dead,
     restricts: [Boons.Smoldering_Air, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid],
   },
   {
@@ -324,4 +332,5 @@ const boonRestrictions: BoonRestrictions[] = [
 export {
   boonRestrictionGroups,
   boonRestrictions,
+  boonSwappableGroups,
 };

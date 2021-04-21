@@ -41,7 +41,8 @@ const BoonPage = ({
             <BoonTable boonType={BoonTables.Chaos} />
           </Grid.Column>
           <Grid.Column key={'Active_Table'} width={2}>
-            <BoonTable boonType={BoonTables.Items} />
+            <BoonTable boonType={BoonTables.Keepsakes} />
+            <BoonTable boonType={BoonTables.Talents} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

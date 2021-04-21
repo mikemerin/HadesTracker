@@ -19,7 +19,7 @@ You can also import/export the data in this app, or reset all data if you are st
 * New sections
   * Primary
     * Move hover text to show in a section instead
-      * Add icons for gods for easier locating
+      * Add items for gods for easier locating
       * Bold which ones are active/restricting
   * Individual
     * Weapons: broken free

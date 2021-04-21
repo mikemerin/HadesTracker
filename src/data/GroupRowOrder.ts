@@ -26,10 +26,14 @@ const groupRowOrder: GroupRowOrder = {
     Gods.Poseidon,
     Gods.Zeus,
   ],
-  [BoonTables.Items]: [
+  [BoonTables.Icons]: [
     BoonRows.Aspect,
     BoonRows.Keepsakes,
     BoonRows.Talents,
+  ],
+  [BoonTables.Keepsakes]: [
+    BoonRows.Keepsake_Items,
+    BoonRows.Companions,
   ],
   [BoonTables.Other]: [
     BoonRows.Other,
@@ -43,6 +47,9 @@ const groupRowOrder: GroupRowOrder = {
     BoonRows.Call,
     BoonRows.Other,
     BoonRows.Legendary,
+  ],
+  [BoonTables.Talents]: [
+    BoonRows.Talents,
   ],
   [BoonTables.Weapon]: [
     BoonRows.Daedalus,

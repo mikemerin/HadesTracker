@@ -9,6 +9,7 @@ import {
   Requirements
 } from 'redux/domain';
 import { setLocalState } from 'redux/state';
+import { activeRunBoonRows } from 'data/ActiveRunBoonRows';
 
 const tempLocalStorageName = 'temp';
 
@@ -56,7 +57,16 @@ const getBoonHoverText = (
   }
 
   if (swapsWith) {
-    baseText.push([`Can swap with any unlocked ${boonRow}`, '(only one can be active at a time)', 'Note: boons requiring this may stop working'].join('\n'));
+    let text = [];
+    if (boonRow !== BoonRows.Talents) {
+      text = [`Can swap with any unlocked ${boonRow}`, '(only one can be active at a time)'];
+      if (boonRow !== BoonRows.Companions) {
+        text.push('Note: boons requiring this may stop working');
+      }
+    } else {
+      text = [`Can swap with ${swapsWith.join(', ')}`, '(only one can be active at a time)', 'Note: boons requiring this may stop working'];
+    }
+    baseText.push(text.join('\n'));
   }
 
   if (unlocks) {
@@ -82,27 +92,6 @@ const boonFileChecker = (changeEvent: ChangeEvent<HTMLInputElement>) => {
   };
   reader.readAsText(file);
 };
-
-const activeRunBoonRows = new Set<BoonRow>([
-  BoonRows.Attack,
-  BoonRows.Special,
-  BoonRows.Cast,
-  BoonRows.Dash,
-  BoonRows.Call,
-  BoonRows.Other,
-  BoonRows.Legendary,
-  BoonRows.Aphrodite,
-  BoonRows.Ares,
-  BoonRows.Artemis,
-  BoonRows.Athena,
-  BoonRows.Demeter,
-  BoonRows.Dionysus,
-  BoonRows.Poseidon,
-  BoonRows.Zeus,
-  BoonRows.Blessing,
-  BoonRows.Curse,
-  BoonRows.Daedalus,
-]);
 
 const getBoonStatuses = (
   state: AppState,

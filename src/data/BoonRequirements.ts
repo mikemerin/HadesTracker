@@ -3,7 +3,8 @@ import {
   BoonRequirements,
   Boons,
   ChaosBoons,
-  Items,
+  Keepsakes,
+  Talents,
   Upgrades,
 } from 'redux/domain';
 
@@ -11,7 +12,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: ChaosBoons.Ambush,
     requirements: [
-      { number: 1, boons: [Items.Shadow_Presence] },
+      { number: 1, boons: [Talents.Shadow_Presence] },
     ],
   },
   {
@@ -23,13 +24,13 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: ChaosBoons.Assault,
     requirements: [
-      { number: 1, boons: [Items.Fiery_Presence] },
+      { number: 1, boons: [Talents.Fiery_Presence] },
     ],
   },
   {
     boon: Boons.Auto_Reload,
     requirements: [
-      { number: 1, boons: [Items.Stygian_Soul] },
+      { number: 1, boons: [Talents.Stygian_Soul] },
     ],
   },
   {
@@ -41,8 +42,8 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Bad_News,
     requirements: [
-      { number: 1, boons: [Items.Stygian_Soul] },
-      { number: 1, boons: [Boons.Auto_Reload, Items.Lambent_Plume] },
+      { number: 1, boons: [Talents.Stygian_Soul] },
+      { number: 1, boons: [Boons.Auto_Reload, Keepsakes.Lambent_Plume] },
     ],
   },
   {
@@ -239,7 +240,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Flurry_Cast,
     requirements: [
-      { number: 1, boons: [Items.Infernal_Soul] },
+      { number: 1, boons: [Talents.Infernal_Soul] },
     ],
   },
   {
@@ -276,8 +277,8 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Greater_Recall,
     requirements: [
-      { number: 1, boons: [Items.Infernal_Soul] },
-      { number: 1, boons: [Boons.Flurry_Cast, Boons.Quick_Reload, Items.Lambent_Plume] },
+      { number: 1, boons: [Talents.Infernal_Soul] },
+      { number: 1, boons: [Boons.Flurry_Cast, Boons.Quick_Reload, Keepsakes.Lambent_Plume] },
     ],
   },
   {
@@ -308,7 +309,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Huge_Catch,
     requirements: [
-      // { number: 2, boons: [Items.Conch_Shell, Boons.Sunken_Treasure, Boons.Oceans_Bounty] },
+      // { number: 2, boons: [Keepsakes.Conch_Shell, Boons.Sunken_Treasure, Boons.Oceans_Bounty] },
       { number: 2, boons: [Boons.Sunken_Treasure, Boons.Oceans_Bounty] }, // TODO: add the item
     ],
   },
@@ -371,7 +372,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Lightning_Rod,
     requirements: [
-      { number: 1, boons: [Items.Infernal_Soul] },
+      { number: 1, boons: [Talents.Infernal_Soul] },
       { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Hunter_Dash, Boons.Artemis_Aid] },
       { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Flare, Boons.Thunder_Dash, Boons.Zeus_Aid] },
     ],
@@ -438,13 +439,13 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Quick_Favor,
     requirements: [
-      { number: 1, boons: [Items.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
+      { number: 1, boons: [Keepsakes.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
     ],
   },
   {
     boon: Boons.Quick_Reload,
     requirements: [
-      { number: 1, boons: [Items.Infernal_Soul] },
+      { number: 1, boons: [Talents.Infernal_Soul] },
     ],
   },
   {
@@ -474,7 +475,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Rush_Delivery,
     requirements: [
-      { number: 1, boons: [Boons.Greater_Haste, Boons.Hyper_Sprint, Items.Lambent_Plume] },
+      { number: 1, boons: [Boons.Greater_Haste, Boons.Hyper_Sprint, Keepsakes.Lambent_Plume] },
     ],
   },
   {
@@ -501,7 +502,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Second_Wind,
     requirements: [
-      { number: 1, boons: [Items.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
+      { number: 1, boons: [Keepsakes.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
     ],
   },
   {
@@ -513,7 +514,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: ChaosBoons.Slippery,
     requirements: [
-      { number: 1, boons: [Items.Infernal_Soul] },
+      { number: 1, boons: [Talents.Infernal_Soul] },
     ],
   },
   {

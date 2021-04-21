@@ -9,7 +9,7 @@ import {
   setDisplayInfo,
   setGroupRowOrder,
 } from './actions';
-import { AnyBoon, AppState, BoonResetTypes } from './domain';
+import { AnyBoon, AppState, BoonResetTypes, BoonTypes } from './domain';
 import initialState, { defaultState } from './state';
 import { getBoonStatuses, getRelatedBoons } from 'utils';
 
@@ -40,7 +40,8 @@ const handleSetBoonActive = (
   state: AppState,
   { payload }: ReturnType<typeof setBoonActive>,
 ): AppState => {
-  const { boon, active } = payload;
+  const { active, boon } = payload;
+  const { type } = state.boons[boon];
 
   let newState = {
     ...state,
@@ -49,8 +50,8 @@ const handleSetBoonActive = (
       [boon]: {
         ...state.boons[boon],
         active,
-        ...active && { prophecyForetold: true },
-        restricted: false,
+        ...(active && type === BoonTypes.Tracked && { prophecyForetold: true }),
+        ...(type !== BoonTypes.Icon && {restricted: false}),
       }
     }
   }

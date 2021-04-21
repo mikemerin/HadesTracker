@@ -2,38 +2,47 @@ import {
   AnyBoon,
   Aspects,
   BoonRow,
+  BoonRows,
   BoonState,
   BoonTables,
+  BoonTypes,
   ChaosBoons,
+  Companions,
   Gods,
   GroupBoons,
   GroupRestrictions,
-  Items,
   Image,
+  Icons,
+  Keepsakes,
   Requirements,
+  Talents,
   Weapons
 } from 'redux/domain';
 import { boonRequirements } from './BoonRequirements';
-import { boonRestrictionGroups, boonRestrictions } from './BoonRestrictions';
+import { boonRestrictionGroups, boonRestrictions, boonSwappableGroups } from './BoonRestrictions';
 import { descriptions } from './Descriptions';
+import { prophecyBoonRows } from './ProphecyBoonRows';
 import { nameSanitizer } from 'utils';
 
 type GeneratedBoonInfo = {
   boonState: BoonState,
   boonRestrictionGroups: GroupRestrictions,
-}
+};
 
-const paths: {[key: string]: string} = {
+const paths: {[key: string]: string} = { // TODO: try to remove this, let getPath handle it all
   [BoonTables.Aspects]: 'aspects',
-  [BoonTables.Extras]: 'items',
+  [BoonTables.Extras]: 'Icons',
   [BoonTables.Weapon]: 'daedalus',
 };
 
 const getPath = (boon: string, boonGroup: string): string => {
   if ((Aspects as any)[boon]) return 'aspects';
   if ((ChaosBoons as any)[boon]) return 'chaos';
+  if ((Companions as any)[boon]) return 'companions';
   if ((Gods as any)[boon]) return 'gods';
-  if ((Items as any)[boon]) return 'items';
+  if ((Icons as any)[boon]) return 'Icons';
+  if ((Keepsakes as any)[boon]) return 'keepsakes';
+  if ((Talents as any)[boon]) return 'talents';
   if ((Weapons as any)[boon]) return 'weapons';
 
   return paths[boonGroup] || 'boons';
@@ -56,14 +65,17 @@ const generateBoonInfo = (groupBoons: GroupBoons): GeneratedBoonInfo => {
       const src = `${process.env.PUBLIC_URL}/assets/${path}/${sanitizedBoonName}.png`;
       const image: Image = { src, alt: boon };
       const description = descriptions[sanitizedBoonName.replace(/'/g, '')];
+      const type = !boonRow || boonRow === BoonRows.Extras ? BoonTypes.Icon :
+                    prophecyBoonRows.has(boonRow) ? BoonTypes.Tracked : BoonTypes.Not_Tracked;
       boonState[boon] = {
         description,
         image,
+        type,
         owners: [owner],
-        ...(boonRow && {boonRow}),
-        active: false,
-        prophecyForetold: false,
-        restricted: false,
+        ...(boonRow && { boonRow }),
+        ...(type !== BoonTypes.Icon && { active: false }),
+        ...(type !== BoonTypes.Icon && { restricted: false }),
+        ...(type === BoonTypes.Tracked && { prophecyForetold: false }),
         unlocked: true,
       };
     };
@@ -113,11 +125,11 @@ const generateBoonInfo = (groupBoons: GroupBoons): GeneratedBoonInfo => {
     });
   });
 
-  Object.values(boonRestrictionGroups).forEach((boonRestrictionGroup) => {
-    boonRestrictionGroup.forEach((boon, index) => {
-      boonState[boon].swapsWith = [...boonRestrictionGroup.slice(0, index), ...boonRestrictionGroup.slice(index + 1)];
+  [...boonSwappableGroups, ...Object.values(boonRestrictionGroups)].forEach((swappableBoons) => {
+    swappableBoons.forEach((boon, index) => {
+      boonState[boon].swapsWith = [...swappableBoons.slice(0, index), ...swappableBoons.slice(index + 1)];
     })
-  })
+  });
 
   boonRestrictions.forEach(({boon, restricts}) => {
     boonState[boon].restricts = restricts;

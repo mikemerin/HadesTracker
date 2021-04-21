@@ -13,7 +13,7 @@ export const BoonRows = {
   Legendary: 'Legendary',
   Other: 'Other',
   Special: 'Special',
-  Talents: 'Darkness',
+
   Aphrodite: 'Aphrodite',
   Ares: 'Ares',
   Artemis: 'Artemis',
@@ -22,6 +22,11 @@ export const BoonRows = {
   Dionysus: 'Dionysus',
   Poseidon: 'Poseidon',
   Zeus: 'Zeus',
+
+  Keepsake_Items: 'Codex_Filled',
+  Companions: 'Ambrosia',
+
+  Talents: 'Darkness',
 } as const;
 
 export const BoonTables = {
@@ -30,9 +35,11 @@ export const BoonTables = {
   CustomerLoyalty: 'CustomerLoyalty',
   Duo: 'Duo',
   Extras: 'Extras',
-  Items: 'Items',
+  Icons: 'Icons',
+  Keepsakes: 'Keepsakes',
   Other: 'Other',
   Solo: 'Solo',
+  Talents: 'Talents',
   Weapon: 'Weapon',
 } as const;
 

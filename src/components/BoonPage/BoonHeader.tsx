@@ -6,7 +6,7 @@ import {
   AppState,
   BoonRows,
   BoonTables,
-  Items,
+  Icons,
   Mapping,
   Weapons,
 } from 'redux/domain';
@@ -23,9 +23,11 @@ type Props = ReturnType<typeof mapStateToProps> & {
 };
 
 const nameMaps: Mapping = {
-  [Items.Fated_List]: 'Active Items/Aspects',
-  [BoonRows.Talents]: 'Talents',
+  [Icons.Fated_List]: 'Active Icons/Aspects',
+  [BoonRows.Companions]: 'Companions',
   [BoonRows.Daedalus]: 'Daedalus Upgrades',
+  [BoonRows.Keepsake_Items]: 'Items',
+  [BoonRows.Talents]: 'Talents',
 }
 
 const weaponNames: Mapping  = {

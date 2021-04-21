@@ -10,7 +10,8 @@ import {
 import {
   AnyBoon,
   AppState,
-  Items,
+  BoonTypes,
+  Icons,
   Requirements,
 } from 'redux/domain';
 
@@ -66,7 +67,7 @@ const BoonCell = ({
   const handleActive = (event: any) => onSetBoonActive(name, !boon.active);
   const handleProphecyChange = (event: any) => onSetBoonProphecyForetold(name, !boon.prophecyForetold);
 
-  const { active, image, prophecyForetold, requirements, restricted, restrictedBy, restricts, swapsWith, unlocked, unlocks } = boon;
+  const { active, image, prophecyForetold, requirements, restricted, restrictedBy, restricts, swapsWith, type, unlocked, unlocks } = boon;
   const { requiresBoons, restrictedByBoons, restrictsBoons, swapsWithBoons, unlocksBoons } = display;
 
   const clickable = (active || unlocked) && !restricted;
@@ -77,26 +78,34 @@ const BoonCell = ({
     }
   };
 
-  const prophecyImage = boons[prophecyForetold ? Items.Prophecy_Foretold : Items.Prophecy_Not_Foretold].image;
+  const prophecyImage = boons[prophecyForetold ? Icons.Prophecy_Foretold : Icons.Prophecy_Not_Foretold].image;
   prophecyImage.title = `${prophecyForetold ? 'Remove' : 'Foretell'} prophecy ${name}`;
 
   let activeClass, activeImage, activeStyle;
   if (requiresBoons.map(({boons}) => boons).flat().includes(name as AnyBoon)) { // TODO: next commit: requirements (more complex)
-    activeImage = boons[Items.Requires].image;
+    activeImage = boons[Icons.Requires].image;
   } else if (restrictedByBoons.includes(name)) { // TODO: after this becomes a Set, restrictedByBoons.has(name)
-    activeImage = boons[Items.Codex_Locked].image;
+    activeImage = boons[Icons.Codex_Locked].image;
   } else if (restrictsBoons.includes(name)) { // TODO: after this becomes a Set, restrictsBoons.has(name)
-    activeImage = boons[Items.Restricted].image;
+    activeImage = boons[Icons.Restricted].image;
   } else if (swapsWithBoons.includes(name)) { // TODO: after this becomes a Set, swapsWithBoons.has(name)
-    activeImage = boons[Items.Swap].image;
+    activeImage = boons[Icons.Swap].image;
   } else if (unlocksBoons.includes(name)) { // TODO: after this becomes a Set, unlocksBoons.has(name)
-    activeImage = boons[Items.Chthonic_Key].image;
+    activeImage = boons[Icons.Chthonic_Key].image;
   } else {
     activeStyle = { opacity: `${unlocked && !restricted ? 1 : .3}` };
-    activeImage = boons[active ? Items.Active : restricted ? Items.Restricted : Items.Inactive].image;
+    activeImage = boons[active ? Icons.Active : restricted ? Icons.Restricted : Icons.Inactive].image;
     activeImage.title = getBoonHoverText(boon, clickable, name);
   }
   activeClass = `${clickable ? '' : 'un'}clickable`;
+
+  const displayProphecy = () => (
+    type === BoonTypes.Tracked && (
+      <td className='rowIconCell'>
+        <img className='rowIcon clickable' {...prophecyImage} alt={prophecyImage.alt} onClick={handleProphecyChange}/>
+      </td>
+    )
+  );
 
   return (
     <Segment style={{...style}}>
@@ -107,9 +116,7 @@ const BoonCell = ({
               <img className={`rowIcon ${unlocked ? '' : 'greyscale'}`} {...image} alt={image.alt} />
             </td>
             <td className='outlineText'>{name}</td>
-            <td className='rowIconCell'>
-              <img className='rowIcon clickable' {...prophecyImage} alt={prophecyImage.alt} onClick={handleProphecyChange}/>
-            </td>
+            { displayProphecy() }
             <td className='rowIconCell'>
               <img {...(clickable && { onClick: handleActive })}
               onMouseEnter={() => displayRelatedBoons(true)}

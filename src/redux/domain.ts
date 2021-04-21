@@ -4,20 +4,32 @@ import { ChaosBoons } from './domain/chaosBoons';
 import { Descriptions } from './domain/descriptions';
 import { BoonRows, BoonTables, Pages } from './domain/displays';
 import { Gods } from './domain/gods';
-import { Items } from './domain/items';
+import { Companions, Keepsakes } from './domain/keepsakes';
+import { Icons } from './domain/icons';
+import { Talents } from './domain/talents';
 import { Aspects, Upgrades, Weapons } from './domain/weapons';
+
+export const BoonTypes = {
+  Icon: 'Icon',
+  Not_Tracked: 'Not_Tracked',
+  Tracked: 'Tracked',
+} as const;
 
 export type Aspect = typeof Aspects[keyof typeof Aspects];
 export type Boon = typeof Boons[keyof typeof Boons];
 export type BoonResetType = typeof BoonResetTypes[keyof typeof BoonResetTypes];
 export type BoonRow = typeof BoonRows[keyof typeof BoonRows];
 export type BoonTable = typeof BoonTables[keyof typeof BoonTables];
+export type BoonType = typeof BoonTypes[keyof typeof BoonTypes];
 export type ChaosBoon = typeof ChaosBoons[keyof typeof ChaosBoons];
+export type Companion = typeof Companions[keyof typeof Companions];
 export type DataAction = typeof DataActions[keyof typeof DataActions];
 export type Description = typeof Descriptions[keyof typeof Descriptions];
 export type God = typeof Gods[keyof typeof Gods];
-export type Item = typeof Items[keyof typeof Items];
+export type Item = typeof Icons[keyof typeof Icons];
+export type Keepsake = typeof Keepsakes[keyof typeof Keepsakes];
 export type Page = typeof Pages[keyof typeof Pages];
+export type Talent = typeof Talents[keyof typeof Talents];
 export type Upgrade = typeof Upgrades[keyof typeof Upgrades];
 export type Weapon = typeof Weapons[keyof typeof Weapons];
 
@@ -29,19 +41,21 @@ export type Image = {
 
 export type Mapping = {
   [key: string]: string;
-}
+};
 
-export type AnyBoon = Aspect | Boon | ChaosBoon | Item | Upgrade;
+export type AnyBoon = Aspect | Boon | ChaosBoon | Item | Keepsake | Talent | Upgrade;
+
+export type BoonSwappableGroups = AnyBoon[][];
 
 export type BoonRestrictions = {
   boon: AnyBoon,
   restricts: AnyBoon[],
-}
+};
 
 export type GroupRestrictions = {
   // [key: string]: Set<AnyBoon>
   [key: string]: AnyBoon[], // TODO: make set (doesn't store correctly in Redux store atm)
-}
+};
 
 export type Requirements = {
   number: number,
@@ -54,15 +68,16 @@ export type BoonRequirements = {
 };
 
 export type BoonInfo = {
-  active: boolean,
+  active?: boolean,
   boonRow?: BoonRow,
   description?: string,
   image: Image,
   owners: string[],
+  type?: BoonType,
 
-  prophecyForetold: boolean,
+  prophecyForetold?: boolean,
 
-  restricted: boolean,
+  restricted?: boolean,
   unlocked: boolean,
   swappable?: boolean,
 
@@ -98,7 +113,7 @@ export type Display = {
   restrictsBoons: AnyBoon[], // TODO: make Set<AnyBoon>
   swapsWithBoons: AnyBoon[], // TODO: make Set<AnyBoon>
   unlocksBoons: string[], // TODO: make Set<AnyBoon>
-}
+};
 
 export type AppState = {
   boons: BoonState,
@@ -123,11 +138,14 @@ export {
   BoonRows,
   BoonTables,
   ChaosBoons,
+  Companions,
   DataActions,
   Descriptions,
   Gods,
-  Items,
+  Icons,
+  Keepsakes,
   Pages,
+  Talents,
   Upgrades,
   Weapons,
 };

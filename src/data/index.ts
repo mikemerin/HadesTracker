@@ -6,13 +6,24 @@ import { boonDuos } from './BoonDuos';
 import { boonSolos } from './BoonSolos';
 
 import { colors } from './Colors';
+import { extras } from './Extras';
 import { generateBoonInfo } from './GenerateBoonInfo';
 import { groupRowOrder } from './GroupRowOrder';
-import { extras, items } from './Items';
+import { icons } from './Icons';
+import { keepsakes } from './Keepsakes';
 import { pageList } from './PageList';
+import { talents } from './Talents';
 import { weapons } from './Weapons';
 
-const groupBoons: GroupBoons = deepmerge.all([boonSolos, boonDuos, extras, weapons, items]) as GroupBoons;
+const groupBoons: GroupBoons = deepmerge.all([
+  boonDuos,
+  boonSolos,
+  extras,
+  icons,
+  keepsakes,
+  talents,
+  weapons,
+]) as GroupBoons;
 const { boonRestrictionGroups, boonState } = generateBoonInfo(groupBoons);
 const boonInfo = Object.keys(boonState).sort().reduce((acc, boon) => {
   acc[boon] = boonState[boon];
