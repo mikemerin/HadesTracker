@@ -9,6 +9,10 @@
   padding-right: 30px;
 }
 
+.topRow {
+  padding-bottom: 30px !important;
+}
+
 .NavbarButton {
   color: #e8c423 !important;
   font-weight: bold;
@@ -63,6 +67,8 @@
 
 .boonCellTable, .rowHeaderTable > tbody > tr > td {
   font-size: 70%;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .modalButtons {
@@ -82,6 +88,7 @@
 }
 
 .outlineText {
+  padding-top: 0;
   color: black;
   text-shadow: -1px -1px 10px #FFF, 1px -1px 10px #FFF, -1px 1px 10px #FFF, 1px 1px 10px #FFF;
 }

@@ -13,6 +13,9 @@ const groupRowOrder: GroupRowOrder = {
     BoonRows.Blessing,
     BoonRows.Curse,
   ],
+  [BoonTables.Companions]: [
+    BoonRows.Companions,
+  ],
   [BoonTables.CustomerLoyalty]: [
     BoonRows.Item,
   ],
@@ -33,7 +36,6 @@ const groupRowOrder: GroupRowOrder = {
   ],
   [BoonTables.Keepsakes]: [
     BoonRows.Keepsake_Items,
-    BoonRows.Companions,
   ],
   [BoonTables.Other]: [
     BoonRows.Other,

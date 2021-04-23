@@ -10,7 +10,7 @@ import { extras } from './Extras';
 import { generateBoonInfo } from './GenerateBoonInfo';
 import { groupRowOrder } from './GroupRowOrder';
 import { icons } from './Icons';
-import { keepsakes } from './Keepsakes';
+import { companions, keepsakes } from './Keepsakes';
 import { pageList } from './PageList';
 import { talents } from './Talents';
 import { weapons } from './Weapons';
@@ -18,6 +18,7 @@ import { weapons } from './Weapons';
 const groupBoons: GroupBoons = deepmerge.all([
   boonDuos,
   boonSolos,
+  companions,
   extras,
   icons,
   keepsakes,

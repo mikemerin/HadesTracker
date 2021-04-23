@@ -18,6 +18,8 @@ import {
   Talents,
   Weapons
 } from 'redux/domain';
+import { nameMaps } from 'data/NameMaps';
+
 import { boonRequirements } from './BoonRequirements';
 import { boonRestrictionGroups, boonRestrictions, boonSwappableGroups } from './BoonRestrictions';
 import { descriptions } from './Descriptions';
@@ -90,7 +92,8 @@ const generateBoonInfo = (groupBoons: GroupBoons): GeneratedBoonInfo => {
         const rowBoons: AnyBoon[] = [...boonRowObj[boonRow], ...(boonState[boonRow] ? [] : [boonRow])] as AnyBoon[];
         rowBoons.forEach((boon: AnyBoon) => {
           if (boon !== boonRow) {
-            boonLoader(owner, boonGroup, boon, boonRow as BoonRow); // TODO: if boon!==boonRow, activeBoon = true, then can have prophecy/restrict/unlock/etc
+            const boonRowName: BoonRow = (nameMaps[boonRow] || boonRow) as BoonRow;
+            boonLoader(owner, boonGroup, boon, boonRowName);
             if (
               boonRestrictionGroups[boonRow] &&
               !boonRestrictionGroups[boonRow].includes(boon)

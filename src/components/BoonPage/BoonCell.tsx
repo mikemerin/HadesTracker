@@ -51,10 +51,12 @@ const mapDispatchToProps = {
 };
 
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & {
+  basic?: boolean,
   style: any,
 };
 
 const BoonCell = ({
+  basic,
   boon,
   boons,
   display,
@@ -78,9 +80,6 @@ const BoonCell = ({
     }
   };
 
-  const prophecyImage = boons[prophecyForetold ? Icons.Prophecy_Foretold : Icons.Prophecy_Not_Foretold].image;
-  prophecyImage.title = `${prophecyForetold ? 'Remove' : 'Foretell'} prophecy ${name}`;
-
   let activeClass, activeImage, activeStyle;
   if (requiresBoons.map(({boons}) => boons).flat().includes(name as AnyBoon)) { // TODO: next commit: requirements (more complex)
     activeImage = boons[Icons.Requires].image;
@@ -99,13 +98,22 @@ const BoonCell = ({
   }
   activeClass = `${clickable ? '' : 'un'}clickable`;
 
-  const displayProphecy = () => (
-    type === BoonTypes.Tracked && (
-      <td className='rowIconCell'>
-        <img className='rowIcon clickable' {...prophecyImage} alt={prophecyImage.alt} onClick={handleProphecyChange}/>
-      </td>
-    )
+  const displayText = () => (
+    <td className='outlineText'>{!basic && name}</td>
   );
+
+  const displayProphecy = () => {
+    const prophecyImage = boons[prophecyForetold ? Icons.Prophecy_Foretold : Icons.Prophecy_Not_Foretold].image;
+    prophecyImage.title = `${prophecyForetold ? 'Remove' : 'Foretell'} prophecy ${name}`;
+
+    return (
+      type === BoonTypes.Tracked && (
+        <td className='rowIconCell'>
+          <img className='rowIcon clickable' {...prophecyImage} alt={prophecyImage.alt} onClick={handleProphecyChange}/>
+        </td>
+      )
+    );
+  };
 
   return (
     <Segment style={{...style}}>
@@ -115,7 +123,7 @@ const BoonCell = ({
             <td className='rowIconCell' style={{...activeStyle}}>
               <img className={`rowIcon ${unlocked ? '' : 'greyscale'}`} {...image} alt={image.alt} />
             </td>
-            <td className='outlineText'>{name}</td>
+            { displayText() }
             { displayProphecy() }
             <td className='rowIconCell'>
               <img {...(clickable && { onClick: handleActive })}

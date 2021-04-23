@@ -23,7 +23,7 @@ export const BoonRows = {
   Poseidon: 'Poseidon',
   Zeus: 'Zeus',
 
-  Keepsake_Items: 'Codex_Filled',
+  Keepsake_Items: 'Keepsakes',
   Companions: 'Ambrosia',
 
   Talents: 'Darkness',
@@ -32,6 +32,7 @@ export const BoonRows = {
 export const BoonTables = {
   Aspects: 'Aspects',
   Chaos: 'Chaos',
+  Companions: 'Companions',
   CustomerLoyalty: 'CustomerLoyalty',
   Duo: 'Duo',
   Extras: 'Extras',
