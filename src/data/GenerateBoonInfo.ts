@@ -23,7 +23,7 @@ import { nameMaps } from 'data/NameMaps';
 import { boonRequirements } from './BoonRequirements';
 import { boonRestrictionGroups, boonRestrictions, boonSwappableGroups } from './BoonRestrictions';
 import { descriptions } from './Descriptions';
-import { prophecyBoonRows } from './ProphecyBoonRows';
+import { prophecyBoonExceptions, prophecyBoonRows } from './ProphecyBoonRows';
 import { nameSanitizer } from 'utils';
 
 type GeneratedBoonInfo = {
@@ -68,7 +68,8 @@ const generateBoonInfo = (groupBoons: GroupBoons): GeneratedBoonInfo => {
       const image: Image = { src, alt: boon };
       const description = descriptions[sanitizedBoonName.replace(/'/g, '')];
       const type = !boonRow || boonRow === BoonRows.Extras ? BoonTypes.Icon :
-                    prophecyBoonRows.has(boonRow) ? BoonTypes.Tracked : BoonTypes.Not_Tracked;
+                    prophecyBoonExceptions.has(boon as AnyBoon) ? BoonTypes.Not_Tracked_Boon :
+                    prophecyBoonRows.has(boonRow) ? BoonTypes.Tracked : BoonTypes.Not_Tracked_Boontype;
       boonState[boon] = {
         description,
         image,

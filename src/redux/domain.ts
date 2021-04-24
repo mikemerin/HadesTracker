@@ -11,7 +11,8 @@ import { Aspects, Upgrades, Weapons } from './domain/weapons';
 
 export const BoonTypes = {
   Icon: 'Icon',
-  Not_Tracked: 'Not_Tracked',
+  Not_Tracked_Boon: 'Not Tracked Boon',
+  Not_Tracked_Boontype: 'Not Tracked Boontype',
   Tracked: 'Tracked',
 } as const;
 

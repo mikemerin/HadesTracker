@@ -1,6 +1,7 @@
-import { BoonRow, BoonRows } from 'redux/domain';
+import { BoonRows } from 'redux/domain';
+import { nameMaps } from 'data/NameMaps';
 
-const activeRunBoonRows = new Set<BoonRow>([
+const activeRunBoonRows = new Set([
   BoonRows.Attack,
   BoonRows.Special,
   BoonRows.Cast,
@@ -22,7 +23,7 @@ const activeRunBoonRows = new Set<BoonRow>([
   BoonRows.Curse,
 
   BoonRows.Daedalus,
-]);
+].map((boonRow) => nameMaps[boonRow] || boonRow));
 
 export {
   activeRunBoonRows,

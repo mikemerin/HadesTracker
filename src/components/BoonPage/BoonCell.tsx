@@ -106,13 +106,15 @@ const BoonCell = ({
     const prophecyImage = boons[prophecyForetold ? Icons.Prophecy_Foretold : Icons.Prophecy_Not_Foretold].image;
     prophecyImage.title = `${prophecyForetold ? 'Remove' : 'Foretell'} prophecy ${name}`;
 
-    return (
-      type === BoonTypes.Tracked && (
+    if (type === BoonTypes.Tracked) {
+      return (
         <td className='rowIconCell'>
           <img className='rowIcon clickable' {...prophecyImage} alt={prophecyImage.alt} onClick={handleProphecyChange}/>
         </td>
       )
-    );
+    } else if (type === BoonTypes.Not_Tracked_Boon) {
+      return <td className='rowIconCell'></td>;
+    }
   };
 
   return (

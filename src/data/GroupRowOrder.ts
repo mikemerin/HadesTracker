@@ -10,8 +10,8 @@ const groupRowOrder: GroupRowOrder = {
     BoonRows.Aspect,
   ],
   [BoonTables.Chaos]: [
-    BoonRows.Blessing,
     BoonRows.Curse,
+    BoonRows.Blessing,
   ],
   [BoonTables.Companions]: [
     BoonRows.Companions,

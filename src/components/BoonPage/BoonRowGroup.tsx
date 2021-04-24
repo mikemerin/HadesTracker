@@ -34,7 +34,6 @@ const BoonRowGroup = ({
     const idString = id.toString();
     return idString[0].toUpperCase() + idString.slice(1);
   }).join('');
-    // ${rowNumber + 1}`;
 
   const generateBoonCell = (boonCellId: string, individualBoon: AnyBoon) => {
     const style = BoonStyles({boonKey, boonType, boonRow, individualBoon});

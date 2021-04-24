@@ -18,8 +18,9 @@ const colors: {[key: string]: string} = {
   [Weapons.Adamant_Rail]: '#bbae99',
   [Weapons.Shield_of_Chaos]: '#d5c327',
   [Weapons.Eternal_Spear]: '#45a990',
-  [Icons.Keepsakes]: '#3c2c30',
-  // TODO: Keepsakes, Talents, etc.
+  [Icons.Ambrosia]: '#d85e00',
+  [Icons.Darkness]: '#7917bb',
+  [Icons.Keepsakes]: '#75554d',
 };
 
 export {
