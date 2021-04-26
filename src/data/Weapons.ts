@@ -147,7 +147,7 @@ const weapons: GroupBoons = {
     [BoonTables.Weapon]: {
       [BoonRows.Daedalus]: [
         Upgrades.Cluster_Bomb,
-        Upgrades.Concentrated_Fire, // TODO: no prophecyForetold for this upgrade
+        Upgrades.Concentrated_Fire,
         Upgrades.Delta_Chamber,
         Upgrades.Explosive_Fire,
         Upgrades.Flurry_Fire,
@@ -159,7 +159,7 @@ const weapons: GroupBoons = {
         Upgrades.Spread_Fire,
         Upgrades.Targeting_System,
         Upgrades.Triple_Bomb,
-        Upgrades.Concentrated_Beam, // Lucifer-Specific Below
+        Upgrades.Concentrated_Beam,
         Upgrades.Eternal_Chamber,
         Upgrades.Flash_Fire,
         Upgrades.Greater_Inferno,

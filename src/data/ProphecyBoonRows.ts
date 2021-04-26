@@ -1,4 +1,4 @@
-import { AnyBoon, BoonRows, Upgrades } from 'redux/domain';
+import { AnyBoon, Boons, BoonRows, Upgrades } from 'redux/domain';
 import { nameMaps } from 'data/NameMaps';
 
 const prophecyBoonRows = new Set([
@@ -27,6 +27,15 @@ const prophecyBoonRows = new Set([
 ].map((boonRow) => nameMaps[boonRow] || boonRow));
 
 const prophecyBoonExceptions = new Set<AnyBoon>([
+  Boons.Flood_Flare,
+  Boons.Hunters_Flare,
+  Boons.Icy_Flare,
+  Boons.Passion_Flare,
+  Boons.Phalanx_Flare,
+  Boons.Slicing_Flare,
+  Boons.Thunder_Flare,
+  Boons.Trippy_Flare,
+
   Upgrades.Concentrated_Beam,
   Upgrades.Concentrated_Fire,
   Upgrades.Eternal_Chamber,
