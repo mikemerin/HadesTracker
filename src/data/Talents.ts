@@ -11,9 +11,9 @@ const talents: GroupBoons = {
     [BoonTables.Talents]: {
       [BoonRows.Talents]: [
         Talents.Fiery_Presence,
-        Talents.Infernal_Soul,
         Talents.Shadow_Presence,
         Talents.Stygian_Soul,
+        Talents.Infernal_Soul,
       ],
     },
   },

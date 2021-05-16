@@ -36,6 +36,9 @@ const BoonPage = ({
           <Grid.Column key={'Companions_Table'} width={4}>
             <BoonTable boonType={BoonTables.Companions} split={7} basic horizontal hideHeader/>
           </Grid.Column>
+          <Grid.Column key={'Talents_Table'} width={4}>
+            <BoonTable boonType={BoonTables.Talents} split={7} basic horizontal hideHeader/>
+          </Grid.Column>
         </Grid.Row>
 
         <Grid.Row key={`${currentPage}_boon_row`}>
