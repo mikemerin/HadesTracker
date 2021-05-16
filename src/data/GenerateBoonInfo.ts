@@ -33,7 +33,7 @@ type GeneratedBoonInfo = {
 
 const paths: {[key: string]: string} = { // TODO: try to remove this, let getPath handle it all
   [BoonTables.Aspects]: 'aspects',
-  [BoonTables.Extras]: 'Icons',
+  [BoonTables.Extras]: 'icons',
   [BoonTables.Weapon]: 'daedalus',
 };
 
