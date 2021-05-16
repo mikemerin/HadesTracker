@@ -42,7 +42,7 @@ const getPath = (boon: string, boonGroup: string): string => {
   if ((ChaosBoons as any)[boon]) return 'chaos';
   if ((Companions as any)[boon]) return 'companions';
   if ((Gods as any)[boon]) return 'gods';
-  if ((Icons as any)[boon]) return 'Icons';
+  if ((Icons as any)[boon]) return 'icons';
   if ((Keepsakes as any)[boon]) return 'keepsakes';
   if ((Talents as any)[boon]) return 'talents';
   if ((Weapons as any)[boon]) return 'weapons';
