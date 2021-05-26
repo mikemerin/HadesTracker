@@ -37,7 +37,6 @@ const prophecyBoonExceptions = new Set<AnyBoon>([
   Boons.Trippy_Flare,
 
   Upgrades.Concentrated_Beam,
-  Upgrades.Concentrated_Fire,
   Upgrades.Eternal_Chamber,
   Upgrades.Flash_Fire,
   Upgrades.Greater_Consecration,

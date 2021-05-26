@@ -36,6 +36,7 @@ const Navbar = ({
           id={text}
           active={ currentPage === text }
           color='black'
+          size='small'
           onClick={handlePageChange}
         >
           { text }

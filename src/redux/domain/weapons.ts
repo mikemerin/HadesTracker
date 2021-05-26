@@ -39,7 +39,6 @@ export const Upgrades = {
   Cluster_Bomb: 'Cluster Bomb',
   Colossus_Knuckle: 'Colossus Knuckle',
   Concentrated_Beam: 'Concentrated Beam',
-  Concentrated_Fire: 'Concentrated Fire',
   Concentrated_Knuckle: 'Concentrated Knuckle',
   Concentrated_Volley: 'Concentrated Volley',
   Cruel_Thrust: 'Cruel Thrust',

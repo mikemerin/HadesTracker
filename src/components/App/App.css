@@ -16,6 +16,7 @@
 .NavbarButton {
   color: #e8c423 !important;
   font-weight: bold;
+  font-size: .8em;
 }
 
 /* grid overrides */

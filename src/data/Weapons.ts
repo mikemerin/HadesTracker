@@ -147,7 +147,6 @@ const weapons: GroupBoons = {
     [BoonTables.Weapon]: {
       [BoonRows.Daedalus]: [
         Upgrades.Cluster_Bomb,
-        Upgrades.Concentrated_Fire,
         Upgrades.Delta_Chamber,
         Upgrades.Explosive_Fire,
         Upgrades.Flurry_Fire,

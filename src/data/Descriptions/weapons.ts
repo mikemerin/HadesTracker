@@ -41,7 +41,6 @@ export const upgradeDescriptions: Mapping = {
   Cluster_Bomb: `Your ${Descriptions.Special} fires a spread of 5 bombs, but each deals -30% damage`,
   Colossus_Knuckle: `While using your ${Descriptions.Attack} or ${Descriptions.Special}, you are ${Descriptions.Sturdy}`,
   Concentrated_Beam: `Your ${Descriptions.Igneus_Eden} ${Descriptions.Attack} damage to a foe ramps up +100% faster`,
-  Concentrated_Fire: `Your ${Descriptions.Attack} deals +2 base damage for each uninterrupted hit to a foe`,
   Concentrated_Knuckle: `Your ${Descriptions.Attack} deals +5 base damage for each uninterrupted hit to a foe`,
   Concentrated_Volley: `Your ${Descriptions.Special} deals +3 damage for each consecutive hit to a foe`,
   Cruel_Thrust: `Your Thrust deals +200% damage and has a +40% ${Descriptions.Critical} change`,

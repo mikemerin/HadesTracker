@@ -140,10 +140,6 @@ const boonRestrictions: BoonRestrictions[] = [
     restricts: [Upgrades.Eternal_Chamber],
   },
   {
-    boon: Upgrades.Concentrated_Fire,
-    restricts: [Upgrades.Delta_Chamber, Upgrades.Spread_Fire],
-  },
-  {
     boon: Upgrades.Cruel_Thrust,
     restricts: [Upgrades.Flurry_Slash, Upgrades.World_Splitter],
   },
@@ -165,7 +161,7 @@ const boonRestrictions: BoonRestrictions[] = [
   },
   {
     boon: Upgrades.Delta_Chamber,
-    restricts: [Upgrades.Concentrated_Fire, Upgrades.Flurry_Fire, Upgrades.Spread_Fire],
+    restricts: [Upgrades.Flurry_Fire, Upgrades.Spread_Fire],
   },
   {
     boon: Upgrades.Exploding_Launcher,
@@ -301,7 +297,7 @@ const boonRestrictions: BoonRestrictions[] = [
   },
   {
     boon: Upgrades.Spread_Fire,
-    restricts: [Upgrades.Concentrated_Fire, Upgrades.Delta_Chamber, Upgrades.Flurry_Fire, Upgrades.Ricochet_Fire, Upgrades.Seeking_Fire],
+    restricts: [Upgrades.Delta_Chamber, Upgrades.Flurry_Fire, Upgrades.Ricochet_Fire, Upgrades.Seeking_Fire],
   },
   {
     boon: Upgrades.Triple_Bomb,

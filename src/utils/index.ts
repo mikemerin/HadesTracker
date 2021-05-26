@@ -163,4 +163,4 @@ export {
   getRelatedBoons,
   isUnlocked,
   nameSanitizer,
-}
+};
