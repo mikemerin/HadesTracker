@@ -1,6 +1,6 @@
 import fileDownload from 'js-file-download';
 
-import { AppState, BoonState } from './domain';
+import { AnyBoon, AppState, BoonState } from './domain';
 import {
   boonInfo,
   boonRestrictionGroups,
@@ -9,13 +9,14 @@ import {
   groupRowOrder,
   pageList,
 } from 'data';
+import { getBoonStatuses } from 'utils';
 
 type LocalState = {
   boons: string | null,
   version: string | null,
 };
 
-const stateVersion = 1;
+const stateVersion: number = 2;
 const localStorageBoons = 'boons';
 const localStorageVersion = 'version';
 
@@ -50,7 +51,9 @@ const loadState = (): BoonState | undefined => {
     const parsedBoons = JSON.parse(boons);
     const parsedVersion = parseInt(version || '0');
 
-    if (parsedVersion !== stateVersion || parsedVersion < 1) {
+    if (parsedVersion === 1 && stateVersion === 2) {
+      return retainLoggedBoons();
+    } else if (parsedVersion !== stateVersion || parsedVersion < 1) {
       return undefined;
     }
 
@@ -59,6 +62,21 @@ const loadState = (): BoonState | undefined => {
     return undefined;
   }
 };
+
+const retainLoggedBoons = (): BoonState => {
+  let defaultBoons = defaultState().boons;
+  const localBoons = JSON.parse(localStorage.getItem(localStorageBoons) || '{}');
+  Object.keys(defaultBoons).forEach((boon) => {
+    let { active, prophecyForetold } = localBoons[boon];
+    if (active) {
+        defaultBoons[boon].active = active;
+    }
+    if (prophecyForetold) {
+        defaultBoons[boon].prophecyForetold = prophecyForetold;
+    }
+  });
+  return getBoonStatuses(defaultState(), Object.keys(defaultBoons) as AnyBoon[]);
+}
 
 const saveState = (state: BoonState) => {
   try {

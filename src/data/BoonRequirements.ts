@@ -10,21 +10,9 @@ import {
 
 const boonRequirements: BoonRequirements[] = [
   {
-    boon: ChaosBoons.Ambush,
-    requirements: [
-      { number: 1, boons: [Talents.Shadow_Presence] },
-    ],
-  },
-  {
     boon: Boons.Arctic_Blast,
     requirements: [
-      { number: 1, boons: [Boons.Frost_Strike, Boons.Frost_Flourish, Boons.Mistral_Dash, Boons.Demeters_Aid, Boons.Snow_Burst] },
-    ],
-  },
-  {
-    boon: ChaosBoons.Assault,
-    requirements: [
-      { number: 1, boons: [Talents.Fiery_Presence] },
+      { number: 1, boons: [Boons.Frost_Strike, Boons.Frost_Flourish, Boons.Icy_Flare, Boons.Mistral_Dash, Boons.Demeters_Aid, Boons.Snow_Burst] },
     ],
   },
   {
@@ -44,6 +32,12 @@ const boonRequirements: BoonRequirements[] = [
     requirements: [
       { number: 1, boons: [Talents.Stygian_Soul] },
       { number: 1, boons: [Boons.Auto_Reload, Keepsakes.Lambent_Plume] },
+    ],
+  },
+  {
+    boon: Boons.Billowing_Strength,
+    requirements: [
+      { number: 1, boons: [Keepsakes.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
     ],
   },
   {
@@ -79,6 +73,12 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
+    boon: Boons.Boiling_Point,
+    requirements: [
+      { number: 1, boons: [Keepsakes.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
+    ],
+  },
+  {
     boon: Boons.Breaking_Wave,
     requirements: [
       { number: 1, boons: [Boons.Tempest_Strike, Boons.Tempest_Flourish, Boons.Flood_Shot, Boons.Flood_Flare, Boons.Tidal_Dash, Boons.Poseidons_Aid] },
@@ -107,6 +107,12 @@ const boonRequirements: BoonRequirements[] = [
     boon: Boons.Clean_Kill,
     requirements: [
       { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Artemis_Aid, Boons.Pressure_Points] },
+    ],
+  },
+  {
+    boon: Boons.Clouded_Judgement,
+    requirements: [
+      { number: 1, boons: [Keepsakes.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
     ],
   },
   {
@@ -238,12 +244,6 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
-    boon: Boons.Flurry_Cast,
-    requirements: [
-      { number: 1, boons: [Talents.Infernal_Soul] },
-    ],
-  },
-  {
     boon: Boons.Freezing_Vortex,
     requirements: [
       { number: 1, boons: [Boons.Slicing_Shot, Boons.Slicing_Flare] },
@@ -259,7 +259,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Glacial_Glare,
     requirements: [
-      { number: 1, boons: [Boons.Crystal_Beam, Boons.Icy_Flare] },
+      { number: 1, boons: [Boons.Crystal_Beam] },
     ],
   },
   {
@@ -277,7 +277,6 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Greater_Recall,
     requirements: [
-      { number: 1, boons: [Talents.Infernal_Soul] },
       { number: 1, boons: [Boons.Flurry_Cast, Boons.Quick_Reload, Keepsakes.Lambent_Plume] },
     ],
   },
@@ -309,8 +308,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Huge_Catch,
     requirements: [
-      // { number: 2, boons: [Keepsakes.Conch_Shell, Boons.Sunken_Treasure, Boons.Oceans_Bounty] },
-      { number: 2, boons: [Boons.Sunken_Treasure, Boons.Oceans_Bounty] }, // TODO: add the item
+      { number: 2, boons: [Keepsakes.Conch_Shell, Boons.Sunken_Treasure, Boons.Oceans_Bounty] },
     ],
   },
   {
@@ -323,6 +321,7 @@ const boonRequirements: BoonRequirements[] = [
     boon: Boons.Hunter_Instinct,
     requirements: [
       { number: 1, boons: [Boons.Deadly_Strike, Boons.Deadly_Flourish, Boons.True_Shot, Boons.Hunters_Flare, Boons.Pressure_Points] },
+      { number: 1, boons: [Keepsakes.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
     ],
   },
   {
@@ -360,7 +359,7 @@ const boonRequirements: BoonRequirements[] = [
   {
     boon: Boons.Killing_Freeze,
     requirements: [
-      { number: 1, boons: [Boons.Frost_Strike, Boons.Frost_Flourish, Boons.Mistral_Dash, Boons.Demeters_Aid, Boons.Snow_Burst] },
+      { number: 1, boons: [Boons.Frost_Strike, Boons.Frost_Flourish, Boons.Icy_Flare, Boons.Mistral_Dash, Boons.Demeters_Aid, Boons.Snow_Burst] },
     ],
   },
   {
@@ -437,15 +436,15 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
-    boon: Boons.Quick_Favor,
+    boon: Boons.Proud_Bearing,
     requirements: [
       { number: 1, boons: [Keepsakes.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
     ],
   },
   {
-    boon: Boons.Quick_Reload,
+    boon: Boons.Quick_Favor,
     requirements: [
-      { number: 1, boons: [Talents.Infernal_Soul] },
+      { number: 1, boons: [Keepsakes.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
     ],
   },
   {
@@ -512,16 +511,11 @@ const boonRequirements: BoonRequirements[] = [
     ],
   },
   {
-    boon: ChaosBoons.Slippery,
-    requirements: [
-      { number: 1, boons: [Talents.Infernal_Soul] },
-    ],
-  },
-  {
     boon: Boons.Smoldering_Air,
     requirements: [
       { number: 1, boons: [Boons.Heartbreak_Strike, Boons.Heartbreak_Flourish, Boons.Crush_Shot, Boons.Passion_Flare, Boons.Passion_Dash, Boons.Aphrodites_Aid] },
       { number: 1, boons: [Boons.Lightning_Strike, Boons.Thunder_Flourish, Boons.Electric_Shot, Boons.Thunder_Flare, Boons.Thunder_Dash, Boons.Zeus_Aid] },
+      { number: 1, boons: [Keepsakes.Sigil_of_the_Dead, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid] },
     ],
   },
   {

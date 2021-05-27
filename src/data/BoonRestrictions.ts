@@ -4,6 +4,7 @@ import {
   BoonRows,
   BoonSwappableGroups,
   Boons,
+  ChaosBoons,
   GroupRestrictions,
   Keepsakes,
   Talents,
@@ -27,6 +28,18 @@ const boonSwappableGroups: BoonSwappableGroups = [
 ];
 
 const boonRestrictions: BoonRestrictions[] = [
+  {
+    boon: Boons.Aphrodites_Aid,
+    restricts: [Keepsakes.Sigil_of_the_Dead],
+  },
+  {
+    boon: Boons.Ares_Aid,
+    restricts: [Keepsakes.Sigil_of_the_Dead],
+  },
+  {
+    boon: Boons.Artemis_Aid,
+    restricts: [Keepsakes.Sigil_of_the_Dead],
+  },
   {
     boon: Aspects.Aspect_of_Achilles,
     restricts: [Upgrades.Chain_Skewer, Upgrades.Charged_Skewer, Upgrades.Exploding_Launcher],
@@ -108,6 +121,10 @@ const boonRestrictions: BoonRestrictions[] = [
     restricts: [Upgrades.Charged_Flight, Upgrades.Dashing_Flight, Upgrades.Dread_Flight],
   },
   {
+    boon: Boons.Athenas_Aid,
+    restricts: [Keepsakes.Sigil_of_the_Dead],
+  },
+  {
     boon: Boons.Blizzard_Shot,
     restricts: [Boons.Curse_of_Drowning, Boons.Ice_Wine],
   },
@@ -164,6 +181,14 @@ const boonRestrictions: BoonRestrictions[] = [
     restricts: [Upgrades.Flurry_Fire, Upgrades.Spread_Fire],
   },
   {
+    boon: Boons.Demeters_Aid,
+    restricts: [Keepsakes.Sigil_of_the_Dead],
+  },
+  {
+    boon: Boons.Dionysus_Aid,
+    restricts: [Keepsakes.Sigil_of_the_Dead],
+  },
+  {
     boon: Upgrades.Exploding_Launcher,
     restricts: [Upgrades.Chain_Skewer, Upgrades.Vicious_Skewer],
   },
@@ -182,6 +207,10 @@ const boonRestrictions: BoonRestrictions[] = [
   {
     boon: Upgrades.Explosive_Upper,
     restricts: [Upgrades.Kinetic_Launcher],
+  },
+  {
+    boon: Talents.Fiery_Presence,
+    restricts: [ChaosBoons.Ambush],
   },
   {
     boon: Upgrades.Flaring_Spin,
@@ -252,6 +281,10 @@ const boonRestrictions: BoonRestrictions[] = [
     restricts: [Upgrades.Sniper_Shot],
   },
   {
+    boon: Boons.Poseidons_Aid,
+    restricts: [Keepsakes.Sigil_of_the_Dead],
+  },
+  {
     boon: Upgrades.Quake_Cutter,
     restricts: [Upgrades.Kinetic_Launcher],
   },
@@ -284,6 +317,10 @@ const boonRestrictions: BoonRestrictions[] = [
     restricts: [Upgrades.Piercing_Fire, Upgrades.Ricochet_Fire, Upgrades.Spread_Fire],
   },
   {
+    boon: Talents.Shadow_Presence,
+    restricts: [ChaosBoons.Assault],
+  },
+  {
     boon: Keepsakes.Sigil_of_the_Dead,
     restricts: [Boons.Smoldering_Air, Boons.Aphrodites_Aid, Boons.Ares_Aid, Boons.Artemis_Aid, Boons.Athenas_Aid, Boons.Demeters_Aid, Boons.Dionysus_Aid, Boons.Poseidons_Aid, Boons.Zeus_Aid],
   },
@@ -298,6 +335,10 @@ const boonRestrictions: BoonRestrictions[] = [
   {
     boon: Upgrades.Spread_Fire,
     restricts: [Upgrades.Delta_Chamber, Upgrades.Flurry_Fire, Upgrades.Ricochet_Fire, Upgrades.Seeking_Fire],
+  },
+  {
+    boon: Talents.Stygian_Soul,
+    restricts: [Boons.Flurry_Cast, Boons.Greater_Recall, Boons.Quick_Reload, ChaosBoons.Slippery],
   },
   {
     boon: Upgrades.Triple_Bomb,
@@ -322,6 +363,10 @@ const boonRestrictions: BoonRestrictions[] = [
   {
     boon: Upgrades.World_Splitter,
     restricts: [Upgrades.Cruel_Thrust, Upgrades.Flurry_Slash],
+  },
+  {
+    boon: Boons.Zeus_Aid,
+    restricts: [Keepsakes.Sigil_of_the_Dead],
   },
 ];
 

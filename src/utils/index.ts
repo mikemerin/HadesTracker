@@ -100,25 +100,26 @@ const getBoonStatuses = (
 ): BoonState => {
   let stateBoons: BoonState = state.boons;
 
+  if (resetRun) {
+    boons.forEach((boon: AnyBoon) => {
+      if (activeRunBoonRows.has(stateBoons[boon].boonRow as BoonRow)) {
+        stateBoons[boon].active = false;
+      }
+    });
+  }
+
   boons.forEach((boon: AnyBoon) => {
-    const isRunBoon = activeRunBoonRows.has(stateBoons[boon].boonRow as BoonRow);
-    const runBoonReset = resetRun && isRunBoon;
-
-    if (runBoonReset) {
-      stateBoons[boon].active = false;
-    }
-
     const { requirements, restrictedBy, swapsWith } = stateBoons[boon];
 
-    const restricted = !restrictedBy || runBoonReset ? false : isRestricted(state, restrictedBy);
-    const swappable = !swapsWith || runBoonReset ? false : isSwappable(state, swapsWith);
+    const restricted = restrictedBy && isRestricted(state, restrictedBy);
+    const swappable = swapsWith && isSwappable(state, swapsWith);
     if ((restricted || swappable) && stateBoons[boon].active) {
       stateBoons[boon].active = false;
       stateBoons = getBoonStatuses(state, getRelatedBoons(stateBoons[boon]));
     }
     stateBoons[boon].restricted = restricted;
     stateBoons[boon].swappable = swappable;
-    stateBoons[boon].unlocked = !requirements || (!runBoonReset && isUnlocked(state, requirements));
+    stateBoons[boon].unlocked = !requirements || isUnlocked(state, requirements);
   });
   return stateBoons;
 };
