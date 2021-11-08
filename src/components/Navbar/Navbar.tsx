@@ -1,40 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, Menu, Segment } from 'semantic-ui-react';
 
 import { setCurrentPage } from 'redux/actions';
-import { AppState } from 'redux/domain';
+import { getPages } from 'redux/selectors';
 
 import ActionButtons from './ActionButtons';
 import LinkButtons from './LinkButtons';
 
-const mapStateToProps = (state: AppState) => ({
-  currentPage: state.pages.current,
-  pageList: state.pages.list
-});
+const Navbar = (): JSX.Element => {
+  const dispatch = useDispatch();
+  const { current, list } = useSelector(getPages);
 
-const mapDispatchToProps = {
-  onChangeCurrentPage: (currentPage: string) => setCurrentPage(currentPage),
-};
-
-type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
-
-const Navbar = ({
-  currentPage,
-  onChangeCurrentPage,
-  pageList
-}: Props): JSX.Element => {
-  const handlePageChange = (event: any, result: any) => onChangeCurrentPage(result.id);
+  const handlePageChange = (event: any, result: any) => dispatch(setCurrentPage(result.id));
 
   const generatePageButtons = () => (
-    pageList.map(({ text, url }) => (
+    list.map(({ text, url }) => (
       <Link key={`page${text}`} to={url}>
         <Button
           className='NavbarButton'
           key={`navButton${text}`}
           id={text}
-          active={ currentPage === text }
+          active={ current === text }
           color='black'
           size='small'
           onClick={handlePageChange}
@@ -58,4 +46,4 @@ const Navbar = ({
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default Navbar;

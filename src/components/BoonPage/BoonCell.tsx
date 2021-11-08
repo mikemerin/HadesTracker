@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Segment } from 'semantic-ui-react';
 
 import {
@@ -9,65 +9,32 @@ import {
 } from 'redux/actions';
 import {
   AnyBoon,
-  AppState,
   BoonTypes,
   Icons,
-  Requirements,
 } from 'redux/domain';
+import { getBoons, getDisplay } from 'redux/selectors';
 
 import { BoonStyle } from './Boon.styles';
 import { getBoonHoverText } from 'utils';
 
-type DisplayInfo = {
-  requirements?: Requirements[],
-  restrictedBy?: AnyBoon[],
-  restricts?: AnyBoon[],
-  swapsWith?: AnyBoon[],
-  unlocks?: string[],
-}
-
-type OwnProps = {
+type Props = {
+  basic?: boolean,
   name: AnyBoon,
   style: BoonStyle,
-}
-
-const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
-  boon: state.boons[ownProps.name],
-  boons: state.boons,
-  display: state.display,
-  name: ownProps.name,
-});
-
-const mapDispatchToProps = {
-  onSetBoonActive: (boon: any, active: any) => setBoonActive(boon, active),
-  onSetDisplayInfo: ({
-    requirements = [],
-    restrictedBy = [],
-    restricts = [],
-    swapsWith = [],
-    unlocks = [],
-  }: DisplayInfo) => setDisplayInfo(requirements, restrictedBy, restricts, swapsWith, unlocks),
-  onSetBoonProphecyForetold: (boon: any, prophecyForetold: any) => setBoonProphecyForetold(boon, prophecyForetold),
-};
-
-type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & {
-  basic?: boolean,
-  style: any,
 };
 
 const BoonCell = ({
   basic,
-  boon,
-  boons,
-  display,
-  onSetBoonActive,
-  onSetBoonProphecyForetold,
-  onSetDisplayInfo,
   name,
   style,
 }: Props) => {
-  const handleActive = (event: any) => onSetBoonActive(name, !boon.active);
-  const handleProphecyChange = (event: any) => onSetBoonProphecyForetold(name, !boon.prophecyForetold);
+  const dispatch = useDispatch();
+  const display = useSelector(getDisplay);
+  const boons = useSelector(getBoons);
+  const boon = boons[name];
+
+  const handleActive = (event: any) => dispatch(setBoonActive(name, !boon.active));
+  const handleProphecyChange = (event: any) => dispatch(setBoonProphecyForetold(name, !boon.prophecyForetold));
 
   const { active, image, prophecyForetold, requirements, restricted, restrictedBy, restricts, swapsWith, type, unlocked, unlocks } = boon;
   const { requiresBoons, restrictedByBoons, restrictsBoons, swapsWithBoons, unlocksBoons } = display;
@@ -76,7 +43,7 @@ const BoonCell = ({
 
   const displayRelatedBoons = (show: boolean) => {
     if (requirements || restrictedBy || restricts || swapsWith || unlocks) {
-      onSetDisplayInfo(show ? {requirements, restrictedBy, restricts, swapsWith, unlocks} : {});
+      dispatch(setDisplayInfo(show ? {requirements, restrictedBy, restricts, swapsWith, unlocks} : {}));
     }
   };
 
@@ -139,4 +106,4 @@ const BoonCell = ({
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoonCell);
+export default BoonCell;

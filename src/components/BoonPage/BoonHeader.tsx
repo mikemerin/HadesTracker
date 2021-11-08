@@ -1,16 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Grid, SemanticWIDTHS } from 'semantic-ui-react';
 
-import { AppState, BoonTables } from 'redux/domain';
+import { BoonTables } from 'redux/domain';
+import { getBoons } from 'redux/selectors';
 
 import { nameMaps, weaponNameMaps } from 'data/NameMaps';
 
-const mapStateToProps = (state: AppState) => ({
-  boons: state.boons
-});
-
-type Props = ReturnType<typeof mapStateToProps> & {
+type Props = {
   name: string,
   boonType: string,
   headerType: string,
@@ -18,12 +15,12 @@ type Props = ReturnType<typeof mapStateToProps> & {
 };
 
 const BoonHeader = ({
-  boons,
   boonType,
   headerType,
   name,
   rowHeaderWidth,
 }: Props): JSX.Element => {
+  const boons = useSelector(getBoons);
   const { image } = boons[name] || {};
 
   if (headerType === 'row') {
@@ -67,4 +64,4 @@ const BoonHeader = ({
   }
 };
 
-export default connect(mapStateToProps)(BoonHeader);
+export default BoonHeader;

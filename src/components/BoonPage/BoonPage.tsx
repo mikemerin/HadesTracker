@@ -1,25 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Grid } from 'semantic-ui-react';
 
 import {
-  AppState,
   BoonTables,
   Pages,
 } from 'redux/domain';
 
 import BoonTable from './BoonTable';
+import { getPages } from 'redux/selectors';
 
-const mapStateToProps = (state: AppState) => ({
-  currentPage: state.pages.current,
-});
+const BoonPage = (): JSX.Element => {
+  const { current } = useSelector(getPages);
 
-type Props = ReturnType<typeof mapStateToProps>;
-
-const BoonPage = ({
-  currentPage,
-}: Props): JSX.Element => {
-  if (currentPage === Pages.Weapons.text) {
+  if (current === Pages.Weapons.text) {
     return (
       <>
         <BoonTable boonType={BoonTables.Weapon} />
@@ -28,8 +22,8 @@ const BoonPage = ({
     );
   } else {
     return (
-      <Grid key={currentPage} padded>
-        <Grid.Row key={`${currentPage}_active_row`} className='topRow'>
+      <Grid key={current} padded>
+        <Grid.Row key={`${current}_active_row`} className='topRow'>
           <Grid.Column key={'Keepsakes_Table'} width={6}>
             <BoonTable boonType={BoonTables.Keepsakes} split={14} basic horizontal hideHeader/>
           </Grid.Column>
@@ -41,7 +35,7 @@ const BoonPage = ({
           </Grid.Column>
         </Grid.Row>
 
-        <Grid.Row key={`${currentPage}_boon_row`}>
+        <Grid.Row key={`${current}_boon_row`}>
           <Grid.Column key={'Solo_Duo_Tables'} width={10}>
             <BoonTable boonType={BoonTables.Solo} />
             <BoonTable boonType={BoonTables.Duo} hideHeader />
@@ -59,4 +53,4 @@ const BoonPage = ({
 
 };
 
-export default connect(mapStateToProps)(BoonPage);
+export default BoonPage;

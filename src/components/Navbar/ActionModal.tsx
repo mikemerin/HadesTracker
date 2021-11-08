@@ -1,38 +1,18 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Button, Header, Icon, Modal, SemanticICONS } from 'semantic-ui-react';
 
 import { resetBoons, setBoons } from 'redux/actions';
 import {
-  AppState,
-  BoonResetType,
   BoonResetTypes,
-  BoonState,
   DataActions,
 } from 'redux/domain';
 import { exportLocalStorage } from 'redux/state';
 
 import { boonFileChecker } from 'utils';
 
-const mapStateToProps = (state: AppState) => ({
-  boons: state.boons,
-});
-
-const mapDispatchToProps = {
-  onResetBoons: (boonResetType: BoonResetType) => resetBoons(boonResetType),
-  onSetBoons: (boons: BoonState) => setBoons(boons),
-};
-
-type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & {
-  type: string,
-};
-
-const ActionModal = ({
-  boons,
-  onResetBoons,
-  onSetBoons,
-  type,
-}: Props): JSX.Element => {
+const ActionModal = ({ type }: { type: string }): JSX.Element => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false)
   const data: {[key: string]: {[key: string]: string}} = {
     [DataActions.Import]: {
@@ -52,7 +32,7 @@ const ActionModal = ({
   const importIfValid = () => {
     const boons = localStorage.getItem('temp');
     if (boons) {
-      onSetBoons(JSON.parse(boons));
+      dispatch(setBoons(JSON.parse(boons)));
     }
   };
 
@@ -92,8 +72,8 @@ const ActionModal = ({
         </Button>
         <Button color='green' inverted onClick={() => {
           type === DataActions.Import && importIfValid();
-          type === DataActions.ResetRun && onResetBoons(BoonResetTypes.Active);
-          type === DataActions.ResetAll && onResetBoons(BoonResetTypes.All);
+          type === DataActions.ResetRun && dispatch(resetBoons(BoonResetTypes.Active));
+          type === DataActions.ResetAll && dispatch(resetBoons(BoonResetTypes.All));
           setOpen(false);
         }}>
           <Icon name='checkmark' /> Yes
@@ -103,4 +83,4 @@ const ActionModal = ({
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ActionModal);
+export default ActionModal;

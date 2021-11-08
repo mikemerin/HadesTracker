@@ -1,11 +1,10 @@
 import { createAction } from 'typesafe-actions';
 
 import {
-  AnyBoon,
   BoonResetType,
   BoonState,
   GroupRowOrder,
-  Requirements,
+  SetDisplayInfo,
 } from 'redux/domain';
 
 const resetBoons = createAction(
@@ -35,13 +34,7 @@ const setCurrentPage = createAction(
 
 const setDisplayInfo = createAction(
   '[Display] Set Display Info',
-  (
-    requiresBoons: Requirements[],
-    restrictedByBoons: AnyBoon[],
-    restrictsBoons: AnyBoon[],
-    swapsWithBoons: AnyBoon[],
-    unlocksBoons: string[]
-  ) => ({ requiresBoons, restrictedByBoons, restrictsBoons, swapsWithBoons, unlocksBoons })
+  (displayInfo: SetDisplayInfo) => displayInfo
 )();
 
 const setGroupRowOrder = createAction(

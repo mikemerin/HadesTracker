@@ -116,19 +116,31 @@ export type Display = {
   unlocksBoons: string[], // TODO: make Set<AnyBoon>
 };
 
+export type GroupState = {
+  boons: GroupBoons,
+  restrictions: GroupRestrictions
+  rowOrder: GroupRowOrder,
+};
+
+export type PageState = {
+  current: string,
+  list: Page[],
+};
+
+export type SetDisplayInfo = {
+  requirements?: Requirements[],
+  restrictedBy?: AnyBoon[],
+  restricts?: AnyBoon[],
+  swapsWith?: AnyBoon[],
+  unlocks?: string[],
+}
+
 export type AppState = {
   boons: BoonState,
   colors: {[key: string]: string},
   display: Display,
-  groups: {
-    boons: GroupBoons,
-    restrictions: GroupRestrictions
-    rowOrder: GroupRowOrder,
-  },
-  pages: {
-    current: string,
-    list: Page[],
-  },
+  groups: GroupState,
+  pages: PageState,
   version: number,
 };
 

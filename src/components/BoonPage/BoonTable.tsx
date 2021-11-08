@@ -1,18 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Grid, SemanticWIDTHS } from 'semantic-ui-react';
 
-import { AnyBoon, AppState } from 'redux/domain';
+import { AnyBoon } from 'redux/domain';
+import { getGroups } from 'redux/selectors';
 
 import BoonHeader from './BoonHeader';
 import BoonRowGroup from './BoonRowGroup';
 
-const mapStateToProps = (state: AppState) => ({
-  groupBoons: state.groups.boons,
-  groupRowOrder: state.groups.rowOrder,
-});
-
-type Props = ReturnType<typeof mapStateToProps> & {
+type Props = {
   basic?: boolean,
   boonType: string,
   hideHeader?: boolean,
@@ -23,14 +19,14 @@ type Props = ReturnType<typeof mapStateToProps> & {
 
 const BoonTable = ({
   basic,
-  groupBoons,
-  groupRowOrder,
   boonType,
   hideHeader,
   hideRowHeader,
   horizontal,
   split,
 }: Props): JSX.Element => {
+  const { boons: groupBoons, rowOrder: groupRowOrder } = useSelector(getGroups);
+
   const rowHeaderWidth = (horizontal && split ? Math.ceil(16 / split) : undefined) as SemanticWIDTHS;
 
   const displayRowHeader = (index: number, rowHeader: JSX.Element) => {
@@ -142,4 +138,4 @@ const BoonTable = ({
   );
 };
 
-export default connect(mapStateToProps)(BoonTable);
+export default BoonTable;

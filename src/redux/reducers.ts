@@ -108,11 +108,11 @@ const handleSetDisplayInfo = (
 ): AppState => ({
   ...state,
   display: {
-    requiresBoons: payload.requiresBoons || [],
-    restrictedByBoons: payload.restrictedByBoons || [],
-    restrictsBoons: payload.restrictsBoons || [],
-    swapsWithBoons: payload.swapsWithBoons || [],
-    unlocksBoons: payload.unlocksBoons || [],
+    requiresBoons: payload.requirements || [],
+    restrictedByBoons: payload.restrictedBy || [],
+    restrictsBoons: payload.restricts || [],
+    swapsWithBoons: payload.swapsWith || [],
+    unlocksBoons: payload.unlocks || [],
   }
 });
 

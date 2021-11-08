@@ -1,18 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Grid, Segment } from 'semantic-ui-react';
 
-import { AnyBoon, AppState } from 'redux/domain';
+import { AnyBoon } from 'redux/domain';
+import { getState } from 'redux/selectors';
 import { nameSanitizer } from 'utils';
 
 import BoonCell from './BoonCell';
 import { BoonStyles } from './Boon.styles';
 
-const mapStateToProps = (state: AppState) => ({
-  state: state, // TODO: BAD! but needed for now
-});
-
-type Props = ReturnType<typeof mapStateToProps> & {
+type Props = {
   basic?: boolean,
   boonKey: string,
   boonType: string,
@@ -28,8 +25,9 @@ const BoonRowGroup = ({
   boonRow,
   horizontal,
   rowBoons,
-  state,
 }: Props): JSX.Element => {
+  useSelector(getState); /* TODO: BAD! but needed for now.
+  Without listening to state here, the groups do not update (color, disable/enable, etc) */
   const rowGroupId = [boonKey, boonRow, 'RowGroup'].map((id, index) => {
     const idString = id.toString();
     return idString[0].toUpperCase() + idString.slice(1);
@@ -67,4 +65,4 @@ const BoonRowGroup = ({
   };
 };
 
-export default connect(mapStateToProps)(BoonRowGroup);
+export default BoonRowGroup;
